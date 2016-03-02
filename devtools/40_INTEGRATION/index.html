@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Integration - DevTools CLI Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Integration";
+    var mkdocs_page_input_path = "40_INTEGRATION.md";
+    var mkdocs_page_url = "/40_INTEGRATION/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_TOOLCHAIN/">Tool Chain</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Integration</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#integration-environments">Integration Environments</a></li>
+                
+                    <li><a class="toctree-l4" href="#how-to-get-an-integration-environment-going">How to get an integration environment going</a></li>
+                
+                    <li><a class="toctree-l4" href="#more-advanced-integration-use-cases">More advanced integration use cases</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../50_TROUBLESHOOTING/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Integration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket"> Edit on BitBucket</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="integration-environments">Integration Environments</h2>
+<p>Now that we use docker-compose we can easily spin up integration environments for our projects.  We are currently using <code>ci.p2devcloud.com</code> and <code>ci2.p2devcloud.com</code> as the integration environment. You can see a list of all integration sites currently running by going to <a href="http://ci.p2devcloud.com">http://ci.p2devcloud.com</a> and <a href="http://ci2.p2devcloud.com">http://ci2.p2devcloud.com</a></p>
+<h3 id="how-to-get-an-integration-environment-going">How to get an integration environment going</h3>
+<p>The good news is that if you have your dev environment running via docker-compose, it should be very straight-forward to pull up an integration environment.  Think of each environment you want to run as having it’s own docker-compose file. See the <a href="https://bitbucket.org/phase2tech/_devtools_vm/src/master/examples/drupal8/docker-compose.int.yml?fileviewer=file-view-default">sample integration file</a> included in example/drupal8.</p>
+<p>For a quick and easy start:</p>
+<ul>
+<li>
+<p>Make a copy of docker-compose.yml and name it docker-compose.int.yml</p>
+</li>
+<li>
+<p>Configure volumes</p>
+<ul>
+<li>Be sure to remove the line that is mounting your local code into the container</li>
+</ul>
+</li>
+<li>
+<p>Configure your web container</p>
+<ul>
+<li>
+<p>Add an <code>expose</code> section, and specify port <code>"80"</code></p>
+<ul>
+<li>This will broadcast the ports available to services like nginx-proxy</li>
+</ul>
+</li>
+<li>
+<p>In the environment section, add a <code>VIRTUAL_HOST</code> variable. Put the hostname you want for your environment of the format <code>&lt;name&gt;.ci.p2devcloud.com</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Create your integration job</p>
+<ul>
+<li>
+<p>Create a job that will run every time code is committed to a particular branch (usually <code>develop</code>)</p>
+</li>
+<li>
+<p>The script for that job should run the following commands</p>
+<ul>
+<li>
+<p><code>docker-compose build</code></p>
+</li>
+<li>
+<p><code>docker-compose -f docker-compose.int.yml up -d</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>An example of this script can be seen here: <a href="http://build.p2devcloud.com/job/Fieldnotes%20Integration/configure">http://build.p2devcloud.com/job/Fieldnotes%20Integration/configure</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Instead of creating new project tabs on http://build.p2devcloud.com, we are switching to project-specific Jenkins instances for integration. To create your own Jenkins integration server:</p>
+<ul>
+<li>
+<p>Go to <a href="http://build.ci.p2devcloud.com/job/ci-start">http://build.ci.p2devcloud.com/job/ci-start</a> and run this job with the following parameters:</p>
+<ul>
+<li>Your project name (no spaces)</li>
+<li>The git url for your repository</li>
+<li>The branch to use</li>
+</ul>
+</li>
+<li>
+<p>This will create your own Jenkins instance -- the url should appear here: http://ci.p2devcloud.com/</p>
+</li>
+<li>You can add/configure Jenkins plugins by adding a jenkins directory to your env directory. You can modify the config.xml files to your heart's content because the instance on our integration server is your very own configured Jenkin's instance. For an example of a env jenkins directory, checkout <a href="../../examples/jenkins/env">examples/jenkins/env</a>.</li>
+</ul>
+<h3 id="more-advanced-integration-use-cases">More advanced integration use cases</h3>
+<p>The above section highlights the most straight-forward integration implementation. There are often a collection of other things that are used when building a full featured CI environment.  We have not figured these all out, but will update this documentation as we formalize the recommended practices around such things as:</p>
+<ul>
+<li>
+<p>Reset to a known version of the database</p>
+</li>
+<li>
+<p>Use a version of a production database for each integration build</p>
+</li>
+<li>
+<p>Build a production artifact</p>
+</li>
+<li>
+<p>Create a feature branch environment for review</p>
+</li>
+<li>
+<p>Create a content environment for migration review and manual content migrations</p>
+</li>
+<li>
+<p>Proper cleanup and removing of an integration environment</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../50_TROUBLESHOOTING/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../30_PROJECT_USAGE/" class="btn btn-neutral" title="Project Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../30_PROJECT_USAGE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../50_TROUBLESHOOTING/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>LINUX - DevTools CLI Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "LINUX";
+    var mkdocs_page_input_path = "99_LINUX.md";
+    var mkdocs_page_url = "/99_LINUX/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_TOOLCHAIN/">Tool Chain</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_INTEGRATION/">Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../50_TROUBLESHOOTING/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">LINUX</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#phase2-dev-tools-vm-for-linux">Phase2 Dev Tools VM for Linux</a></li>
+                
+                    <li><a class="toctree-l4" href="#linux-requirements">Linux requirements</a></li>
+                
+                    <li><a class="toctree-l4" href="#linux-dns-configuration-options">Linux DNS configuration options</a></li>
+                
+                    <li><a class="toctree-l4" href="#dns-resolution-tests">DNS resolution tests</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>LINUX</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket"> Edit on BitBucket</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="phase2-dev-tools-vm-for-linux">Phase2 Dev Tools VM for Linux</h1>
+<p>When running Docker containers on Linux, it is not necessary to run the Docker Machine VM. The instructions here describe how to run Dev Tools projects on Linux.</p>
+<h2 id="linux-requirements">Linux requirements</h2>
+<ol>
+<li>The phase2/dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers<ul>
+<li>This is a public container that is only about 12M; you may freely pull it</li>
+</ul>
+</li>
+<li>Use of one of three options to forward DNS queries to the dnsdock container (see <a href="#markdown-header-linux-dns-configuration-options">Linux DNS configuration options</a> below</li>
+</ol>
+<h3 id="linux-installation-on-fedora-20-or-21">Linux installation on Fedora 20 or 21</h3>
+<ol>
+<li>Install Docker<ul>
+<li><code>yum install docker-io</code></li>
+</ul>
+</li>
+<li>Install pip<ul>
+<li><code>yum install python-pip</code></li>
+</ul>
+</li>
+<li>Install Fig<ul>
+<li><code>sudo pip install fig</code></li>
+</ul>
+</li>
+<li>Add your user to the Docker group<ul>
+<li><code>sudo usermod -aG docker $USER</code></li>
+</ul>
+</li>
+<li>Log out, then back in, in order to pick up your new group assignments</li>
+<li>Set the DNS configuration for dnsdock, as well as known RFC-1918 address space<ul>
+<li>Please note that the following command will over-write your existing Docker daemon configuration file.  Please set the -bip=172.17.42.1/24 and -dns=172.17.42.1 options manually as an alternative</li>
+<li><code>echo 'OPTIONS=-bip=172.17.42.1/24 -dns=172.17.42.1' | sudo tee /etc/sysconfig/docker</code></li>
+</ul>
+</li>
+<li>Set up the docker0 network as trusted<ul>
+<li><code>sudo firewall-cmd --zone=trusted --add-interface=docker0 &amp;&amp; sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent</code></li>
+</ul>
+</li>
+<li>Start the docker daemon<ul>
+<li><code>sudo systemctl start docker</code></li>
+</ul>
+</li>
+<li>Log into the OCHA Docker Hub Account with the credentials furnished to you.  You'll only need to do this once.<ul>
+<li><code>docker login</code></li>
+</ul>
+</li>
+<li>Pull the phase2/dnsdock container<ul>
+<li><code>docker pull phase2/dnsdock</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="linux-installation-on-ubuntulinux-mintdebian">Linux installation on Ubuntu/Linux Mint/Debian</h3>
+<ol>
+<li>Install Docker<ul>
+<li><code>curl -sSL https://get.docker.com/ | sh</code></li>
+</ul>
+</li>
+<li>Install pip<ul>
+<li><code>apt-get install python-pip</code></li>
+</ul>
+</li>
+<li>Install Fig<ul>
+<li><code>sudo pip install docker-compose</code></li>
+</ul>
+</li>
+<li>Add your user to the Docker group<ul>
+<li><code>sudo usermod -aG docker $USER</code></li>
+</ul>
+</li>
+<li>Log out, then back in, in order to pick up your new group assignments</li>
+<li>Set the DNS configuration for dnsdock, as well as known RFC-1918 address space<ul>
+<li>Please note that the following command will over-write your existing Docker daemon configuration file.  Please set the -bip=172.17.42.1/24 and -dns=172.17.42.1 options manually as an alternative</li>
+<li><code>echo 'OPTIONS=-bip=172.17.42.1/24 -dns=172.17.42.1' | sudo tee /etc/default/docker</code></li>
+</ul>
+</li>
+<li>Start the docker daemon<ul>
+<li><code>sudo start docker</code></li>
+</ul>
+</li>
+<li>Pull the phase2/dnsdock container<ul>
+<li><code>docker pull phase2/dnsdock</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="linux-dns-configuration-options">Linux DNS configuration options</h2>
+<h3 id="method-1-dnsmasq-via-networkmanager">Method 1: dnsmasq via NetworkManager</h3>
+<p>This method works well with no other needed software provided that you have unfettered access to your system's configuration, and are using NetworkManager to maintain your networking stack</p>
+<ol>
+<li>Add the line dns=dnsmasq to /etc/NetworkManager/NetworkManager.conf under the [main] configuration stanza. This will cause NetworkManager to spawn and use a dnsmasq process for all name resolution.
+If you already have a local configuration, ensure that it is not configured to start on system boot.</li>
+<li>Add a single rule to direct all DNS lookups for .vm addresses to the 172.17.42.1 address.<ul>
+<li><code>echo 'server=/vm/172.17.42.1' | sudo tee /etc/NetworkManager/dnsmasq.d/dnsdock.conf</code></li>
+</ul>
+</li>
+<li>Restart NetworkManager, either through systemd, or by simply rebooting.  To restart via systemd:<ul>
+<li><code>systemctl restart NetworkManager</code></li>
+</ul>
+</li>
+<li>Run the dnsdock container<ul>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.42.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="method-2-dnsdock-as-main-resolver">Method 2: dnsdock as main resolver</h3>
+<p>This method will probably only work well if this is a fixed computer or server with a consistent single upstream DNS server. If you meet these criteria, you can very easily use this to set up .vm resolution for containers an delegate the rest to your normal DNS server.</p>
+<p>This example assumes that the upstream DNS server for a Linux workstation is 192.168.0.1.</p>
+<ol>
+<li>Run the dnsdock container, specifying your upstream DNS server at the end.<ul>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.42.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock /opt/bin/dnsdock -domain=vm -nameserver='192.168.0.1:53'</code></li>
+</ul>
+</li>
+<li>Configure 172.17.42.1 as your first DNS resolver in your network configuration. The method for doing this may differ based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as the first 'nameserver' line in your /etc/resolv.conf file.</li>
+</ol>
+<h3 id="method-3-libnss-resolver">Method 3: libnss-resolver</h3>
+<p>libnss-resolver is an app that adds Mac-style /etc/resolver/$FQDN files to the Linux NSS resolution stack to query a different DNS server for any .vm address.  It may be the easiest option for most installations.</p>
+<p>There are releases for Fedora 20, Ubuntu 12.04 and Ubuntu 14.04.</p>
+<ol>
+<li>Install libnss-resolver from https://github.com/azukiapp/libnss-resolver/releases</li>
+<li>Set up .vm hostname resolution<ul>
+<li><code>echo 'nameserver 172.17.42.1:53' | sudo tee /etc/resolver/vm</code></li>
+</ul>
+</li>
+<li>Run the dnsdock container<ul>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.42.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="dns-resolution-tests">DNS resolution tests</h2>
+<p>Once you have your environment set up, you can use the following tests to ensure things are running properly.</p>
+<ul>
+<li><code>dig @172.17.42.1 dnsdock.devtools.vm.</code><ul>
+<li>You should get a 172.17.0.0/16 address.</li>
+</ul>
+</li>
+<li><code>ping dnsdock.devtools.vm</code><ul>
+<li>You should get echo replies from a 172.17.0.0/16 address.</li>
+</ul>
+</li>
+<li><code>getent hosts dnsdock.devtools.vm</code><ul>
+<li>You should get a 172.17.0.0/16 address.</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../60_FAQ/" class="btn btn-neutral" title="FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../60_FAQ/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

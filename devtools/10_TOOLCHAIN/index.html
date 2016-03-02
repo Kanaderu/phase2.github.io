@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Tool Chain - DevTools CLI Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Tool Chain";
+    var mkdocs_page_input_path = "10_TOOLCHAIN.md";
+    var mkdocs_page_url = "/10_TOOLCHAIN/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Tool Chain</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#phase2-tooling">Phase2 Tooling</a></li>
+                
+                    <li><a class="toctree-l4" href="#_devtools_vm">_devtools_vm</a></li>
+                
+                    <li><a class="toctree-l4" href="#p2docker">p2docker</a></li>
+                
+                    <li><a class="toctree-l4" href="#docker-hub">Docker Hub</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#putting-it-all-together">Putting it all together</a></li>
+                
+                    <li><a class="toctree-l4" href="#vagrant">Vagrant</a></li>
+                
+                    <li><a class="toctree-l4" href="#virtual-machines">Virtual Machines</a></li>
+                
+                    <li><a class="toctree-l4" href="#puppet">Puppet</a></li>
+                
+                    <li><a class="toctree-l4" href="#project-code">Project Code</a></li>
+                
+                    <li><a class="toctree-l4" href="#persistent-data-volume">Persistent Data Volume</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_INTEGRATION/">Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../50_TROUBLESHOOTING/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Tool Chain</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket"> Edit on BitBucket</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="phase2-tooling">Phase2 Tooling</h2>
+<p>Now that we’ve covered the technology we’re using, here is a run down on the tooling that ties it all together and that you’ll download to get started.</p>
+<h3 id="_devtools_vm">_devtools_vm</h3>
+<p>This is a Phase2 project that glues all of the hosting aspects of these tools together into an easy to use unit. You can find _devtools_vm in our BitBucket repository <a href="https://bitbucket.org/phase2tech/_devtools_vm/overview">here</a>.  There are 2 basic services that _devtools_vm provides: </p>
+<h4 id="manage-the-virtual-machine-for-running-containers">Manage the virtual machine for running containers</h4>
+<p>The devtools binary will manage the creation/configuration/upgrade/start/stop of the boot2docker virtual machine (a.k.a Docker Host) via docker-machine.  It ensures that the docker-machine virtual machine is the right version, is named correctly and configured to run efficiently within Virtualbox, VMWare Fusion or xhyve.</p>
+<h4 id="nice-dns-names-and-routing-for-running-containers">Nice DNS names and routing for running containers</h4>
+<p>Once there is a safe environment to run our containers we need a way to route traffic to them and provide easy to use/remember domain names to make accessing these services simple. Domain names for containers are set in the docker-compose yaml files using the <code>DNSDOCK_NAME</code> and <code>DNSDOCK_IMAGE</code> environment variables.</p>
+<p>We use a pair of services: <strong>dnsdock</strong> and <strong>dnsmasq</strong> running as containers within the Docker Host. <strong>dnsmasq</strong> listens on 172.17.42.1:53 and it is currently configured to send all queries for *.p2devcloud.com to our internal 10.10.7.2 resolver and the rest will be sent to the <strong>dnsdock</strong> service, which listens on 172.17.42.1:535353. The <strong>dnsdock</strong> container resolves the .vm domain names to the IP addresses of the containers.</p>
+<p>The practical effect of this is that you must be on the Phase2 VPN or on the private Wi-Fi of a Phase2 office to get access to *.p2devcloud.com domains, but once you are either on the VPN or in an office, you will bypass the Dev Cloud public proxy.</p>
+<p>Internal container names will look like <em>web.openatrium.vm</em>.  All devtools containers will carry the <strong>.vm</strong> extension for name resolution. There is additional information about these variables in <a href="../20_PROJECT_SETUP/">20_PROJECT_SETUP.md</a>.</p>
+<h3 id="p2docker">p2docker</h3>
+<p>The name p2docker refers to a collection of Docker Images that we maintain to provide consistent and easily configurable services to our projects.  If you are attempting to put together a docker-compose configuration file, you should look at the container images provided by p2docker as a source of images to use. You can also look at Docker Hub for other community containers of interest as well. The <a href="https://bitbucket.org/phase2tech/p2docker">p2docker repo</a> contains the source for common Phase2 Docker Images that are hosted in the <a href="https://hub.docker.com/u/phase2/">Phase2 Docker Hub</a> account.</p>
+<h3 id="docker-hub">Docker Hub</h3>
+<p>Docker Hub is where container images are stored and retrieved when your local machine does not already have a copy of the requested container image.  Docker Hub can be thought of like GitHub or BitBucket and Docker Hub images can be thought of as git repositories. We can make new versions of the images and they can be pushed and pulled to the Docker Hub service.</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>There are some important pieces to remember about how containerization is similar and different to concepts you may be familiar with.</p>
+<h3 id="vagrant">Vagrant</h3>
+<p>Vagrant is being replaced by the combination of Docker Compose and Docker Machine.</p>
+<h3 id="virtual-machines">Virtual Machines</h3>
+<p>For local development, you should no longer worry about Virtual Machines as they are replaced by a single Docker Machine instance. In environments where containers are meant to run on a cluster of hosts, orchestration tools like <a href="http://kubernetes.io/">Kubernetes</a> or <a href="https://nomadproject.io/">Nomad</a> may be used to distribute and coordinate containers across multiple Docker Hosts.</p>
+<h3 id="puppet">Puppet</h3>
+<p>Goodbye, for local environments at least. Docker uses a conceptually different approach to configuration management than Puppet. It’s perfectly possible to use Puppet from within a Dockerfile to get a container image prepared though typically simple shell commands are preferred.  The idea is that systems like Puppet are no longer needed to manage upgrades across working servers/containers. When there are updates needed you will update the image, pull down the new version of the image to your server and then stop the containers running the old version of the image and start containers based on the new version of the image.</p>
+<p>If a container wants to offer configurable options it will document how to control it within the README or via Environment variables in the Dockerfile itself.  See our Apache / PHP <a href="https://hub.docker.com/r/phase2/apache24php55/~/dockerfile/">Dockerfile</a> for an example. In this Docker Image, passing environment variables can override the PHP memory limit. Those variables can either be passed on the command line when executing a <code>docker run</code> command directly, or in the <code>environment</code> section of a docker-compose file.</p>
+<h3 id="project-code">Project Code</h3>
+<p>The filesystem within containers is <strong>ephemeral!</strong> Any changes made there <strong>do not persist</strong> if the container is restarted. (See "Persistent Data Volume" below for a storage area that is preserved.)</p>
+<p>In typical Docker images the code is built <strong>directly into the container</strong> at the <code>/code</code> path. This is a great mechanism that allows the container to be "self contained" (pun intended), immutable and not need any checkout/file system. You also know when you run a container exactly what code is in there because you generally don’t change the code unless you rebuild the image.  </p>
+<p>For development purposes, however, this is problematic because it is burdensome to rebuild an image for each code change. To solve this, we mount project code from the Host Machine into the running container, effectively overriding the files built directly into the image. The running container is then using the local project file system for the overridden paths rather than the file system built into the container.  This allows a developer to use an IDE and edit code directly on the local file system of the Host Machine, but execute that code within the environment of the running container.</p>
+<h4 id="note-on-project-code-location">NOTE ON PROJECT CODE LOCATION</h4>
+<p>Your project code <strong>must</strong> be located somewhere within your home directory (<code>/Users</code> for Macs) on your local machine. This is because VirtualBox and VMWare shares your home directory into the Docker Host VM, and only files on the Docker Host VM can be referenced in volume shares from a Docker compose file. Within the volume portions of a docker-compose file there is also a bit of translation that happens for relative paths. If you ask for the ./html directory from your local machine to appear as <code>/var/www/html</code> using a line like: <code>./html:/var/www/html</code> that is translated to a full path based on the location of the docker-compose file. If that doesn’t work out to something under your home directory the sharing of files from your Host Machine isn’t going to work. If you specify a full path, it also needs to be from your home directory.</p>
+<h4 id="note-on-watches">NOTE ON WATCHES</h4>
+<p>Currently, code within a container cannot be "watched" within the container as filesystem notify events do not propagate into the container.  Therefore when you change code you may need to restart the services that execute that code to see the changes. (This can be a problem for services like node or sass, while services like PHP work fine).  In order for a “watch” to run effectively it should be run on your Host Machine and can initiate commands into your running container via a <a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a> if needed via <code>docker exec -it &lt;container_name&gt; &lt;your command(s)&gt;</code></p>
+<h3 id="persistent-data-volume">Persistent Data Volume</h3>
+<p>Dev Tools maintains a data volume on the Docker Host that is mounted at <code>/data</code> into every container. This volume is persistent so long as you do not perform a <code>devtools remove</code> operation. This ensures that file access on the VM is done natively for things like MongoDB and MySQL. If you configure a container to write to this area, you should use a project and container based namespace to prevent conflicts as this is a shared resource. For example, you may want to use a namespacing method like <code>/data/${DNSDOCK_IMAGE}/${DNSDOCK_NAME}</code> as a safe location to write data.</p>
+<p>Any code from your local directories is directly shared in to VirtualBox via NFS. This means that even if you destroy and re-create your Docker Host, your code will be safe since it lives on the Host Machine.</p>
+<h4 id="note-on-file-changes-within-a-container">NOTE ON FILE CHANGES WITHIN A CONTAINER</h4>
+<p>Any files that are generated or changed within a running container that you want to persist after the container is stopped <strong>should be put onto a volume that is mounted into the container from the local machine</strong>.  A Docker container represents immutable infrastructure, the files on the image are able to be changed at runtime but typically do not persist. When the container is stopped and run again it "boots" the files that were built into the original image. The volume at <code>/data</code> as mentioned above is a persistent volume that you can use.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../20_PROJECT_SETUP/" class="btn btn-neutral float-right" title="Project Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../00_INTRO/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../00_INTRO/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../20_PROJECT_SETUP/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
