@@ -1,6 +1,9 @@
 title: Phase2 DevTools Documentation
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: pygments
 defaults:
   -
     values:
