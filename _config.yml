@@ -1,0 +1,7 @@
+title: Phase2 DevTools Documentation
+# Build settings
+markdown: kramdown
+defaults:
+  -
+    values:
+        layout: "page"

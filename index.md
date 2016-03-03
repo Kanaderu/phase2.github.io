@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 # Phase2 DevTools
 
 - [DevTools Documentation](/devtools)
