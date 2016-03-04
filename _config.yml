@@ -3,7 +3,6 @@ title: Phase2 DevTools Documentation
 markdown: kramdown
 kramdown:
   input: GFM
-highlighter: pygments
 defaults:
   -
     values:
