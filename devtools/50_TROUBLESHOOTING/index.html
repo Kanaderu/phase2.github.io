@@ -195,7 +195,7 @@
 <h3 id="ensure-the-environment-is-setup-correctly">Ensure the environment is setup correctly</h3>
 <p>It can be useful to ensure everything is in a clean state. The following should ensure that</p>
 <ul>
-<li><code>devtools halt</code> stops the docker machine and cleans up networking</li>
+<li><code>devtools stop</code> stops the docker machine and cleans up networking</li>
 <li><code>eval "$(devtools config)"</code> clears environmental variables docker uses to communicate with the docker host</li>
 <li><code>devtools start</code> starts the docker machine</li>
 <li><code>eval "$(devtools config)"</code> sets environmental variables docker uses to communicate with the docker host</li>
@@ -263,7 +263,7 @@ Error: image phase2/mariadb:latest not found
 </code></pre>
 <p>You likely need to upgrade your Docker Machine ISO. Do that with:</p>
 <pre><code>```
-devtools halt
+devtools stop
 docker-machine upgrade dev
 devtools start
 ```
