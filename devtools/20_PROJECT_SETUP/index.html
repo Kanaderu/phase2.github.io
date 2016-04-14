@@ -111,6 +111,8 @@
                 
                     <li><a class="toctree-l4" href="#dns-for-dev-cloud">DNS for Dev Cloud</a></li>
                 
+                    <li><a class="toctree-l4" href="#dns-command">DNS Command</a></li>
+                
                     <li><a class="toctree-l4" href="#working-with-volumes">Working with Volumes</a></li>
                 
                     <li><a class="toctree-l4" href="#resetting-a-docker-container">Resetting a Docker Container</a></li>
@@ -154,6 +156,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">XDEBUG</a>
         
     </li>
 <li>
@@ -208,6 +217,17 @@
 <ol>
 <li>
 <p>Ensure the Docker Host VM is active by running: <code>devtools start</code></p>
+<ul>
+<li>This will create a Docker Host if one does not exist already</li>
+<li>To customize this Docker Host you can provide the following configuration options.<ul>
+<li><strong>name:</strong> The Docker Machine name for the VM. Defaults to <code>dev</code></li>
+<li><strong>driver:</strong> The driver to create the Docker Machine with. Choices are <code>virtualbox</code>, <code>vmwarefuaion</code>, and <code>xhyve</code>. Defaults to <code>virtualbox</code></li>
+<li><strong>cpuCount:</strong> The number of virtual CPU you want to allocate to this VM. Defaults to 2</li>
+<li><strong>memSize:</strong> The size memory you want to configure for this VM, in Megabytes. Defaults to 4096</li>
+<li><strong>diskSize:</strong> The size drive you want to configure for this VM, in Gigabytes. Defaults to 40</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
 <p>Ensure all terminals you intend to use have <code>eval "$(devtools config)"</code> run in them. It is best to put this configuration in your .bashrc/.zshrc, see the main <a href="..">DevTools Index</a> for more details</p>
@@ -268,6 +288,8 @@
 </ul>
 <h3 id="dns-for-dev-cloud">DNS for Dev Cloud</h3>
 <p>Dev Tools will resolve private Dev Cloud domain names if you are connected to the VPN.  You need to have access to 10.10.7.2 to resolve Dev Cloud domain names.</p>
+<h3 id="dns-command">DNS Command</h3>
+<p>There is also a <code>devtools dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter.</p>
 <h3 id="working-with-volumes">Working with Volumes</h3>
 <p>Volumes are a way that you can map directories or individual files into a running container.  This is useful to provide code to run for a generic container, or directories to store data that persist longer than the life of the container, or to even override directories and/or files that exist in an image.  Lets look at a few of those examples.</p>
 <p><strong>Provide code for a generic container to run</strong></p>

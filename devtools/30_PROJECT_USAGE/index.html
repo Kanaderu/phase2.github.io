@@ -140,6 +140,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">XDEBUG</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -198,6 +205,8 @@
 <p>Certain containers like jenkins and devtools-build may need your private key. This is supported by importing your private key into the container via a volume mount.  </p>
 <p>To get your private key into the build container, volume mount your key into the container at <code>/root/.ssh/devtools.key</code> and it will be processed accordingly.</p>
 <p><code>~/.ssh/id_rsa:/root/.ssh/devtools.key</code></p>
+<h4 id="multiple-docker-machines-using-other-docker-machines">Multiple Docker Machines / Using other Docker Machines</h4>
+<p>There are special cases in which you may want to have multiple Docker Hosts running. For example to test the performance differences between VirtualBox and xhyve.  For these cases, all <code>devtools</code> commands that interact with a Docker Host now take a <code>--name</code> flag that will allow you to specify name of the Docker Host. For all commands this name defaults to <code>dev</code> but you can configure this name if needed.  Also, if you dont want to specify the Docker Host name on every command you can specify the <code>DEVTOOLS_ACTIVE_MACHINE</code> environment variable to be Docker Machine name of the VM you care to interact with.  This way you can set it once and forget about it.  Unless otherwise specified, the name defaults to <code>dev</code> for all commands.</p>
               
             </div>
           </div>

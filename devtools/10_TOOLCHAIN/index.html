@@ -153,6 +153,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">XDEBUG</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -193,8 +200,8 @@
 <p>Now that we’ve covered the technology we’re using, here is a run down on the tooling that ties it all together and that you’ll download to get started.</p>
 <h3 id="_devtools_vm">_devtools_vm</h3>
 <p>This is a Phase2 project that glues all of the hosting aspects of these tools together into an easy to use unit. You can find _devtools_vm in our BitBucket repository <a href="https://bitbucket.org/phase2tech/_devtools_vm/overview">here</a>.  There are 2 basic services that _devtools_vm provides: </p>
-<h4 id="manage-the-virtual-machine-for-running-containers">Manage the virtual machine for running containers</h4>
-<p>The devtools binary will manage the creation/configuration/upgrade/start/stop of the boot2docker virtual machine (a.k.a Docker Host) via docker-machine.  It ensures that the docker-machine virtual machine is the right version, is named correctly and configured to run efficiently within Virtualbox, VMWare Fusion or xhyve.</p>
+<h4 id="manage-virtual-machines-for-running-containers">Manage virtual machines for running containers</h4>
+<p>The devtools binary will manage the creation/configuration/upgrade/start/stop of boot2docker virtual machines (a.k.a Docker Hosts) via docker-machine.  It ensures that the docker-machine virtual machine is the right version, is named correctly and configured to run efficiently within Virtualbox, VMWare Fusion or xhyve.</p>
 <h4 id="nice-dns-names-and-routing-for-running-containers">Nice DNS names and routing for running containers</h4>
 <p>Once there is a safe environment to run our containers we need a way to route traffic to them and provide easy to use/remember domain names to make accessing these services simple. Domain names for containers are set in the docker-compose yaml files using the <code>DNSDOCK_NAME</code> and <code>DNSDOCK_IMAGE</code> environment variables.</p>
 <p>We use a pair of services: <strong>dnsdock</strong> and <strong>dnsmasq</strong> running as containers within the Docker Host. <strong>dnsmasq</strong> listens on 172.17.42.1:53 and it is currently configured to send all queries for *.p2devcloud.com to our internal 10.10.7.2 resolver and the rest will be sent to the <strong>dnsdock</strong> service, which listens on 172.17.42.1:535353. The <strong>dnsdock</strong> container resolves the .vm domain names to the IP addresses of the containers.</p>
@@ -220,10 +227,11 @@
 <h4 id="note-on-project-code-location">NOTE ON PROJECT CODE LOCATION</h4>
 <p>Your project code <strong>must</strong> be located somewhere within your home directory (<code>/Users</code> for Macs) on your local machine. This is because VirtualBox and VMWare shares your home directory into the Docker Host VM, and only files on the Docker Host VM can be referenced in volume shares from a Docker compose file. Within the volume portions of a docker-compose file there is also a bit of translation that happens for relative paths. If you ask for the ./html directory from your local machine to appear as <code>/var/www/html</code> using a line like: <code>./html:/var/www/html</code> that is translated to a full path based on the location of the docker-compose file. If that doesn’t work out to something under your home directory the sharing of files from your Host Machine isn’t going to work. If you specify a full path, it also needs to be from your home directory.</p>
 <h4 id="note-on-watches">NOTE ON WATCHES</h4>
-<p>Currently, code within a container cannot be "watched" within the container as filesystem notify events do not propagate into the container.  Therefore when you change code you may need to restart the services that execute that code to see the changes. (This can be a problem for services like node or sass, while services like PHP work fine).  In order for a “watch” to run effectively it should be run on your Host Machine and can initiate commands into your running container via a <a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a> if needed via <code>docker exec -it &lt;container_name&gt; &lt;your command(s)&gt;</code></p>
+<p>Currently, code within a container cannot be "watched" within the container as filesystem notify events do not propagate into the container.  Therefore when you change code you may need to restart the services that execute that code to see the changes. (This can be a problem for services like node or sass, while services like PHP work fine).  In order for a “watch” to run effectively it should be run on your Host Machine and can initiate commands into your running container via a <a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a> if needed via <code>docker exec -it &lt;container_name&gt; &lt;your command(s)&gt;</code>
+Currently, watches on code require 2 pieces to work.  1) you need a <code>watch</code> running in your container that will do things like restart node or recompile your CSS, we can set that up in the container.  However, in order to get change events from your Host Machine to generate events within the container you need to 2) Run the <code>devtools watch</code> command on your Host Machine. This will watch for local changes and send notification events into the VM which will propagate to the containers.  You can read more about watches in the <a href="../30_PROJECT_USAGE/">Project Usage</a> documentation.   </p>
 <h3 id="persistent-data-volume">Persistent Data Volume</h3>
 <p>Dev Tools maintains a data volume on the Docker Host that is mounted at <code>/data</code> into every container. This volume is persistent so long as you do not perform a <code>devtools remove</code> operation. This ensures that file access on the VM is done natively for things like MongoDB and MySQL. If you configure a container to write to this area, you should use a project and container based namespace to prevent conflicts as this is a shared resource. For example, you may want to use a namespacing method like <code>/data/${DNSDOCK_IMAGE}/${DNSDOCK_NAME}</code> as a safe location to write data.</p>
-<p>Any code from your local directories is directly shared in to VirtualBox via NFS. This means that even if you destroy and re-create your Docker Host, your code will be safe since it lives on the Host Machine.</p>
+<p>Any code from your local directories is directly shared in to the Docker Machine VM via NFS. This means that even if you destroy and re-create your Docker Host, your code will be safe since it lives on the Host Machine.</p>
 <h4 id="note-on-file-changes-within-a-container">NOTE ON FILE CHANGES WITHIN A CONTAINER</h4>
 <p>Any files that are generated or changed within a running container that you want to persist after the container is stopped <strong>should be put onto a volume that is mounted into the container from the local machine</strong>.  A Docker container represents immutable infrastructure, the files on the image are able to be changed at runtime but typically do not persist. When the container is stopped and run again it "boots" the files that were built into the original image. The volume at <code>/data</code> as mentioned above is a persistent volume that you can use.</p>
               

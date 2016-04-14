@@ -141,6 +141,8 @@
                 
                     <li><a class="toctree-l4" href="#i-previously-used-boot2docker-instead-of-this-docker-machine-whats-the-difference">I previously used boot2docker instead of this docker-machine. What's the difference?</a></li>
                 
+                    <li><a class="toctree-l4" href="#can-i-get-vm-addresses-working-with-an-existing-docker-machine">Can I get .vm addresses working with an existing Docker machine?</a></li>
+                
             
             </ul>
         
@@ -150,6 +152,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">XDEBUG</a>
         
     </li>
 <li>
@@ -228,6 +237,17 @@
 <p>If you need some insight into how many resources a given Docker container may be using, take advantage of the command <code>docker stats &lt;container name&gt;</code>.  This handy command will show you CPU%, Memory%, Memory Usage vs Limit, and Network I/O.  It is rudimentary but can be very useful in the first line of inspection on a container.</p>
 <h3 id="i-previously-used-boot2docker-instead-of-this-docker-machine-whats-the-difference">I previously used boot2docker instead of this docker-machine. What's the difference?</h3>
 <p>Dev Tools still uses the boot2docker <strong>virtual machine</strong>. The "boot2docker CLI" has been phased out in favor of docker-machine. docker-machine still uses the boot2docker linux distribution. docker-machine spins up a vm named <strong>dev</strong> in Virtualbox or VMWare Fusion, whereas boot2docker previously spun up a vm named <strong>boot2docker</strong>. </p>
+<h3 id="can-i-get-vm-addresses-working-with-an-existing-docker-machine">Can I get .vm addresses working with an existing Docker machine?</h3>
+<p>Yes, with an important caveat that containers will not be able to resolve .vm addresses without reconfiguring the daemon.</p>
+<p>As of v0.3.0 a <code>devtools dns</code> command has been added. It can accept a <code>--name</code> parameter to run on an existing docker-machine virtual machine.</p>
+<p>When we start a machine with <code>devtools start</code>, we do the following things:</p>
+<ul>
+<li>Start a machine with the <code>-dns=172.17.0.1</code> Docker daemon option set so that all containers will try dnsdock for DNS</li>
+<li>Run dnsdock bound to <code>172.17.0.1:53</code> to provide .vm addresses for all containers</li>
+<li>Set up Mac OS X to route 172.17.0.1/16 to the Docker virtual machine's IP so the host machine can access containers direct</li>
+<li>Set up <code>/etc/resolver/vm</code> so that OS X will look up .vm addresses through DNS queries to <code>172.17.0.1</code></li>
+</ul>
+<p>If you run <code>devtools dns --name=$DOCKER_MACHINE_NAME</code>, every step except the first will run, so your OS X host will be able to reach containers by their .vm addresses but other containers will not. This is the major difference between creating a machine with <code>devtools start</code> and applying the DNS configuration to an existing machine with <code>devtools dns</code>.</p>
               
             </div>
           </div>
