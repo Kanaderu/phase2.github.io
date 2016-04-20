@@ -211,6 +211,12 @@ host (the docker machine). (You will be prompted for your admin password)</p>
    .bash_profile, .zshrc or equivalent:</p>
 <p><code># Support for Dev Tools
    eval "$(devtools config)"</code></p>
+<h4 id="26-verify-your-installation-is-working">2.6 Verify your installation is working</h4>
+<p>Once everything is running we want to ensure that DNS resolution and network routing are
+working correctly.  To do that, execute the following command:</p>
+<p><code>curl -v http://dnsdock.devtools.vm/services</code></p>
+<p>You should get a 200 return code (<code>HTTP/1.1 200 OK</code> in the headers) and some JSON that shows the
+mapping of <code>dnsdock</code> and <code>dnsmasq</code> names to IP addresses.</p>
               
             </div>
           </div>
@@ -258,5 +264,5 @@ host (the docker machine). (You will be prompted for your admin password)</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-04-14 05:49:18.773620
+Build Date UTC : 2016-04-20 14:59:15.278547
 -->
