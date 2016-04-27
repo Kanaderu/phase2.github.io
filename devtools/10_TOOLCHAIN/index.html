@@ -153,13 +153,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">XDEBUG</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -206,7 +199,7 @@
 <p>Once there is a safe environment to run our containers we need a way to route traffic to them and provide easy to use/remember domain names to make accessing these services simple. Domain names for containers are set in the docker-compose yaml files using the <code>DNSDOCK_NAME</code> and <code>DNSDOCK_IMAGE</code> environment variables.</p>
 <p>We use a pair of services: <strong>dnsdock</strong> and <strong>dnsmasq</strong> running as containers within the Docker Host. <strong>dnsmasq</strong> listens on 172.17.42.1:53 and it is currently configured to send all queries for *.p2devcloud.com to our internal 10.10.7.2 resolver and the rest will be sent to the <strong>dnsdock</strong> service, which listens on 172.17.42.1:535353. The <strong>dnsdock</strong> container resolves the .vm domain names to the IP addresses of the containers.</p>
 <p>The practical effect of this is that you must be on the Phase2 VPN or on the private Wi-Fi of a Phase2 office to get access to *.p2devcloud.com domains, but once you are either on the VPN or in an office, you will bypass the Dev Cloud public proxy.</p>
-<p>Internal container names will look like <em>web.openatrium.vm</em>.  All devtools containers will carry the <strong>.vm</strong> extension for name resolution. There is additional information about these variables in <a href="../20_PROJECT_SETUP/">20_PROJECT_SETUP.md</a>.</p>
+<p>Internal container names will look like <em>web.openatrium.vm</em>.  All DevTools containers will carry the <strong>.vm</strong> extension for name resolution. There is additional information about these variables in <a href="../20_PROJECT_SETUP/">20_PROJECT_SETUP.md</a>.</p>
 <h3 id="p2docker">p2docker</h3>
 <p>The name p2docker refers to a collection of Docker Images that we maintain to provide consistent and easily configurable services to our projects.  If you are attempting to put together a docker-compose configuration file, you should look at the container images provided by p2docker as a source of images to use. You can also look at Docker Hub for other community containers of interest as well. The <a href="https://bitbucket.org/phase2tech/p2docker">p2docker repo</a> contains the source for common Phase2 Docker Images that are hosted in the <a href="https://hub.docker.com/u/phase2/">Phase2 Docker Hub</a> account.</p>
 <h3 id="docker-hub">Docker Hub</h3>
@@ -230,7 +223,7 @@
 <p>Currently, code within a container cannot be "watched" within the container as filesystem notify events do not propagate into the container.  Therefore when you change code you may need to restart the services that execute that code to see the changes. (This can be a problem for services like node or sass, while services like PHP work fine).  In order for a “watch” to run effectively it should be run on your Host Machine and can initiate commands into your running container via a <a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a> if needed via <code>docker exec -it &lt;container_name&gt; &lt;your command(s)&gt;</code>
 Currently, watches on code require 2 pieces to work.  1) you need a <code>watch</code> running in your container that will do things like restart node or recompile your CSS, we can set that up in the container.  However, in order to get change events from your Host Machine to generate events within the container you need to 2) Run the <code>devtools watch</code> command on your Host Machine. This will watch for local changes and send notification events into the VM which will propagate to the containers.  You can read more about watches in the <a href="../30_PROJECT_USAGE/">Project Usage</a> documentation.   </p>
 <h3 id="persistent-data-volume">Persistent Data Volume</h3>
-<p>Dev Tools maintains a data volume on the Docker Host that is mounted at <code>/data</code> into every container. This volume is persistent so long as you do not perform a <code>devtools remove</code> operation. This ensures that file access on the VM is done natively for things like MongoDB and MySQL. If you configure a container to write to this area, you should use a project and container based namespace to prevent conflicts as this is a shared resource. For example, you may want to use a namespacing method like <code>/data/${DNSDOCK_IMAGE}/${DNSDOCK_NAME}</code> as a safe location to write data.</p>
+<p>DevTools maintains a data volume on the Docker Host that is mounted at <code>/data</code> into every container. This volume is persistent so long as you do not perform a <code>devtools remove</code> operation. This ensures that file access on the VM is done natively for things like MongoDB and MySQL. If you configure a container to write to this area, you should use a project and container based namespace to prevent conflicts as this is a shared resource. For example, you may want to use a namespacing method like <code>/data/${DNSDOCK_IMAGE}/${DNSDOCK_NAME}</code> as a safe location to write data.</p>
 <p>Any code from your local directories is directly shared in to the Docker Machine VM via NFS. This means that even if you destroy and re-create your Docker Host, your code will be safe since it lives on the Host Machine.</p>
 <h4 id="note-on-file-changes-within-a-container">NOTE ON FILE CHANGES WITHIN A CONTAINER</h4>
 <p>Any files that are generated or changed within a running container that you want to persist after the container is stopped <strong>should be put onto a volume that is mounted into the container from the local machine</strong>.  A Docker container represents immutable infrastructure, the files on the image are able to be changed at runtime but typically do not persist. When the container is stopped and run again it "boots" the files that were built into the original image. The volume at <code>/data</code> as mentioned above is a persistent volume that you can use.</p>

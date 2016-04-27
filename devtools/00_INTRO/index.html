@@ -138,13 +138,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">XDEBUG</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -182,12 +175,12 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>This is the knowledge base for our Dev Tools project. The goal of Dev Tools is to provide consistent environments &amp; tooling for our teams to enable delivery of the highest quality work for our clients.</p>
+<p>This is the knowledge base for our DevTools project. The goal of DevTools is to provide consistent environments &amp; tooling for our teams to enable delivery of the highest quality work for our clients.</p>
 <h2 id="background-whats-in-it-for-you">Background / What’s in it for you?</h2>
-<p>Dev Tools covers an entire toolbox of solutions to accelerate development and smoothly implement best practices.  We intend to use the Dev Tools umbrella to help us roll these tools and approaches out to the whole company in a more consistent fashion.</p>
+<p>DevTools covers an entire toolbox of solutions to accelerate development and smoothly implement best practices.  We intend to use the DevTools umbrella to help us roll these tools and approaches out to the whole company in a more consistent fashion.</p>
 <p>Across a wide variety of projects and clients, keeping a development, integration, staging, production and other environments synchronized in terms of server configuration and supporting software versions and tooling has always been a challenge. The multitude of platforms and versions of operating systems and software is only growing. In the past we have used Vagrant in conjunction with a virtual machine (VM) for local development environments, project-based VMs on Dev Cloud for integration environments and tools like Puppet to try and ensure all of those match each other and the deployment environments. </p>
 <p>It’s been better than doing it all by hand but it has required building additional expertise above typical system management tools and it’s relatively inefficient to have many project-specific VMs locally. On top of that are the various, sometimes conflicting, versions of development toolchains which the VMs don’t always address.</p>
-<p>Dev Tools is going to address this problem by providing an efficient way to have project/app-specific environments as well as development tooling by using a concept called containerization. This lets us focus on items at a service-and-tools level rather than at a server level and make the details of our hosting implementation more transparent to all technical team members .</p>
+<p>DevTools is going to address this problem by providing an efficient way to have project/app-specific environments as well as development tooling by using a concept called containerization. This lets us focus on items at a service-and-tools level rather than at a server level and make the details of our hosting implementation more transparent to all technical team members .</p>
 <h2 id="containerization">Containerization</h2>
 <p>In order to provide lightweight environments and tooling we will be using a technical approach called containers.  Containers attempt to move the unit of environment from server to application. This allows separation of concerns between how an application is configured, how the containers communicate with each other, and where the containers are deployed.  Take an advanced Drupal stack that includes Apache/PHP, MySQL, Memcache, and SOLR. With each component configured to run in its own container, the containers can all run on a single VM for local development and be spread across multiple servers for an optimized production deployment. Let us briefly touch on the technology we will be using and how it conceptually fits together.</p>
 <h3 id="docker">Docker</h3>
@@ -196,7 +189,7 @@
 <p>For those that want a bit more detail </p>
 <ul>
 <li>
-<p><strong>Host Machine</strong> - Your laptop for the purposes of _devtools_vm. This is where your project's source code, your IDE, browsers, etc run as well as where the virtual machine acting as the Docker Host runs.</p>
+<p><strong>Host Machine</strong> - Your laptop for the purposes of DevTools. This is where your project's source code, your IDE, browsers, etc run as well as where the virtual machine acting as the Docker Host runs.</p>
 </li>
 <li>
 <p><strong>Docker Host</strong> - This is a Linux-based virtual machine capable of running Docker. One Docker host VM can run multiple containers for multiple projects.</p>

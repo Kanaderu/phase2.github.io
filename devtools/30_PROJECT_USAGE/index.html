@@ -140,13 +140,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">XDEBUG</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -192,7 +185,7 @@
 <li><code>--ignorefile &lt;file&gt;</code> Optional: Specify a file that contains patterns for directories/files to ignore.  Put one entry per line (blank lines and comments are allowed). If not specified it will look for a file named <code>.devtools-watch-ignore</code> in the working directory and all parent directories.</li>
 </ul>
 <h3 id="what-is-the-build-container">What is the Build container</h3>
-<p>Part of Dev Tools is a <a href="https://hub.docker.com/r/phase2/devtools-build/">devtools-build</a> image.  The idea of the build container is that it will have installed nearly all of the tools you'd need to work on a project and the proper versions so that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. Providing these tools in a container means that you'll never have to worry about having the right tools installed on your laptop or integration environment to get your job done.</p>
+<p>Part of DevTools is a <a href="https://hub.docker.com/r/phase2/devtools-build/">devtools-build</a> image.  The idea of the build container is that it will have installed nearly all of the tools you'd need to work on a project and the proper versions so that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. Providing these tools in a container means that you'll never have to worry about having the right tools installed on your laptop or integration environment to get your job done.</p>
 <h3 id="how-and-why-to-use-the-build-container">How and why to use the build container</h3>
 <p>The example Drupal project contains a <a href="../../examples/drupal8/build.yml">build.yml</a> Docker Compose file that shows a variety of ways to use the container that we will highlight below.</p>
 <h4 id="getting-a-shell-for-buildtooling-operations">Getting a shell for build/tooling operations</h4>

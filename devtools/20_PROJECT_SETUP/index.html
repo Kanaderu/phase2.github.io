@@ -160,13 +160,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">XDEBUG</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -230,7 +223,7 @@
 </ul>
 </li>
 <li>
-<p>Ensure all terminals you intend to use have <code>eval "$(devtools config)"</code> run in them. It is best to put this configuration in your .bashrc/.zshrc, see the main <a href="..">DevTools Index</a> for more details</p>
+<p>Ensure all terminals you intend to use have <code>eval "$(devtools config)"</code> run in them. It is best to put this configuration in your .bashrc/.zshrc, see the main <a href="..">DevTools Index</a> for more details. This command must be rerun after any start/restart of the Docker Host VM.</p>
 </li>
 <li>
 <p>In the project directory, start the containers with: <code>docker-compose up</code></p>
@@ -287,7 +280,7 @@
 </li>
 </ul>
 <h3 id="dns-for-dev-cloud">DNS for Dev Cloud</h3>
-<p>Dev Tools will resolve private Dev Cloud domain names if you are connected to the VPN.  You need to have access to 10.10.7.2 to resolve Dev Cloud domain names.</p>
+<p>DevTools will resolve private Dev Cloud domain names if you are connected to the VPN.  You need to have access to 10.10.7.2 to resolve Dev Cloud domain names.</p>
 <h3 id="dns-command">DNS Command</h3>
 <p>There is also a <code>devtools dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter.</p>
 <h3 id="working-with-volumes">Working with Volumes</h3>

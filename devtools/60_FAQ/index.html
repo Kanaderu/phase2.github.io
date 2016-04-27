@@ -156,13 +156,6 @@
     </li>
 <li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">XDEBUG</a>
-        
-    </li>
-<li>
-          
         </ul>
       </div>
       &nbsp;
@@ -236,7 +229,7 @@
 <h3 id="performance-monitoring-of-containers">Performance monitoring of containers</h3>
 <p>If you need some insight into how many resources a given Docker container may be using, take advantage of the command <code>docker stats &lt;container name&gt;</code>.  This handy command will show you CPU%, Memory%, Memory Usage vs Limit, and Network I/O.  It is rudimentary but can be very useful in the first line of inspection on a container.</p>
 <h3 id="i-previously-used-boot2docker-instead-of-this-docker-machine-whats-the-difference">I previously used boot2docker instead of this docker-machine. What's the difference?</h3>
-<p>Dev Tools still uses the boot2docker <strong>virtual machine</strong>. The "boot2docker CLI" has been phased out in favor of docker-machine. docker-machine still uses the boot2docker linux distribution. docker-machine spins up a vm named <strong>dev</strong> in Virtualbox or VMWare Fusion, whereas boot2docker previously spun up a vm named <strong>boot2docker</strong>. </p>
+<p>DevTools still uses the boot2docker <strong>virtual machine</strong>. The "boot2docker CLI" has been phased out in favor of docker-machine. docker-machine still uses the boot2docker linux distribution. docker-machine spins up a vm named <strong>dev</strong> in Virtualbox or VMWare Fusion, whereas boot2docker previously spun up a vm named <strong>boot2docker</strong>. </p>
 <h3 id="can-i-get-vm-addresses-working-with-an-existing-docker-machine">Can I get .vm addresses working with an existing Docker machine?</h3>
 <p>Yes, with an important caveat that containers will not be able to resolve .vm addresses without reconfiguring the daemon.</p>
 <p>As of v0.3.0 a <code>devtools dns</code> command has been added. It can accept a <code>--name</code> parameter to run on an existing docker-machine virtual machine.</p>
