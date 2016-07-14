@@ -256,6 +256,7 @@ If you already have a local configuration, ensure that it is not configured to s
 </li>
 <li>Run the dnsdock container<ul>
 <li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+<li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
 </ol>
@@ -263,11 +264,16 @@ If you already have a local configuration, ensure that it is not configured to s
 <p>This method will probably only work well if this is a fixed computer or server with a consistent single upstream DNS server. If you meet these criteria, you can very easily use this to set up .vm resolution for containers an delegate the rest to your normal DNS server.</p>
 <p>This example assumes that the upstream DNS server for a Linux workstation is 192.168.0.1.</p>
 <ol>
-<li>Run the dnsdock container, specifying your upstream DNS server at the end.<ul>
+<li>
+<p>Run the dnsdock container, specifying your upstream DNS server at the end.</p>
+<ul>
 <li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock /opt/bin/dnsdock -domain=vm -nameserver='192.168.0.1:53'</code></li>
+<li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
-<li>Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as the first 'nameserver' line in your /etc/resolv.conf file.</li>
+<li>
+<p>Configure 172.17.0.1 as your first DNS resolver in your network configuration. The method for doing this may differ based on whether you are using a desktop environment or running Linux on a server, but that nameserver should end up as the first 'nameserver' line in your /etc/resolv.conf file.</p>
+</li>
 </ol>
 <h3 id="method-3-libnss-resolver">Method 3: libnss-resolver</h3>
 <p>libnss-resolver is an app that adds Mac-style /etc/resolver/$FQDN files to the Linux NSS resolution stack to query a different DNS server for any .vm address.  It may be the easiest option for most installations.</p>
@@ -280,6 +286,7 @@ If you already have a local configuration, ensure that it is not configured to s
 </li>
 <li>Run the dnsdock container<ul>
 <li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+<li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
 </ol>

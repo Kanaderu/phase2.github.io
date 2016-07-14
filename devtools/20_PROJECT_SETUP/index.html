@@ -113,6 +113,8 @@
                 
                     <li><a class="toctree-l4" href="#dns-command">DNS Command</a></li>
                 
+                    <li><a class="toctree-l4" href="#dns-debugging">DNS Debugging</a></li>
+                
                     <li><a class="toctree-l4" href="#working-with-volumes">Working with Volumes</a></li>
                 
                     <li><a class="toctree-l4" href="#resetting-a-docker-container">Resetting a Docker Container</a></li>
@@ -199,7 +201,7 @@
                 <h2 id="how-to-get-started">How to get started</h2>
 <ol>
 <li>
-<p>Install DevTools via Homebrew. First, tap the Homebrew repository <code>brew tap phase2/devtools</code>, then install DevTools <code>brew install devtools</code>.  If needed you should also install all required docker tools form the DevTools Tap. <code>brew install phase2/devtools/docker phase2/devtools/docker-machine phase2/devtools/docker-compose</code> </p>
+<p>Install DevTools via Homebrew. First, tap the Homebrew repository <code>brew tap phase2/devtools</code>, then install DevTools <code>brew install devtools</code>. </p>
 </li>
 <li>
 <p>Follow the instructions in the <a href="..">DevTools Index</a> to get your environment configured. All of the following sample commands will assume you’ve installed things as suggested in the README.</p>
@@ -283,6 +285,8 @@
 <p>DevTools will resolve private Dev Cloud domain names if you are connected to the VPN.  You need to have access to 10.10.7.2 to resolve Dev Cloud domain names.</p>
 <h3 id="dns-command">DNS Command</h3>
 <p>There is also a <code>devtools dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter.</p>
+<h3 id="dns-debugging">DNS Debugging</h3>
+<p>If you want to see what containers have registered names, use the <code>devtools dns-records</code> command. This command will list all registered container names and aliases along with the container's IP address.</p>
 <h3 id="working-with-volumes">Working with Volumes</h3>
 <p>Volumes are a way that you can map directories or individual files into a running container.  This is useful to provide code to run for a generic container, or directories to store data that persist longer than the life of the container, or to even override directories and/or files that exist in an image.  Lets look at a few of those examples.</p>
 <p><strong>Provide code for a generic container to run</strong></p>
@@ -313,7 +317,7 @@
 <li>
 <p>For the general Drupal use cases you will base your project Dockerfile on apache24php55.</p>
 <ul>
-<li><code>FROM phase2/apache24php55</code></li>
+<li><code>FROM phase2/apache-php:php70</code></li>
 </ul>
 </li>
 <li>
@@ -336,7 +340,7 @@
 </li>
 </ul>
 <p>Here is the full (simple) Dockerfile</p>
-<pre><code>FROM phase2/apache24php55
+<pre><code>FROM phase2/apache-php:php70
 
 # Copy in the site
 COPY ./html /var/www/html/

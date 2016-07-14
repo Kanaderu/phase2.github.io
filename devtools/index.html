@@ -187,19 +187,12 @@ a variety of topics, including project and integration environment setup.  </p>
 <h4 id="21-install-the-devtools-tap">2.1 Install the DevTools Tap</h4>
 <p><code>brew tap phase2/devtools</code></p>
 <h4 id="22-install-the-devtools-binary-and-dependencies">2.2 Install the devtools binary and dependencies</h4>
-<pre><code class="bash">brew install phase2/devtools/docker  
-brew install phase2/devtools/docker-machine  
-brew install phase2/devtools/docker-compose  
-brew install devtools
-</code></pre>
-
-<h4 id="23-verify-the-proper-devtools-environment">2.3 Verify the proper DevTools environment</h4>
-<p>Run <code>devtools doctor</code> to ensure the proper versions of the Docker binaries are available</p>
-<h4 id="24-startup-the-container-host">2.4 Startup the container host</h4>
+<p><code>brew install devtools</code></p>
+<h4 id="23-startup-the-container-host">2.3 Startup the container host</h4>
 <p>Once everything checks out. run the following command to create &amp; start the new container 
 host (the docker machine). (You will be prompted for your admin password)</p>
 <p><code>devtools start</code></p>
-<h4 id="25-configure-your-shell-to-use-devtools-environment">2.5 Configure your shell to use DevTools environment</h4>
+<h4 id="24-configure-your-shell-to-use-devtools-environment">2.4 Configure your shell to use DevTools environment</h4>
 <p>To configure the shell with the proper DevTools environment, run the following command
 after the container host has started from the previous step.</p>
 <p><code>eval "$(devtools config)"</code></p>
@@ -258,5 +251,5 @@ terminal windows after any <code>devtools start</code> or <code>devtools restart
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-04-27 17:08:15.654246
+Build Date UTC : 2016-07-14 18:17:09.434469
 -->
