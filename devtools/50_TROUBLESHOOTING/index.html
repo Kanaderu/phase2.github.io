@@ -140,6 +140,8 @@
                 
                     <li><a class="toctree-l4" href="#nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</a></li>
                 
+                    <li><a class="toctree-l4" href="#migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users:</a></li>
+                
             
             </ul>
         
@@ -281,7 +283,7 @@ Network timed out while trying to connect to https://index.docker.io/v1/reposito
 </code></pre>
 
 <p>Try restarting docker-machine: <code>devtools restart</code></p>
-<p><strong>Upstream tracking issue:</strong> <a href="https://github.com/docker/machine/issues/1857">docker/machine #1857</a></p>
+<p><a href="https://github.com/docker/machine/issues/1857">Upstream tracking issue</a></p>
 <h3 id="started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</h3>
 <p>Example:</p>
 <pre><code>Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
@@ -355,6 +357,15 @@ rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
 <h3 id="nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</h3>
 <p>Running the Devtools VM in conjunction with other development environments (such as Vagrant) can sometimes cause conflicts with volume mounts. This is due to the fact that the Devtools VM mounts the entirety of <code>/Users</code> into the VM on OS X. Additional NFS mounts from other environments that target subdirectories of <code>/Users</code> will fail.</p>
 <p>The easiest workaround is to keep projects that use non-Devtools environments like Vagrant in a directory <em>outside</em> of <code>/Users</code>, such as <code>/opt</code>. Alternatively, you can run a single VM at a time and manually clear out <code>/etc/exports</code> prior to switching environments/projects.</p>
+<h3 id="migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users:</h3>
+<p>If you'd like to move your vagrant boxes outside of your home directory, perform the following steps:</p>
+<p>1) Choose a destination folder.  We'll be using /opt/vms for this example. Insure the destination has enough free space. Typically this is not a problem because our Macs are one single partition.</p>
+<p>2) Make the new directory, and ensure your userid owns it:  <code>sudo mkdir /opt/vms; sudo chown -R userid:userid /opt/vms</code></p>
+<p>3) Add <code>export VAGRANT_HOME=/opt/vms</code> to ~/.bash_profile</p>
+<p>4) Move your vagrant folders over to /opt/vms.</p>
+<p>5) edit /etc/exports, updating any vagrant mount point to use the new location.  (example: /Users/userid/vagrant/projectx/cms)</p>
+<p>6) While a reboot isn't neccesary, it'll help to make sure nothing is running and using the old mount points.</p>
+<p>7) cd into your new vagrant directory, and do a vagrant up.</p>
               
             </div>
           </div>
