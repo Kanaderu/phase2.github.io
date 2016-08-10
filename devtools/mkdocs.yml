@@ -1,5 +1,5 @@
 site_name: DevTools CLI Documentation
-repo_url: https://bitbucket.org/phase2tech/_devtools_vm
+repo_url: https://bitbucket.org/phase2tech/devtools-cli
 site_author: Phase2
 google_analytics: ['UA-305109-83', 'readthedocs.org/projects/devtools']
 theme: readthedocs
@@ -10,6 +10,7 @@ pages:
   - 'Tool Chain': '10_TOOLCHAIN.md'
   - 'Project Setup': '20_PROJECT_SETUP.md'
   - 'Project Usage': '30_PROJECT_USAGE.md'
+  - 'Xdebug': 'XDEBUG.md'
   - 'Integration': '40_INTEGRATION.md'
   - 'Troubleshooting': '50_TROUBLESHOOTING.md'
   - 'FAQ': '60_FAQ.md'

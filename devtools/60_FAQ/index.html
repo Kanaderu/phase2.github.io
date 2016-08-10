@@ -101,6 +101,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">Xdebug</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../40_INTEGRATION/">Integration</a>
         
     </li>
@@ -182,7 +189,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket"> Edit on BitBucket</a>
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
         
       
     </li>
@@ -197,7 +204,7 @@
 <p>When you start a your containers via <code>docker-compose up</code> all of the defined services will start in the foreground. All log output to stdout/stderr within each container will be output the console.  Each entry will be prefixed with the name of the running container to identify the source of the log message.</p>
 <p>If log output is not coming directly to the console you can <code>docker exec -it &lt;name&gt; /bin/bash</code> into the running container and browse the file system for logs. Most common services will provide some log output in <code>/var/log</code>.</p>
 <h3 id="where-do-i-run-a-build">Where do I run a build?</h3>
-<p>You should run a build from within the build tools container for your project.  Look at the <a href="https://bitbucket.org/phase2tech/_devtools_vm/src/master/examples/drupal8/build.yml?fileviewer=file-view-default">examples/drupal8/build.yml</a> file to see the various way you can configure build containers for your environment.  That docker-compose file contains instructions on how you could use each of those containers for executing build commands on your codebase.</p>
+<p>You should run a build from within the build tools container for your project.  Look at the example <a href="https://bitbucket.org/phase2tech/devtools-examples/src/master/drupal8/build.yml?fileviewer=file-view-default">drupal8/build.yml</a> file to see the various way you can configure build containers for your environment.  That docker-compose file contains instructions on how you could use each of those containers for executing build commands on your codebase.</p>
 <h3 id="how-do-i-share-the-output-from-my-build-container-with-my-web-container">How do I share the output from my build container with my web container?</h3>
 <p>First have your build container define a volume to mount your project code into the container, then when you perform a build it will write the output to you local project. Then if your web container defines a volume to mount the build output into the docroot you will have seamless integration of build output to web container running the site.</p>
 <h3 id="how-do-i-configure-my-web-container-so-i-can-run-multiple-projects-at-once-from-the-same-container">How do I configure my web container so I can run multiple projects at once from the same container?</h3>
@@ -276,7 +283,7 @@
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
         <span><a href="../50_TROUBLESHOOTING/" style="color: #fcfcfc;">&laquo; Previous</a></span>

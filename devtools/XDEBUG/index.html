@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Xdebug - DevTools CLI Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Xdebug";
+    var mkdocs_page_input_path = "XDEBUG.md";
+    var mkdocs_page_url = "/XDEBUG/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_TOOLCHAIN/">Tool Chain</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Xdebug</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#getting-xdebug-setup-locally-with-devtools">Getting XDebug setup locally with DevTools</a></li>
+                
+                    <li><a class="toctree-l4" href="#steps">Steps</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_INTEGRATION/">Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../50_TROUBLESHOOTING/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Xdebug</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="getting-xdebug-setup-locally-with-devtools">Getting XDebug setup locally with DevTools</h1>
+<p>Getting <a href="https://xdebug.org/">XDebug</a> set up can be a bit challenging <em>only</em> because you might not know the locations of files. This guide will walk you through getting setup and will hopefully remove any rabbit-hole fears of using XDebug on your next project!</p>
+<h2 id="steps">Steps</h2>
+<h3 id="1-make-sure-devtools-is-up-to-date">1. Make sure DevTools is up to date.</h3>
+<p>This will not impact XDebug configuration but it's always a good thing to make sure your tools are up to date! Take this opportunity to do a quick check before going on your way to integrating XDebug =) </p>
+<pre><code>brew info devtools
+</code></pre>
+
+<p>You should hopefully see:</p>
+<pre><code>phase2/devtools/devtools: stable 0.2.2
+Containerized platform environment for projects. See https://phase2.github.io/devtools for documentation.
+https://phase2.github.com/devtools
+/usr/local/Cellar/devtools/0.1.3 (3 files, 4.3M)
+  Built from source
+/usr/local/Cellar/devtools/0.2.2 (4 files, 4.8M) *
+  Built from source
+From: https://github.com/phase2/homebrew-devtools/blob/master/Formula/devtools.rb
+</code></pre>
+
+<p>If your output doesn't match do:</p>
+<pre><code>brew update
+brew upgrade devtools
+</code></pre>
+
+<h3 id="2-make-sure-that-you-have-the-correct-versions-of-docker-docker-machine-docker-compose">2. Make sure that you have the correct versions of docker, docker-machine, docker-compose</h3>
+<p>Currently DevTools has a requirement of specific versions of Docker, Docker Machine, and Docker Compose. These versions aren't the latest versions of these packages. If for whatever reason, you were using another version of any of these items, make sure that you run:</p>
+<pre><code>devtools doctor
+
+// You need these versions for DevTools:
+[INFO] Docker compatible version 1.9.1 was found
+[INFO] Machine compatible version 0.5.4 was found
+[INFO] Compose compatible version 1.5.2 was found
+</code></pre>
+
+<p>Also if you have multiple versions installed, doing <code>brew info docker-compose</code> will list the versions you have installed. The one with the <strong>"*"</strong> will be the version that is active.</p>
+<p>If you need to switch versions, use the <code>brew switch</code> command and run any additional commands like <code>brew unlink ...</code>. (The <code>switch</code> command will provide next command steps if you need to link or unlink any formulae). </p>
+<p>Example:</p>
+<pre><code>brew switch docker 1.9.1
+</code></pre>
+
+<h3 id="3-make-sure-your-containers-are-up-to-date">3. Make sure your containers are up to date!</h3>
+<p>Now it may have been a while since you last updated your containers. Unfortunately, there's no way to subscribe to Docker Hub image updates at this time. So this is something that you might want to do occasionally, like at the beginning of a sprint :D </p>
+<p>This is an important step to take to ensure that you have the latest changes in order to properly finish the XDebug setup.</p>
+<pre><code>// Stop your containers in case they are running.
+docker-compose stop
+
+// Pull the latest changes.
+docker-compose pull
+docker-compose -f build.yml pull
+
+// Remove your old containers to make sure you're using the latest images.
+docker-compose rm
+
+// Re-create your containers based on the freshly updated images.
+docker-compose up -d
+</code></pre>
+
+<p>This is shorthand for something like:</p>
+<pre><code>docker pull phase2/devtools-build
+</code></pre>
+
+<h3 id="4-how-is-xdebug-configuration-managed-with-devtools">4. How is XDebug configuration managed with DevTools?</h3>
+<p>XDebug setup is controlled by template (<code>.tmpl</code>) files. </p>
+<p><a href="https://bitbucket.org/phase2tech/p2docker/src/master/p2docker-apache24base/root/etc/confd/templates/xdebug.ini.tmpl?at=master&amp;fileviewer=file-view-default">The XDebug template file</a> has the following:</p>
+<pre><code>; Enable xdebug extension module
+{{ $xdebug := getenv &quot;PHP_XDEBUG&quot; }}
+{{ if eq $xdebug &quot;true&quot; }}
+zend_extension=xdebug.so
+{{ end }}
+
+xdebug.coverage_enable=0
+xdebug.default_enable=1
+
+xdebug.remote_enable=1
+xdebug.remote_connect_back=1
+xdebug.remote_host=localhost // &lt; Note: This is ignored because xdebug.remote_connect_back is enabled.
+xdebug.remote_port=9000
+xdebug.remote_handler=dbgp
+xdebug.remote_log=/tmp/xdebug.log
+xdebug.remote_autostart=true
+
+xdebug.idekey=&quot;DEVTOOLS&quot;
+
+; Drupal 8 requires this be set to 256.
+xdebug.max_nesting_level=256
+
+; see http://xdebug.org/docs/all_settings
+</code></pre>
+
+<p>It is located on the www container @ <code>/etc/confd/templates/xdebug.ini.tmpl</code>. To view the template file, do:</p>
+<pre><code>docker ps // Get the list of your running containers
+
+// You should see something like this&quot;
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                            NAMES
+9616c845b27d        phase2/apache24php70     &quot;/init&quot;                  56 minutes ago      Up 56 minutes       80/tcp                           your_site_local_www
+
+// Grab the NAME for the container using the &quot;phase2/apache24php70&quot; image. In this case it's &quot;your_site_local_www&quot; 
+
+// Get a bash shell for the www container:
+docker exec -it your_site_local_www bash
+
+// Your bash shell on the www container:
+&gt; [root@9616c845b27d /]#
+
+// Checkout the xdebug template:
+&gt; [root@9616c845b27d /]# cat /etc/confd/templates/xdebug.ini.tmpl
+
+// Checkout the xdebug.ini file (using the template):
+&gt; [root@9616c845b27d /]# cat /etc/opt/remi/php70/php.d/15-xdebug.ini
+</code></pre>
+
+<p>The template file contents get loaded into this 15-xdebug.ini file because of this <a href="https://bitbucket.org/phase2tech/p2docker/src/c4bd578458f37d642939d35fb146e6f3533a9f7f/p2docker-apache24php70/root/etc/confd/conf.d/xdebug.ini.toml?at=master&amp;fileviewer=file-view-default"><code>.toml</code> file</a>:</p>
+<pre><code>[template]
+src = &quot;xdebug.ini.tmpl&quot;
+dest = &quot;/etc/opt/remi/php70/php.d/15-xdebug.ini&quot;
+uid = 0
+gid = 0
+mode = &quot;0644&quot;
+keys = []
+</code></pre>
+
+<p>Notice the src and dest keys in this file.</p>
+<h3 id="5-overridding-the-default-template-from-devtools">5. Overridding the default template from DevTools</h3>
+<p>Sometimes you need something different, and that's OK! So the way to go about this is to create your <code>.tmpl</code> file and overwrite the one that is setup on the www container by default.</p>
+<p>You can accomplish this using a good 'ole volume mount:</p>
+<p>In your project directory, create a new folder to hold your custom template file. A nice way to organize your docker customizations is by putting them in a directory called: <code>env/local</code>:</p>
+<pre><code>mkdir -p env/local
+</code></pre>
+
+<p>Create a file named <code>xdebug.ini.tmpl</code> and place your customizations. Note: This file overwrites the original template file completely, so if there are lines you want to keep from the original one, be sure to copy them over to this file.</p>
+<p>In your <code>docker-compose.yml</code> file, add the following to the volumes array of your www container:</p>
+<pre><code>./env/local/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl
+</code></pre>
+
+<p>Also, make sure you have the <code>PHP_XDEBUG</code> key set to <code>"true"</code>.</p>
+<p>Example:</p>
+<pre><code>www:
+  container_name: your_site_local_www
+  image: phase2/apache24php70
+  environment:
+    DNSDOCK_NAME: www
+    DNSDOCK_IMAGE: your-site
+    DOCROOT: /var/www/build/html
+    PHP_XDEBUG: &quot;true&quot;  // &lt;&lt; Make sure you have this line!
+  links:
+    - db
+  volumes:
+    - .:/var/www/
+    - ./env/local/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl  //  &lt;&lt; ADD THIS LINE
+    - /data/your_site_local/files:/var/www/build/html/sites/default/files
+</code></pre>
+
+<p>This tells docker to use your custom template file and place it in the <code>/etc/confd/templates/xdebug.ini.tmpl</code> location on the www container, effectively overwriting it.</p>
+<p>If you make adjustments to your template file while your www container is running, you will have to restart your containers to apply your changes</p>
+<pre><code>docker-compose restart
+</code></pre>
+
+<p>or </p>
+<pre><code>docker-compose restart www
+</code></pre>
+
+<h3 id="6-final-steps-let-your-ide-know-about-xdebug-on-your-www-container">6. Final Steps - Let your IDE know about XDebug on your www container.</h3>
+<p>Depending on the IDE you use, the final steps for integrating your XDebug setup with your local environment and your IDE will differ. Here's some steps on how to accomplish this using PHPStorm:</p>
+<h5 id="1-first-of-all-youll-to-add-some-settings-for-your-project-click-on-the-wrench-icon-in-the-toolbar">1. First of all, you'll to add some settings for your project. Click on the wrench icon in the toolbar:</h5>
+<p><img alt="PHPStorm Toolbar" src="../readme_images/phpstorm_toolbar.png" /></p>
+<p>You can also get to the project settings by going to: PHPStorm &gt; Preferences (OSX) or File &gt; Settings (Windows, Linux).</p>
+<h5 id="2-adjust-the-php-project-settings">2. Adjust the PHP Project settings.</h5>
+<p>Make sure you have the correct version of PHP selected:</p>
+<p><img alt="PHP Project settings" src="../readme_images/php_preferences.png" /></p>
+<h5 id="3-adjust-the-debug-project-settings">3. Adjust the Debug Project settings.</h5>
+<ul>
+<li>Make sure that the XDebug Debug port matches the one in the xdebug template file.</li>
+<li>Accept external connections</li>
+</ul>
+<p><img alt="Debug Project Settings" src="../readme_images/debug_preferences.png" /></p>
+<h5 id="4-for-the-dbgp-proxy-just-ensure-that-the-port-is-the-same">4. For the DBGp Proxy, just ensure that the port is the same.</h5>
+<p>You can leave the other settings blank.</p>
+<p><img alt="DBGP Proxy Project Settings" src="../readme_images/dbgp_proxy_preferences.png" /></p>
+<h5 id="5-adjust-the-server-project-settings">5. Adjust the Server Project Settings.</h5>
+<p>Create a new Server by clicking on the "+" button. Give your server a name and input the host.</p>
+<p>Be sure to add the docroot mappings. The example shown here is using the <a href="https://github.com/phase2/grunt-drupal-tasks">Grunt Drupal Tasks</a> project structure. There are two mappings in this case. One for the docroot (<code>build/html</code>) and the other for the <code>src</code> directory so that breakpoints can be set in the custom modules in the <code>src</code> directory as well.</p>
+<p><img alt="Server Project Settings" src="../readme_images/servers_preferences.png" /></p>
+<h5 id="5-validate-your-debug-settings">5. Validate your debug settings.</h5>
+<p>Select the "Web Server Debug Validation" option from the "Run" menu option.</p>
+<p><img alt="Validate Debug Option" src="../readme_images/web_server_debug_validation.png" /></p>
+<p>This will display a dialog window that allows you to validate your settings. Make sure that your "Path to create validation script" points to your project docroot and the url is your project url.</p>
+<p>If all goes well, clicking the "Validate" button should give you something like this:</p>
+<p><img alt="Validate Debug Screen" src="../readme_images/validate_debugger.png" /></p>
+<p>Click the dialog 'x' (close) button to close this dialog window.</p>
+<h5 id="6-restart-phpstorm">6. Restart PHPStorm.</h5>
+<p>In order to ensure that all your settings are applying, you will need to restart PHPStorm.</p>
+<h5 id="7-make-sure-that-you-listen-for-connections">7. Make sure that you listen for connections!</h5>
+<p><img alt="PHPStorm Toolbar" src="../readme_images/phpstorm_toolbar.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../40_INTEGRATION/" class="btn btn-neutral float-right" title="Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../30_PROJECT_USAGE/" class="btn btn-neutral" title="Project Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../30_PROJECT_USAGE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../40_INTEGRATION/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

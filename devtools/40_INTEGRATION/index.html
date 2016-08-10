@@ -100,6 +100,13 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">Xdebug</a>
+        
+    </li>
+<li>
+          
+            <li>
     <li class="toctree-l1 current">
         <a class="current" href="./">Integration</a>
         
@@ -164,7 +171,7 @@
     <li class="wy-breadcrumbs-aside">
       
         
-          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket"> Edit on BitBucket</a>
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
         
       
     </li>
@@ -177,7 +184,7 @@
                 <h2 id="integration-environments">Integration Environments</h2>
 <p>Now that we use docker-compose we can easily spin up integration environments for our projects.  We are currently using <code>ci.p2devcloud.com</code> and <code>ci2.p2devcloud.com</code> as the integration environment. You can see a list of all integration sites currently running by going to <a href="http://ci.p2devcloud.com">http://ci.p2devcloud.com</a> and <a href="http://ci2.p2devcloud.com">http://ci2.p2devcloud.com</a></p>
 <h3 id="how-to-get-an-integration-environment-going">How to get an integration environment going</h3>
-<p>The good news is that if you have your dev environment running via docker-compose, it should be very straight-forward to pull up an integration environment.  Think of each environment you want to run as having it’s own docker-compose file. See the <a href="https://bitbucket.org/phase2tech/_devtools_vm/src/master/examples/drupal8/docker-compose.int.yml?fileviewer=file-view-default">sample integration file</a> included in example/drupal8.</p>
+<p>The good news is that if you have your dev environment running via docker-compose, it should be very straight-forward to pull up an integration environment.  Think of each environment you want to run as having it’s own docker-compose file. See the <a href="https://bitbucket.org/phase2tech/devtools-examples/src/master/drupal8/docker-compose.int.yml?fileviewer=file-view-default">sample integration file</a> included in example/drupal8.</p>
 <p>For a quick and easy start:</p>
 <ul>
 <li>
@@ -239,7 +246,7 @@
 <li>
 <p>This will create your own Jenkins instance -- the url should appear here: http://ci.p2devcloud.com/</p>
 </li>
-<li>You can add/configure Jenkins plugins by adding a jenkins directory to your env directory. You can modify the config.xml files to your heart's content because the instance on our integration server is your very own configured Jenkin's instance. For an example of a env jenkins directory, checkout <a href="../../examples/jenkins/env">examples/jenkins/env</a>.</li>
+<li>You can add/configure Jenkins plugins by adding a jenkins directory to your env directory. You can modify the config.xml files to your heart's content because the instance on our integration server is your very own configured Jenkin's instance. For an example of a env jenkins directory, checkout <a href="http://bitbucket.org/phase2tech/src/master/jenkins/env">jenkins/env</a>.</li>
 </ul>
 <h3 id="more-advanced-integration-use-cases">More advanced integration use cases</h3>
 <p>The above section highlights the most straight-forward integration implementation. There are often a collection of other things that are used when building a full featured CI environment.  We have not figured these all out, but will update this documentation as we formalize the recommended practices around such things as:</p>
@@ -273,7 +280,7 @@
         <a href="../50_TROUBLESHOOTING/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../30_PROJECT_USAGE/" class="btn btn-neutral" title="Project Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../XDEBUG/" class="btn btn-neutral" title="Xdebug"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -298,10 +305,10 @@
 <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://bitbucket.org/phase2tech/_devtools_vm" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
-        <span><a href="../30_PROJECT_USAGE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../XDEBUG/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../50_TROUBLESHOOTING/" style="color: #fcfcfc">Next &raquo;</a></span>
