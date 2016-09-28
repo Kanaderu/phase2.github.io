@@ -222,6 +222,7 @@ directory.</p>
 <pre><code>{
   &quot;behat&quot;: {
     &quot;flags&quot;: &quot;--tags '~@javascript'&quot;,
+    &quot;path&quot;: &quot;/usr/local/bin/behat&quot;,
     &quot;subsite&quot;: {
       &quot;src&quot;: &quot;./test/features/subsite/*.feature&quot;,
       &quot;debug&quot;: false
@@ -238,6 +239,10 @@ should be used while invoking Behat. These flags can be overridden by using the
 <code>--behat-flags</code> option when running <code>grunt</code>. Common use cases are to include or
 exclude tests according to tags or to use an alternative profile defined in
 <code>behat.yml</code>.</p>
+<p><strong>behat.path</strong>: A string with the path to the Behat executable. By default, this
+is set to <code>vendor/bin/behat</code> to use the version of Behat installed by Composer.
+Only set this option if you need to use a specific version of Behat that is
+installed elsewhere.</p>
               
             </div>
           </div>
