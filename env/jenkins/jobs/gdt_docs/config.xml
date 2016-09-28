@@ -63,6 +63,7 @@ docker-compose run docs
 rm -rf phase2.github.io
 git clone git@github.com:phase2/phase2.github.io.git
 cd phase2.github.io
+git branch -t gdt origin/gdt
 git checkout gdt
 
 rm -rf grunt-drupal-tasks
