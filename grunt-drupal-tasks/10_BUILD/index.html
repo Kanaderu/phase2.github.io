@@ -213,12 +213,12 @@ the checkout of the codebase has already run <code>npm install</code> to retriev
 dependencies.</p>
 <ol>
 <li><strong>Composer Install:</strong> Retrieve all development dependencies in the project
-  composer.json. (Note that this does not imply management of Drupal
-  dependencies via Composer, such functionality is on the roadmap).</li>
+  composer.json. For Drupal 8.x, this also includes the management of Drupal
+  dependencies via Composer.</li>
 <li><strong>Validate:</strong> Run static analysis and code quality checks against custom code.</li>
-<li><strong>Drush Make:</strong> If the Drush makefiles are newer than the built codebase,
-  will run Drush Make to assemble upstream dependencies. (A composer-based
-  alternative is on the roadmap.)</li>
+<li><strong>Drush Make:</strong> For Drupal 7.x projects, if the Drush makefiles are newer
+  than the built codebase, Drush Make will run to assemble upstream
+  dependencies. For Drupal 8.x projects, Composer is used instead of Drush Make.</li>
 <li><strong>Scaffold:</strong> Copy and symlink custom code into the assembled codebase.</li>
 <li><strong>Theme Triggers:</strong> Run any theme triggers to validate code or build assets
   on a per-theme basis.</li>
@@ -269,9 +269,14 @@ phpmd.xml
   directory (via symlink from profiles/ to each profile in src/profiles/).</p>
 </li>
 <li>
-<p>Customize the Drush make file that is used at the start of the build process.
-  The example includes <strong>project.make</strong> but this file can be replaced or renamed
-  with a setting change in Gruntconfig.json (see below).</p>
+<p>For Drupal 8.x projects, customize the <code>composer.json</code> file to add module
+  dependencies. Patches can also be specified.</p>
+</li>
+<li>
+<p>For Drupal 7.x projects, customize the Drush make file that is used at the
+  start of the build process. The example includes <code>project.make</code> but this
+  file can be replaced or renamed with a setting change in Gruntconfig.json
+  (see below).</p>
 </li>
 <li>
 <p>Include any sites directories (like &ldquo;default&rdquo;), optionally with settings.php
@@ -311,7 +316,6 @@ build parameters: the code to build, and the output directories to use.</p>
 <pre><code>{
   &quot;srcPaths&quot;: {
     &quot;drupal&quot;: &quot;src&quot;,
-    &quot;make&quot;: &quot;src/project.make&quot;
   }
 }
 </code></pre>
@@ -327,9 +331,10 @@ following structure:</p>
   themes/
 </code></pre>
 
-<p><strong>srcPaths.make</strong>: The Drush make file used to assemble the Drupal project.</p>
 <p>The following build output paths are optional to specify in the project&rsquo;s
 <code>Gruntconfig.json</code> file.</p>
+<p><strong>srcPaths.make</strong>: The Drush make file used to assemble the Drupal project.
+This is only used for Drupal 7.x projects.  Example is <code>src/project.make</code>.</p>
 <p><strong>buildPaths.build</strong>: The directory that should be used for miscellaneous build
 artifacts. This can be the parent directory of the following build paths.</p>
 <p><strong>buildPaths.html</strong>: The directory that should be used for the Drupal docroot
