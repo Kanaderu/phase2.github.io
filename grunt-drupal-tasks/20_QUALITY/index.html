@@ -197,14 +197,21 @@
 <p>Maintaining code quality and managing static analysis.</p>
 </blockquote>
 <p>Grunt Drupal Tasks makes a point of easing management of good coding practices
-by building code quality checks into the default build process, and applying several best-of-breed tools to evaluate code changes.</p>
+by building code quality checks into the default build process, and applying
+several best-of-breed tools to evaluate code changes.</p>
 <ul>
 <li>The <code>grunt validate</code> task runs the same operation the build process executes.</li>
-<li>The <code>grunt analyze</code> task runs the same, along with the PHP Mess Detector, and outputs all results in checkstyle XML format for consumption by Jenkins or other reporting tools.</li>
+<li>The <code>grunt analyze</code> task runs the same, along with the PHP Mess Detector, and</li>
+<li>outputs all results in checkstyle XML format for consumption by Jenkins or</li>
+<li>other reporting tools.</li>
 </ul>
-<p>If you are interested in applying validation against files changed in your git repository, read more on <a href="../70_GIT_INTEGRATION/">how Grunt Drupal Tasks can manage your Git Hooks</a>.</p>
+<p>If you are interested in applying validation against files changed in your git
+repository, read more on
+<a href="../70_GIT_INTEGRATION/">how Grunt Drupal Tasks can manage your Git Hooks</a>.</p>
 <h3 id="validate-settings">Validate Settings</h3>
-<p>The <code>validate</code> task runs eslint, phpcs, phplint against all custom code. If a theme has it&rsquo;s own <code>validate</code> operation configured for grunt, it will skip eslint.</p>
+<p>The <code>validate</code> task runs eslint, phpcs, phplint against all custom code. If a
+theme has it&rsquo;s own <code>validate</code> operation configured for grunt, it will skip
+eslint.</p>
 <p><strong>validate.ignoreError</strong>: Set to <code>true</code> to prevent failing the build if code
 quality validation fails (which also prevents other tasks from executing).</p>
 <h4 id="eslint">eslint</h4>
@@ -244,7 +251,8 @@ exclude from PHP code syntax validation.</p>
 <p><strong>phpcs.path</strong>: The path to the PHPCS executable.</p>
 <p><strong>phpcs.standard</strong>: The PHPCS coding standard to use. The example composer.json
 installs the Drupal Coder&rsquo;s standard, the path of which is shown above.</p>
-<p><strong>phpcs.dir</strong>: An array of globbing pattern where phpcs should search for files. This can be used to replace the defaults supplied by grunt-drupal-tasks.</p>
+<p><strong>phpcs.dir</strong>: An array of globbing pattern where phpcs should search for files.
+This can be used to replace the defaults supplied by grunt-drupal-tasks.</p>
 <p>This example placed in the Gruntconfig.json file ignores directories named
 &ldquo;pattern-lab&rdquo; and a &ldquo;bower_components&rdquo; in addition to the defaults that come
 with grunt-drupal-tasks:</p>
@@ -270,9 +278,12 @@ seem to be rarely followed or enforced. By default we skip PHPCS processing
 of these files.</p>
 </blockquote>
 <h3 id="analyze-settings">Analyze Settings</h3>
-<p>In addition to all the behaviors under the Validate section, Analyze adds additional reporting that does not make sense as part of the build process, such as tools that are too time-consuming to run on a regular basis.</p>
+<p>In addition to all the behaviors under the Validate section, Analyze adds
+additional reporting that does not make sense as part of the build process,
+such as tools that are too time-consuming to run on a regular basis.</p>
 <h4 id="php-mess-detector-phpmd">PHP Mess Detector (PHPMD)</h4>
-<p>This tool is less focused on codified practice, and more on the architectural implications of code complexity, though there is some overlap in the rulesets.</p>
+<p>This tool is less focused on codified practice, and more on the architectural
+implications of code complexity, though there is some overlap in the rulesets.</p>
 <pre><code>{
   &quot;phpmd&quot;: {
     &quot;configPath&quot;: &quot;phpmd.xml&quot;,

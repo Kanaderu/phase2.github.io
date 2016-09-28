@@ -198,22 +198,27 @@
 <blockquote>
 <p>What&rsquo;s your codebase and how is it used in a working Drupal site?</p>
 </blockquote>
-<p>Continuing discussing of code structure begun in the <a href="../05_SETUP/">Setup section</a>,
-Grunt Drupal Tasks is a build system driven by a known &ldquo;scaffolding&rdquo; configuration to assemble a working Drupal site from custom code and
-dependency manifests.</p>
+<p>Continuing discussing of code structure begun in the
+<a href="../05_SETUP/">Setup section</a>, Grunt Drupal Tasks is a build system driven by a
+known &ldquo;scaffolding&rdquo; configuration to assemble a working Drupal site from custom
+code and dependency manifests.</p>
 <h2 id="the-build">The Build</h2>
 <pre><code>$&gt; grunt
 </code></pre>
 
-<p>The build process is managed by running <code>grunt</code>. If there are no errors, this will result in assembling all the code and assets needed to run your Drupal site in <strong>build/html</strong>. The full process includes a number of steps, which assumes the checkout of the codebase has already run <code>npm install</code> to retrieve all Node dependencies.</p>
+<p>The build process is managed by running <code>grunt</code>. If there are no errors, this
+will result in assembling all the code and assets needed to run your Drupal site
+in <strong>build/html</strong>. The full process includes a number of steps, which assumes
+the checkout of the codebase has already run <code>npm install</code> to retrieve all Node
+dependencies.</p>
 <ol>
 <li><strong>Composer Install:</strong> Retrieve all development dependencies in the project
-  composer.json. (Note that this does not imply management of Drupal dependencies
-  via Composer, such functionality is on the roadmap).</li>
+  composer.json. (Note that this does not imply management of Drupal
+  dependencies via Composer, such functionality is on the roadmap).</li>
 <li><strong>Validate:</strong> Run static analysis and code quality checks against custom code.</li>
-<li><strong>Drush Make:</strong> If the Drush makefiles are newer than the built codebase, will
-  run Drush Make to assemble upstream dependencies. (A composer-based alternative
-  is on the roadmap.)</li>
+<li><strong>Drush Make:</strong> If the Drush makefiles are newer than the built codebase,
+  will run Drush Make to assemble upstream dependencies. (A composer-based
+  alternative is on the roadmap.)</li>
 <li><strong>Scaffold:</strong> Copy and symlink custom code into the assembled codebase.</li>
 <li><strong>Theme Triggers:</strong> Run any theme triggers to validate code or build assets
   on a per-theme basis.</li>
@@ -228,7 +233,11 @@ the other parts of the repository are intuitively discovered for easy editing.</
 use a standardized convention that is significantly configurable for individual
 project needs.</p>
 <h3 id="structure-of-the-code-repository">Structure of the Code Repository</h3>
-<p>On looking at the code repository, there is no sign of Drupal core. That is because Drupal core, contributed modules, and any other upstream dependency or generated code is not part of the code repository. This structure organizes custom code, configuration, and manifests of dependencies which are downloaded as-needed by the <em>build process</em>.</p>
+<p>On looking at the code repository, there is no sign of Drupal core. That is
+because Drupal core, contributed modules, and any other upstream dependency or
+generated code is not part of the code repository. This structure organizes
+custom code, configuration, and manifests of dependencies which are downloaded
+as-needed by the <em>build process</em>.</p>
 <pre><code>src/
   ↳ libraries/
   ↳ modules/
