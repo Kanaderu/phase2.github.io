@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Frontend Ties - Grunt-Drupal-Tasks</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Frontend Ties";
+    var mkdocs_page_input_path = "30_FRONTEND.md";
+    var mkdocs_page_url = "/30_FRONTEND/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Grunt-Drupal-Tasks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../05_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_BUILD/">Build Process</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_QUALITY/">Code Quality</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Frontend Ties</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#frontend-theme-operations">Frontend &amp; Theme Operations</a></li>
+                
+                    <li><a class="toctree-l4" href="#making-grunt-theme-aware">Making Grunt Theme-Aware</a></li>
+                
+                    <li><a class="toctree-l4" href="#theme-scripts">Theme Scripts</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_OPERATIONS/">Project Operations</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_TESTING/">Testing</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_PACKAGE/">Deploy Packaging</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_GIT_INTEGRATION/">Git Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_ADVANCED_CONFIG/">Advanced Options</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../80_CI/">Continuous Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../80_CUSTOM_TASKS/">Extending GDT</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../90_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Grunt-Drupal-Tasks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Frontend Ties</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/phase2/grunt-drupal-tasks/" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="frontend-theme-operations">Frontend &amp; Theme Operations</h1>
+<blockquote>
+<p>Facilitate integration with Drupal themes as owners of their own script-driven
+tooling.</p>
+</blockquote>
+<h2 id="making-grunt-theme-aware">Making Grunt Theme-Aware</h2>
+<p>For each theme Grunt should be aware of, it will need an entry in the
+<code>Gruntconfig.json</code> under the themes property. This might look like the
+following:</p>
+<pre><code>{
+  &quot;themes&quot;: {
+    &quot;spartan&quot;: {
+      &quot;path&quot;: &quot;&lt;%= config.srcPaths.drupal %&gt;/themes/spartan&quot;
+    }
+  }
+}
+</code></pre>
+
+<p><strong>themes</strong>: Defines each custom Drupal theme and enables features, like
+integration with theme scripts.</p>
+<p><strong>themes.\&lt;theme>.path</strong>: Specify the path to the theme. Defaults to
+<code>&lt;%= config.srcPaths.drupal %&gt;/themes/\&lt;theme\&gt;</code>.</p>
+<h2 id="theme-scripts">Theme Scripts</h2>
+<p>Many themes come with their own tooling, possibly grunt-based as well. In those
+cases you can configure Grunt-Drupal-Tasks with the ability to trigger those
+tasks, and by magic naming attach some theme-specific functions to the more
+general project tasks.</p>
+<pre><code>&quot;legionaire&quot;: {
+  &quot;path&quot;: &quot;&lt;%= config.srcPaths.drupal %&gt;/themes/legionaire&quot;,
+  &quot;scripts&quot;: {
+    &quot;compile-theme&quot;: &quot;grunt compile&quot;
+    &quot;validate&quot;: &quot;grunt eslint&quot;,
+    &quot;analyze&quot;: &quot;echo 'No theme-specific analysis tools here!'&quot;,
+    &quot;ls&quot;: &quot;ls -lR&quot;
+  }
+}
+</code></pre>
+
+<p><code>grunt themes</code> may be run to list all themes setup in your project
+Gruntconfig.json. <code>grunt themes:\&lt;theme\&gt;</code> will list all the options in the
+theme&rsquo;s scripts config as a means of providing usage documentation.
+<code>grunt themes:\&lt;theme\&gt;:\&lt;task\&gt;</code> will run the script keyed by <code>\&lt;task\&gt;</code> from
+the theme&rsquo;s directory.</p>
+<p>Three of the key names are magic: &lsquo;compile-theme&rsquo;, &lsquo;validate&rsquo;, and &lsquo;analyze&rsquo;.
+When one of those three is specified, Grunt Drupal Tasks will automatically
+run the command as part of the actions it takes for <code>grunt compile-theme</code>,
+<code>grunt validate</code>, and <code>grunt analyze</code>.</p>
+<p>Note that Theme Scripts support the <code>pre-</code> and <code>post-</code> operations explained in
+Project Operations. This means if you configure a <code>compile-theme</code> task in
+<code>Gruntconfig.json</code>, you may also configure a <code>pre-compile-theme</code> and a
+<code>post-compile-theme</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../40_OPERATIONS/" class="btn btn-neutral float-right" title="Project Operations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../20_QUALITY/" class="btn btn-neutral" title="Code Quality"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/grunt-drupal-tasks/" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../20_QUALITY/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../40_OPERATIONS/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
