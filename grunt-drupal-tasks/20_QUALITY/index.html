@@ -202,7 +202,7 @@ by building code quality checks into the default build process, and applying sev
 <li>The <code>grunt validate</code> task runs the same operation the build process executes.</li>
 <li>The <code>grunt analyze</code> task runs the same, along with the PHP Mess Detector, and outputs all results in checkstyle XML format for consumption by Jenkins or other reporting tools.</li>
 </ul>
-<p>If you are interested in applying validation against files changed in your git repository, read more on <a href="https://phase2.github.io/grunt-drupal-tasks/GIT_HOOKS">how Grunt Drupal Tasks can manage your Git Hooks</a>.</p>
+<p>If you are interested in applying validation against files changed in your git repository, read more on <a href="../70_GIT_INTEGRATION/">how Grunt Drupal Tasks can manage your Git Hooks</a>.</p>
 <h3 id="validate-settings">Validate Settings</h3>
 <p>The <code>validate</code> task runs eslint, phpcs, phplint against all custom code. If a theme has it&rsquo;s own <code>validate</code> operation configured for grunt, it will skip eslint.</p>
 <p><strong>validate.ignoreError</strong>: Set to <code>true</code> to prevent failing the build if code
