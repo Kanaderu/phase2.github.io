@@ -1,0 +1,51 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v4.5.0/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/versions/node/v4.5.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'docs' ]
+2 info using npm@3.10.8
+3 info using node@v4.5.0
+4 verbose run-script [ 'predocs', 'docs', 'postdocs' ]
+5 info lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: grunt-drupal-tasks@1.0.0-pre
+6 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: unsafe-perm in lifecycle true
+7 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: PATH: /home/ubuntu/.nvm/versions/node/v4.5.0/lib/node_modules/npm/bin/node-gyp-bin:/home/ubuntu/workspace/gdt/node_modules/.bin:/home/ubuntu/.nvm/versions/node/v4.5.0/bin:/usr/local/rvm/gems/ruby-2.3.0/bin:/usr/local/rvm/gems/ruby-2.3.0@global/bin:/usr/local/rvm/rubies/ruby-2.3.0/bin:/mnt/shared/bin:/home/ubuntu/workspace/node_modules/.bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/mnt/shared/sbin:/opt/gitl:/opt/go/bin:/mnt/shared/c9/app.nw/bin:/usr/local/rvm/bin
+8 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: CWD: /home/ubuntu/workspace/gdt
+9 silly lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: Args: [ '-c', 'rm -Rf build; mkdir build' ]
+10 silly lifecycle grunt-drupal-tasks@1.0.0-pre~predocs: Returned: code: 0  signal: null
+11 info lifecycle grunt-drupal-tasks@1.0.0-pre~docs: grunt-drupal-tasks@1.0.0-pre
+12 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~docs: unsafe-perm in lifecycle true
+13 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~docs: PATH: /home/ubuntu/.nvm/versions/node/v4.5.0/lib/node_modules/npm/bin/node-gyp-bin:/home/ubuntu/workspace/gdt/node_modules/.bin:/home/ubuntu/.nvm/versions/node/v4.5.0/bin:/usr/local/rvm/gems/ruby-2.3.0/bin:/usr/local/rvm/gems/ruby-2.3.0@global/bin:/usr/local/rvm/rubies/ruby-2.3.0/bin:/mnt/shared/bin:/home/ubuntu/workspace/node_modules/.bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/mnt/shared/sbin:/opt/gitl:/opt/go/bin:/mnt/shared/c9/app.nw/bin:/usr/local/rvm/bin
+14 verbose lifecycle grunt-drupal-tasks@1.0.0-pre~docs: CWD: /home/ubuntu/workspace/gdt
+15 silly lifecycle grunt-drupal-tasks@1.0.0-pre~docs: Args: [ '-c', 'docker-compose run docs' ]
+16 info lifecycle grunt-drupal-tasks@1.0.0-pre~docs: Failed to exec docs script
+17 verbose stack Error: grunt-drupal-tasks@1.0.0-pre docs: `docker-compose run docs`
+17 verbose stack spawn ENOENT
+17 verbose stack     at ChildProcess.<anonymous> (/home/ubuntu/.nvm/versions/node/v4.5.0/lib/node_modules/npm/lib/utils/spawn.js:33:16)
+17 verbose stack     at emitTwo (events.js:87:13)
+17 verbose stack     at ChildProcess.emit (events.js:172:7)
+17 verbose stack     at maybeClose (internal/child_process.js:829:16)
+17 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+18 verbose pkgid grunt-drupal-tasks@1.0.0-pre
+19 verbose cwd /home/ubuntu/workspace/gdt/docs
+20 error Linux 4.2.0-c9
+21 error argv "/home/ubuntu/.nvm/versions/node/v4.5.0/bin/node" "/home/ubuntu/.nvm/versions/node/v4.5.0/bin/npm" "run" "docs"
+22 error node v4.5.0
+23 error npm  v3.10.8
+24 error file sh
+25 error code ELIFECYCLE
+26 error errno ENOENT
+27 error syscall spawn
+28 error grunt-drupal-tasks@1.0.0-pre docs: `docker-compose run docs`
+28 error spawn ENOENT
+29 error Failed at the grunt-drupal-tasks@1.0.0-pre docs script 'docker-compose run docs'.
+29 error Make sure you have the latest version of node.js and npm installed.
+29 error If you do, this is most likely a problem with the grunt-drupal-tasks package,
+29 error not with npm itself.
+29 error Tell the author that this fails on your system:
+29 error     docker-compose run docs
+29 error You can get information on how to open an issue for this project with:
+29 error     npm bugs grunt-drupal-tasks
+29 error Or if that isn't available, you can get their info via:
+29 error     npm owner ls grunt-drupal-tasks
+29 error There is likely additional logging output above.
+30 verbose exit [ 1, true ]
