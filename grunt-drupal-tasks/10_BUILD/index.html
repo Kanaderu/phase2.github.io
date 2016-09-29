@@ -359,7 +359,7 @@ significant changes to the build process may make it difficult to get support.</
 <h3 id="prepend-or-append-new-tasks">Prepend or Append New Tasks</h3>
 <p>If you want to avoid forking the build process, but have some additional tasks
 that need to be done, you can use this trick to add new tasks to the build.</p>
-<p>This trick can be done multiple times after the initial load of <code>bootstrap.js</code>,
+<p>This trick can be done multiple times after the initial load of <code>boostrap.js</code>,
 which allows for modular customizations.</p>
 <pre><code class="js">grunt.task.renameTask('default', 'default-pre-custom');
 grunt.registerTask('default', ['shell:custom', 'default-pre-custom']);
@@ -370,7 +370,7 @@ grunt.registerTask('default', ['shell:custom', 'default-pre-custom']);
 <p>This is an example of the settings for Drush tasks:</p>
 <pre><code>{
   &quot;drush&quot;: {
-    &quot;path&quot;: &quot;/usr/bin/drush&quot;,
+    &quot;cmd&quot;: &quot;/usr/bin/drush&quot;,
     &quot;make&quot;: {
       &quot;args&quot;: [&quot;--force-complete&quot;, &quot;--working-copy&quot;]
     }
@@ -378,7 +378,7 @@ grunt.registerTask('default', ['shell:custom', 'default-pre-custom']);
 }
 </code></pre>
 
-<p><strong>drush.path</strong>: The path to the Drush executable that should be used for all
+<p><strong>drush.cmd</strong>: The path to the Drush executable that should be used for all
 Drush operations. If none is specified, the Drush executable found in the
 default PATH will be used.</p>
 <p><strong>drush.make.args</strong>: An array of arguments to pass to Drush for the make
