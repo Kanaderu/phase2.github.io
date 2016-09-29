@@ -230,15 +230,12 @@ files and files under bin/ in the project&rsquo;s package.</p>
 to &lsquo;/docroot&rsquo;.</p>
 <p><strong>packages.dest.devResources</strong>: Specify where within the package directory the
 <code>projFiles</code> should be placed. Defaults to package root.</p>
-<p><strong>packages.name</strong>: The default name of the package, used as the path within the
-packages directory. This can be overridden by calling grunt package with the
-<code>--name</code> parameter.</p>
+<p><strong>packages.name</strong>: The default name of the package, used as the path within the packages directory. This can be overridden by calling grunt package with the <code>--name</code> parameter.</p>
 <h2 id="packaging-for-acquia">Packaging for Acquia</h2>
 <p>The <code>package</code> command has the flexibility to support many different use cases,
 include structure for PaaS services such as Acquia. This is currently handled
 by convention rather than specific coded support.</p>
-<p>The example configuration below for your Gruntconfig.json file structures an
-Acquia repository with support for custom hooks and scripts.</p>
+<p>The example configuration below for your Gruntconfig.json file structures an Acquia repository with support for custom hooks and scripts.</p>
 <pre><code>{
   &quot;packages&quot;: {
     &quot;srcFiles&quot;: [&quot;!sites/*/files/**&quot;, &quot;!xmlrpc.php&quot;, &quot;!modules/php/*&quot;],

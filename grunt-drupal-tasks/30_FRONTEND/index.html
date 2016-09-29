@@ -194,13 +194,10 @@
               
                 <h1 id="frontend-theme-operations">Frontend &amp; Theme Operations</h1>
 <blockquote>
-<p>Facilitate integration with Drupal themes as owners of their own script-driven
-tooling.</p>
+<p>Facilitate integration with Drupal themes as owners of their own script-driven tooling.</p>
 </blockquote>
 <h2 id="making-grunt-theme-aware">Making Grunt Theme-Aware</h2>
-<p>For each theme Grunt should be aware of, it will need an entry in the
-<code>Gruntconfig.json</code> under the themes property. This might look like the
-following:</p>
+<p>For each theme Grunt should be aware of, it will need an entry in the <code>Gruntconfig.json</code> under the themes property. This might look like the following:</p>
 <pre><code>{
   &quot;themes&quot;: {
     &quot;spartan&quot;: {
@@ -240,9 +237,7 @@ When one of those three is specified, Grunt Drupal Tasks will automatically
 run the command as part of the actions it takes for <code>grunt compile-theme</code>,
 <code>grunt validate</code>, and <code>grunt analyze</code>.</p>
 <p>Note that Theme Scripts support the <code>pre-</code> and <code>post-</code> operations explained in
-Project Operations. This means if you configure a <code>compile-theme</code> task in
-<code>Gruntconfig.json</code>, you may also configure a <code>pre-compile-theme</code> and a
-<code>post-compile-theme</code>.</p>
+Project Operations. This means if you configure a <code>compile-theme</code> task in <code>Gruntconfig.json</code>, you may also configure a <code>pre-compile-theme</code> and a <code>post-compile-theme</code>.</p>
               
             </div>
           </div>

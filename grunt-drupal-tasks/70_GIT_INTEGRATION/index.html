@@ -211,11 +211,9 @@ task. This version, specifically invoked by <code>validate:staged</code> attempt
 minimize the number of files scanned by checking only those that have changed
 since the last successful commit.</p>
 <h3 id="configuring-git-hooks">Configuring Git Hooks</h3>
-<p><strong>config.git.hooks</strong>: An array of grunt tasks to run on pre-commit in addition
-to <code>validate:staged</code>.</p>
-<p><strong>config.git.hook-command</strong>: A substitute for a simple <code>grunt</code> command to handle
-the individual grunt tasks. Allows specification of more complex bin paths or
-execution wrappers such as <code>time</code> or <code>docker-compose</code>.</p>
+<p><strong>config.git.hooks</strong>: An array of grunt tasks to run on pre-commit in addition to <code>validate:staged</code>.</p>
+<p><strong>config.git.hook-command</strong>: A substitute for a simple <code>grunt</code> command to handle the individual grunt tasks.
+Allows specification of more complex bin paths or execution wrappers such as <code>time</code> or <code>docker-compose</code>.</p>
 <h3 id="overriding-a-commit-rejection">Overriding a Commit Rejection</h3>
 <p>Using the <code>-f</code> flag with your git commit will override the pre-commit script
 even if it fails the commit will proceed.</p>
