@@ -58,25 +58,28 @@
       <command>#!/usr/bin/env bash
 export DOCKER_ENV=int
 
+cd docs
 docker-compose run docs
+cd ..
 
-rm -rf phase2.github.io
-git clone git@github.com:phase2/phase2.github.io.git
-cd phase2.github.io
-git branch -t gdt origin/gdt
-git checkout gdt
+if [ -e &quot;build/index.html&quot; ]; then
 
-rm -rf grunt-drupal-tasks
-cp -R ../build grunt-drupal-tasks
+  rm -rf phase2.github.io
+  git clone git@github.com:phase2/phase2.github.io.git
+  cd phase2.github.io
 
-if [ -e &quot;grunt-drupal-tasks/index.html&quot; ]; then
+  git branch -t gdt origin/gdt
+  git checkout gdt
 
-git config user.email &quot;jenkins@phase2technology.com&quot;
-git config user.name &quot;Jenkins&quot;
+  rm -rf grunt-drupal-tasks
+  cp -R ../build grunt-drupal-tasks
 
-git commit -a -m &quot;Auto-build GDT mkdocs from http://phase2io.ci.p2devcloud.com/job/build_docs/${BUILD_NUMBER}&quot;
-git status
-git push origin gdt
+  git config user.email &quot;jenkins@phase2technology.com&quot;
+  git config user.name &quot;Jenkins&quot;
+
+  git commit -a -m &quot;Auto-build GDT mkdocs from http://phase2io.ci.p2devcloud.com/job/gdt_docs/${BUILD_NUMBER}&quot;
+  git status
+  git push origin gdt
 
 fi</command>
     </hudson.tasks.Shell>
@@ -88,27 +91,27 @@ fi</command>
       <chatNotification>false</chatNotification>
       <notifyMap>
         <entry>
-          <com.flowdock.jenkins.BuildResult>SUCCESS</com.flowdock.jenkins.BuildResult>
-          <boolean>true</boolean>
-        </entry>
-        <entry>
-          <com.flowdock.jenkins.BuildResult>UNSTABLE</com.flowdock.jenkins.BuildResult>
-          <boolean>false</boolean>
-        </entry>
-        <entry>
-          <com.flowdock.jenkins.BuildResult>FAILURE</com.flowdock.jenkins.BuildResult>
-          <boolean>true</boolean>
-        </entry>
-        <entry>
           <com.flowdock.jenkins.BuildResult>NOT_BUILT</com.flowdock.jenkins.BuildResult>
           <boolean>false</boolean>
+        </entry>
+        <entry>
+          <com.flowdock.jenkins.BuildResult>ABORTED</com.flowdock.jenkins.BuildResult>
+          <boolean>false</boolean>
+        </entry>
+        <entry>
+          <com.flowdock.jenkins.BuildResult>SUCCESS</com.flowdock.jenkins.BuildResult>
+          <boolean>true</boolean>
         </entry>
         <entry>
           <com.flowdock.jenkins.BuildResult>FIXED</com.flowdock.jenkins.BuildResult>
           <boolean>true</boolean>
         </entry>
         <entry>
-          <com.flowdock.jenkins.BuildResult>ABORTED</com.flowdock.jenkins.BuildResult>
+          <com.flowdock.jenkins.BuildResult>FAILURE</com.flowdock.jenkins.BuildResult>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <com.flowdock.jenkins.BuildResult>UNSTABLE</com.flowdock.jenkins.BuildResult>
           <boolean>false</boolean>
         </entry>
       </notifyMap>
