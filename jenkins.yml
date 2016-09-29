@@ -11,7 +11,7 @@ jenkins:
     # Mount the docker socket so we can execute from within this container
     - /var/run/docker.sock:/var/run/docker.sock
     # Mount a stable location for the Jenkins workspace
-    - /opt/development/phase2.github.io/jenkins/env/workspace:/opt/development/phase2.github.io/jenkins/env/workspace
+    - /opt/development/phase2io/jenkins/env/workspace:/opt/development/phase2io/jenkins/env/workspace
     # SSH key grants read access to private Git repositories.
     - ~/.ssh/id_rsa:/root/.ssh/devtools.key
   environment:
