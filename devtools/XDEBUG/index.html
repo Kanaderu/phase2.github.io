@@ -242,7 +242,7 @@ docker-compose up -d
 
 <h3 id="4-how-is-xdebug-configuration-managed-with-devtools">4. How is XDebug configuration managed with DevTools?</h3>
 <p>XDebug setup is controlled by template (<code>.tmpl</code>) files. </p>
-<p><a href="https://bitbucket.org/phase2tech/p2docker/src/master/p2docker-apache24base/root/etc/confd/templates/xdebug.ini.tmpl?at=master&amp;fileviewer=file-view-default">The XDebug template file</a> has the following:</p>
+<p><a href="https://bitbucket.org/phase2tech/docker-apache-php-base/src/master/root/etc/confd/templates/xdebug.ini.tmpl?at=master&amp;fileviewer=file-view-default">The XDebug template file</a> has the following:</p>
 <pre><code>; Enable xdebug extension module
 {{ $xdebug := getenv &quot;PHP_XDEBUG&quot; }}
 {{ if eq $xdebug &quot;true&quot; }}
@@ -273,9 +273,9 @@ xdebug.max_nesting_level=256
 
 // You should see something like this&quot;
 CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                            NAMES
-9616c845b27d        phase2/apache24php70     &quot;/init&quot;                  56 minutes ago      Up 56 minutes       80/tcp                           your_site_local_www
+9616c845b27d        phase2/apache-php:php70     &quot;/init&quot;                  56 minutes ago      Up 56 minutes       80/tcp                           your_site_local_www
 
-// Grab the NAME for the container using the &quot;phase2/apache24php70&quot; image. In this case it's &quot;your_site_local_www&quot; 
+// Grab the NAME for the container using the &quot;phase2/apache-php:php70&quot; image. In this case it's &quot;your_site_local_www&quot; 
 
 // Get a bash shell for the www container:
 docker exec -it your_site_local_www bash
@@ -290,7 +290,7 @@ docker exec -it your_site_local_www bash
 &gt; [root@9616c845b27d /]# cat /etc/opt/remi/php70/php.d/15-xdebug.ini
 </code></pre>
 
-<p>The template file contents get loaded into this 15-xdebug.ini file because of this <a href="https://bitbucket.org/phase2tech/p2docker/src/c4bd578458f37d642939d35fb146e6f3533a9f7f/p2docker-apache24php70/root/etc/confd/conf.d/xdebug.ini.toml?at=master&amp;fileviewer=file-view-default"><code>.toml</code> file</a>:</p>
+<p>The template file contents get loaded into this 15-xdebug.ini file because of this <a href="https://bitbucket.org/phase2tech/docker-apache-php/src/ea8cbe97ad362d4ff210d3421d33dab105c55028/root/etc/confd/conf.d/xdebug.ini.toml?at=php70&amp;fileviewer=file-view-default"><code>.toml</code> file</a>:</p>
 <pre><code>[template]
 src = &quot;xdebug.ini.tmpl&quot;
 dest = &quot;/etc/opt/remi/php70/php.d/15-xdebug.ini&quot;
@@ -317,7 +317,7 @@ keys = []
 <p>Example:</p>
 <pre><code>www:
   container_name: your_site_local_www
-  image: phase2/apache24php70
+  image: phase2/apache-php:php70
   environment:
     DNSDOCK_NAME: www
     DNSDOCK_IMAGE: your-site

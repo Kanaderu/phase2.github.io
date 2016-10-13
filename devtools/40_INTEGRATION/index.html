@@ -116,6 +116,8 @@
                 
                     <li><a class="toctree-l4" href="#how-to-get-an-integration-environment-going">How to get an integration environment going</a></li>
                 
+                    <li><a class="toctree-l4" href="#manually-creating-jenkins-configuration">Manually creating Jenkins configuration</a></li>
+                
                     <li><a class="toctree-l4" href="#more-advanced-integration-use-cases">More advanced integration use cases</a></li>
                 
             
@@ -182,9 +184,11 @@
             <div class="section">
               
                 <h2 id="integration-environments">Integration Environments</h2>
-<p>Now that we use docker-compose we can easily spin up integration environments for our projects.  We are currently using <code>ci.p2devcloud.com</code> and <code>ci2.p2devcloud.com</code> as the integration environment. You can see a list of all integration sites currently running by going to <a href="http://ci.p2devcloud.com">http://ci.p2devcloud.com</a> and <a href="http://ci2.p2devcloud.com">http://ci2.p2devcloud.com</a></p>
+<p>For integration and other instances the approach is to spin up a Jenkins docker container on one of <code>ci.p2devcloud.com</code> or <code>ci2.p2devcloud.com</code> which then runs a Jenkins instance containing all the jobs needed for your project. Details about how to create the Jenkins config, the job config and the jenkins.yml file used for launching the instance are described in the manual setup section below.</p>
+<p>You can see a list of all integration sites currently running by going to <a href="http://index.ci.p2devcloud.com">http://index.ci.p2devcloud.com</a> and <a href="http://index.ci2.p2devcloud.com">http://index.ci2.p2devcloud.com</a></p>
 <h3 id="how-to-get-an-integration-environment-going">How to get an integration environment going</h3>
 <p>The good news is that if you have your dev environment running via docker-compose, it should be very straight-forward to pull up an integration environment.  Think of each environment you want to run as having it’s own docker-compose file. See the <a href="https://bitbucket.org/phase2tech/devtools-examples/src/master/drupal8/docker-compose.int.yml?fileviewer=file-view-default">sample integration file</a> included in example/drupal8.</p>
+<p>If you are using the <a href="https://bitbucket.org/phase2tech/generator-p2">Phase2 Yeoman generator</a> (yo p2) to create your project, you will already have default Jenkins jobs created within your env/jenkins folder.</p>
 <p>For a quick and easy start:</p>
 <ul>
 <li>
@@ -244,9 +248,31 @@
 </ul>
 </li>
 <li>
-<p>This will create your own Jenkins instance -- the url should appear here: http://ci.p2devcloud.com/</p>
+<p>This will create your own Jenkins instance -- the url should appear here: <a href="http://index.ci.p2devcloud.com/">http://index.ci.p2devcloud.com/</a></p>
 </li>
-<li>You can add/configure Jenkins plugins by adding a jenkins directory to your env directory. You can modify the config.xml files to your heart's content because the instance on our integration server is your very own configured Jenkin's instance. For an example of a env jenkins directory, checkout <a href="http://bitbucket.org/phase2tech/src/master/jenkins/env">jenkins/env</a>.</li>
+<li>You can add/configure Jenkins plugins by adding a jenkins directory to your env directory. You can modify the config.xml files to your heart's content because the instance on our integration server is your very own configured Jenkin's instance. For an example of a env jenkins directory, checkout <a href="https://github.com/phase2/phase2.github.io/tree/master/env/jenkins">jenkins/env</a>.</li>
+</ul>
+<h3 id="manually-creating-jenkins-configuration">Manually creating Jenkins configuration</h3>
+<p>If you are not using the Phase2 Yeoman generator, you'll need to create your Jenkins configuration manually before you can create your own Jenkins instance on the ci.p2devcloud.com site.</p>
+<ul>
+<li>Create a folder in your project repository to hold the Jenkins configuration.  Typically this is <code>env/jenkins</code>.</li>
+<li>Create a <code>jenkins.xml</code> file in the root directory of your project repository.  (<a href="https://github.com/phase2/phase2.github.io/blob/master/jenkins.yml">See jenkins.xml example</a>). This is a docker-compose file that is used to create the docker container that will run Jenkins.</li>
+<li>
+<p>Create the main Jenkins config.xml file within your env/jenkins folder.  (<a href="https://github.com/phase2/phase2.github.io/blob/master/env/jenkins/config.xml">See config.xml example</a>).  The lines that you need to edit for your project are:</p>
+<ul>
+<li><code>&lt;workspaceDir&gt;/opt/development/YOUR-SERVER-NAME/jenkins/env/workspace/${ITEM_FULL_NAME}&lt;/workspaceDir&gt;</code></li>
+</ul>
+<p>This defines the path to your workspace for each job.  The <code>${ITEM_FULL_NAME}</code> will be replaced with each specific job name.  So just change <code>YOUR-SERVER-NAME</code> to be the name of your project.</p>
+<ul>
+<li>You can create <code>&lt;listView&gt;</code> sections to define tabs across the top of your page to organize your jobs.  The <code>&lt;includeRegEx&gt;</code> tag defines the job name pattern to group jobs into the specific listView tab.</li>
+</ul>
+</li>
+<li>
+<p>Create any specific Jobs within your <code>env/jenkins/jobs</code> folder.  Each job is its own folder containing the <code>config.xml</code> for the specific job.  If you don't create any jobs in your project repo you can still create them interactively once your Jenkins server is running.  However it's a good idea to save the config.xml for each job within your project repository in case you need to rebuild your Jenkins server.</p>
+</li>
+<li>Edit the <code>volumes</code> mounts in the main jenkins.xml docker-compose file.  Point to the main <code>env/jenkins/config.xml</code> you created in #3, along with the Jobs folder you created in #4.  Also adjust the path for the main workspace folder that you defined in #3 (without the <code>ITEM_FULL_NAME</code>).</li>
+<li>Edit the <code>environment</code> section of the <code>jenkins.xml</code> docker-compose file for the <code>DNSDOCK_IMAGE</code> (<code>PROJECT_NAME</code>) and the <code>VIRTUAL_HOST</code> (full <code>PROJECT_NAME.ci.p2devcloud.com</code> or ci2)</li>
+<li>Modify the <code>config.xml</code> volume mount within <code>jenkins.xml</code> for your specific project</li>
 </ul>
 <h3 id="more-advanced-integration-use-cases">More advanced integration use cases</h3>
 <p>The above section highlights the most straight-forward integration implementation. There are often a collection of other things that are used when building a full featured CI environment.  We have not figured these all out, but will update this documentation as we formalize the recommended practices around such things as:</p>
