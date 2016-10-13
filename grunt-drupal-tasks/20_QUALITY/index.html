@@ -288,12 +288,18 @@ implications of code complexity, though there is some overlap in the rulesets.</
   &quot;phpmd&quot;: {
     &quot;configPath&quot;: &quot;phpmd.xml&quot;,
     &quot;path&quot;: &quot;bin/phpmd&quot;
+    &quot;excludePaths&quot;: [
+      &quot;bower_components&quot;,
+      &quot;node_modules&quot;
+    ]
   }
 }
 </code></pre>
 
 <p><strong>phpmd.configPath</strong>: The configuration file to use with PHPMD. Defaults to
 <em>phpmd.xml</em>.</p>
+<p><strong>phpmd.excludePaths</strong>: An array of string path patterns that should be skipped
+by PHPMD.</p>
 <p><strong>phpmd.path</strong>: The path to the PHPMD executable.</p>
 <blockquote>
 <p>If there is no <code>phpmd</code> key in the configuration, the system will assume you

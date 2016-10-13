@@ -220,14 +220,14 @@ to be outside the build directory.</strong></p>
 <h2 id="packaging-customization">Packaging Customization</h2>
 <p><strong>packages.srcFiles</strong>: An array of files or file patterns to include or exclude
 from the build output when building a package. The above excludes files within
-any sites/*/files directory, and Drupal&rsquo;s xmlrpc.php and PHP Filter. For more on
-this format, see: http://gruntjs.com/configuring-tasks#files</p>
+any <code>sites/*/files</code> directory, and Drupal&rsquo;s <code>xmlrpc.php</code> file and PHP Filter
+module. For more on this format, see: http://gruntjs.com/configuring-tasks#files</p>
 <p><strong>packages.projFiles</strong>: An array of files or file patterns to include or exclude
 from the project directory when building a package. The above includes README
-files and files under bin/ in the project&rsquo;s package.</p>
+files and files under <code>bin/</code> in the project&rsquo;s package.</p>
 <p><strong>packages.dest.docroot</strong>: Specify where within the package directory the
 <code>srcFiles</code> should be placed. Defaults to the package root. For Acquia set this
-to &lsquo;docroot&rsquo;.</p>
+to <code>/docroot</code>.</p>
 <p><strong>packages.dest.vendor</strong>: Specify where to place the composer.json and vendor
 directory.  Defaults to the docroot.</p>
 <p><strong>packages.dest.devResources</strong>: Specify where within the package directory the
