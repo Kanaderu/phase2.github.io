@@ -109,7 +109,7 @@
                 
                     <li><a class="toctree-l4" href="#dns-names-for-your-containers">DNS Names for your containers</a></li>
                 
-                    <li><a class="toctree-l4" href="#dns-for-dev-cloud">DNS for Dev Cloud</a></li>
+                    <li><a class="toctree-l4" href="#dns-forwarders">DNS Forwarders</a></li>
                 
                     <li><a class="toctree-l4" href="#dns-command">DNS Command</a></li>
                 
@@ -288,8 +288,10 @@
 <p>If you need multiple domains mapped to a container you can use the DNSDOCK_ALIAS setting. It takes a full domain name and can take a comma separated list (e.g. portland.phase2.vm,alexandria.phase2.vm)</p>
 </li>
 </ul>
-<h3 id="dns-for-dev-cloud">DNS for Dev Cloud</h3>
-<p>DevTools will resolve private Dev Cloud domain names if you are connected to the VPN.  You need to have access to 10.10.7.2 to resolve Dev Cloud domain names.</p>
+<h3 id="dns-forwarders">DNS Forwarders</h3>
+<p>DevTools can be configured to use additional name servers to forward DNS requests if the record cannot be resolved by dnsdock.</p>
+<p>An example is if you connect to a VPN and need to resolve addresses to private servers within a VPN.  To enable this you need to configure the <code>DEVTOOLS_NAMESERVERS</code> environment variable to a comma separated list of <em>ip:port</em> (example: <code>10.10.7.2:53,8.8.8.8:53</code>) before running either <code>devtools start</code> or <code>devtools dns</code>. We suggest putting this env var configuration in your <code>~/.bashrc</code> or <code>~/.zshrc</code> so that it is always present when needed.  If you just need this temporarily, you can pass the configuration in with the <code>--nameservers</code> command line option to <code>devtools start</code> or <code>devtools dns</code>. </p>
+<p>This configuration will try each forwarder name server, in order, to resolve names until success or all name servers have been exhausted.</p>
 <h3 id="dns-command">DNS Command</h3>
 <p>There is also a <code>devtools dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter.</p>
 <h3 id="dns-debugging">DNS Debugging</h3>
@@ -297,7 +299,7 @@
 <h3 id="working-with-volumes">Working with Volumes</h3>
 <p>Volumes are a way that you can map directories or individual files into a running container.  This is useful to provide code to run for a generic container, or directories to store data that persist longer than the life of the container, or to even override directories and/or files that exist in an image.  Lets look at a few of those examples.</p>
 <p><strong>Provide code for a generic container to run</strong></p>
-<p>The default phase2/apache24php55 is a Web/PHP container that provides only an index file in <code>/var/www/html</code> that prints out phpinfo().  This is obviously not very useful for an application, so we can provide the an entire Drupal site to run and we do that by mapping our site into the default docroot like this:</p>
+<p>The default phase2/apache-php:php70 is a Web/PHP container that provides only an index file in <code>/var/www/html</code> that prints out phpinfo().  This is obviously not very useful for an application, so we can provide the an entire Drupal site to run and we do that by mapping our site into the default docroot like this:</p>
 <p><code>./build/html:/var/www/html</code></p>
 <p>This takes the Drupal site we have in our local project directory of <code>build/html</code> and it overrides the default content of the images <code>/var/www/html</code> directory.</p>
 <p><strong>Persist data longer than the life of the container</strong></p>
@@ -322,7 +324,7 @@
 <p>Start by determining which Docker image you will need to extend. </p>
 </li>
 <li>
-<p>For the general Drupal use cases you will base your project Dockerfile on apache24php55.</p>
+<p>For the general Drupal use cases you will base your project Dockerfile on apache-php:php70.</p>
 <ul>
 <li><code>FROM phase2/apache-php:php70</code></li>
 </ul>

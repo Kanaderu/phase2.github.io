@@ -62,22 +62,26 @@ cd docs
 docker-compose run docs
 cd ..
 
-if [ -e &quot;build/index.html&quot; ]; then
+if [ -e "build/index.html" ]; then
 
   rm -rf phase2.github.io
   git clone git@github.com:phase2/phase2.github.io.git
   cd phase2.github.io
 
-  git branch -t gdt origin/gdt
-  git checkout gdt
+  git fetch origin
+  git checkout -b gdt origin/gdt
+
+  git config user.email "jenkins@phase2technology.com"
+  git config user.name "Jenkins"
+
+  git merge master
 
   rm -rf grunt-drupal-tasks
   cp -R ../build grunt-drupal-tasks
 
-  git config user.email &quot;jenkins@phase2technology.com&quot;
-  git config user.name &quot;Jenkins&quot;
+  git add grunt-drupal-tasks
 
-  git commit -a -m &quot;Auto-build GDT mkdocs from http://phase2io.ci.p2devcloud.com/job/gdt_docs/${BUILD_NUMBER}&quot;
+  git commit -a -m "Auto-build GDT mkdocs from http://phase2io.ci.p2devcloud.com/job/gdt_docs/${BUILD_NUMBER}"
   git status
   git push origin gdt
 
