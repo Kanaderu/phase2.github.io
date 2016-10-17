@@ -1,0 +1,439 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Grunt Drupal Tasks\n\n\nThis project brings the tooling energy of the Node.js and Grunt communities\ntogether with best practices in Drupal development to accelerate Drupal 7 and\nDrupal 8 development.\n\n\nFeatures\n\n\n\n\nGenerator Gadget\n, a\n  Yeoman-generator to assemble new codebases with best practices configuration.\n\n\nConfigurable code structure that defaults to a clean development practice.\n\n\nDrush make-based \nbuild workflow\n.\n\n\nOptional use of Composer,\n  \nCode Quality \n Static Analysis\n, and \nFrontend tooling\n\n  to extend the build process.\n\n\nBehat and SimpleTest Testing\n\n\nDeployment packaging\n\n\nGit Hook management\n\n\nDesktop Notifications\n\n\nLocal Development Friendly\n\n\nCI\n Friendly\n\n\n\n\nWe are continuously working to improve this toolchain, adding functionality that\nwe see as common to our \ncontinuous integration\n and everyday development\npractices.\n\n\nUsage\n\n\nWorking on a project that\ns integrated \ngrunt-drupal-tasks\n? Run \ngrunt help\n\nto view documentation tailored for your project.\n\n\nTo build your Drupal site, run \ngrunt\n.\n\n\nEnvironment Options\n\n\nThese environment variables will override other options.\n\n\n\n\nGDT_DOMAIN\n: Specify the base URL for live system testing. Falls back to a\nsetting in the project\ns Gruntconfig.json, then hostname if not set.\n\n\nGDT_INSTALL_PROFILE\n: Overrides the install profile specified in the\nproject\ns Gruntconfig.json to be used by the \ninstall\n task.\n\n\nGDT_QUIET\n: If evaluated truthy, will suppress all desktop notifications.\n\n\nGDT_SITE_ALIAS\n: Configure the default Drush site alias for the project.\n\n\nGDT_SITEURLS\n: Overrides the URL(s) for the project\ns site(s) specified in\nthe Gruntconfig.json by which each can be accessed for end-to-end testing by\ntools such as Behat. Use instead of \nGDT_DOMAIN\n if the project has multiple\nsubsites or URLs.",
+            "title": "Home"
+        },
+        {
+            "location": "/#grunt-drupal-tasks",
+            "text": "This project brings the tooling energy of the Node.js and Grunt communities\ntogether with best practices in Drupal development to accelerate Drupal 7 and\nDrupal 8 development.",
+            "title": "Grunt Drupal Tasks"
+        },
+        {
+            "location": "/#features",
+            "text": "Generator Gadget , a\n  Yeoman-generator to assemble new codebases with best practices configuration.  Configurable code structure that defaults to a clean development practice.  Drush make-based  build workflow .  Optional use of Composer,\n   Code Quality   Static Analysis , and  Frontend tooling \n  to extend the build process.  Behat and SimpleTest Testing  Deployment packaging  Git Hook management  Desktop Notifications  Local Development Friendly  CI  Friendly   We are continuously working to improve this toolchain, adding functionality that\nwe see as common to our  continuous integration  and everyday development\npractices.",
+            "title": "Features"
+        },
+        {
+            "location": "/#usage",
+            "text": "Working on a project that s integrated  grunt-drupal-tasks ? Run  grunt help \nto view documentation tailored for your project.  To build your Drupal site, run  grunt .",
+            "title": "Usage"
+        },
+        {
+            "location": "/#environment-options",
+            "text": "These environment variables will override other options.   GDT_DOMAIN : Specify the base URL for live system testing. Falls back to a\nsetting in the project s Gruntconfig.json, then hostname if not set.  GDT_INSTALL_PROFILE : Overrides the install profile specified in the\nproject s Gruntconfig.json to be used by the  install  task.  GDT_QUIET : If evaluated truthy, will suppress all desktop notifications.  GDT_SITE_ALIAS : Configure the default Drush site alias for the project.  GDT_SITEURLS : Overrides the URL(s) for the project s site(s) specified in\nthe Gruntconfig.json by which each can be accessed for end-to-end testing by\ntools such as Behat. Use instead of  GDT_DOMAIN  if the project has multiple\nsubsites or URLs.",
+            "title": "Environment Options"
+        },
+        {
+            "location": "/05_SETUP/",
+            "text": "Setup Your Environment \n Project\n\n\n\n\nGet Node, Grunt, \n Composer squared away, then use Gadget to spin up new projects.\n\n\n\n\nRequirements\n\n\nNote that Grunt Drupal Tasks is intended to be compatible with Node.js v4 and\nlater and PHP v5.5 and later. See the version 0.x series for compatibility with\nearlier versions of Node.js and PHP.\n\n\nNode.js\n\n\nInstall \nNode.js v4.2.x or later\n using \nnvm\n,\na \npackage manager\n,\nor a \nstandalone installer\n.\n\n\nGrunt\n\n\nOnce \nNode.js\n is installed, use \nnpm\n to install\n\ngrunt-cli\n, the Grunt command line interface,\nby running:\n\n\nnpm install -g grunt-cli\n\n\n\n\nComposer\n\n\nSome optional features, used in the included example and end-to-end test suite\nrequire additional tools, like \nComposer\n.\n\n\nThe example template bundles a \ncomposer.json\n file that installs supporting\ntools, like Behat with the Drupal Extension, PHPMD (PHP Mess Detector), and the\nPHP Code Sniffer, among others. By default, the build runs \ncomposer install\n to\ninstall these tools. You can modify composer.json to include other dependencies\nfor your project.\n\n\nStart using Gadget\n\n\nThe easiest way to start a new Drupal project with Grunt Drupal Tasks is to use\n\nGadget\n, a tool which offers an\ninteractive, text-based approach to building an initial project template.\n\n\nOnce you have Gadget installed, start a new Drupal project by running\n\nyo gadget\n in an empty directory and answer it\ns prompts.\n\n\n$\n yo gadget\n\n? Machine-name of your project? gadget-test\n? One-line project description? My new project.\n\n\n\n\nIf you wish to customize this structure, you can \noverride the default practices\nwith your project configuration\n,\nbut will need to manually adjusted generated files to match.\n\n\nFor an example of the default behavior, take a look at the\n\nexample project\n.",
+            "title": "Project Setup"
+        },
+        {
+            "location": "/05_SETUP/#setup-your-environment-project",
+            "text": "Get Node, Grunt,   Composer squared away, then use Gadget to spin up new projects.",
+            "title": "Setup Your Environment &amp; Project"
+        },
+        {
+            "location": "/05_SETUP/#requirements",
+            "text": "Note that Grunt Drupal Tasks is intended to be compatible with Node.js v4 and\nlater and PHP v5.5 and later. See the version 0.x series for compatibility with\nearlier versions of Node.js and PHP.",
+            "title": "Requirements"
+        },
+        {
+            "location": "/05_SETUP/#nodejs",
+            "text": "Install  Node.js v4.2.x or later  using  nvm ,\na  package manager ,\nor a  standalone installer .",
+            "title": "Node.js"
+        },
+        {
+            "location": "/05_SETUP/#grunt",
+            "text": "Once  Node.js  is installed, use  npm  to install grunt-cli , the Grunt command line interface,\nby running:  npm install -g grunt-cli",
+            "title": "Grunt"
+        },
+        {
+            "location": "/05_SETUP/#composer",
+            "text": "Some optional features, used in the included example and end-to-end test suite\nrequire additional tools, like  Composer .  The example template bundles a  composer.json  file that installs supporting\ntools, like Behat with the Drupal Extension, PHPMD (PHP Mess Detector), and the\nPHP Code Sniffer, among others. By default, the build runs  composer install  to\ninstall these tools. You can modify composer.json to include other dependencies\nfor your project.",
+            "title": "Composer"
+        },
+        {
+            "location": "/05_SETUP/#start-using-gadget",
+            "text": "The easiest way to start a new Drupal project with Grunt Drupal Tasks is to use Gadget , a tool which offers an\ninteractive, text-based approach to building an initial project template.  Once you have Gadget installed, start a new Drupal project by running yo gadget  in an empty directory and answer it s prompts.  $  yo gadget\n\n? Machine-name of your project? gadget-test\n? One-line project description? My new project.  If you wish to customize this structure, you can  override the default practices\nwith your project configuration ,\nbut will need to manually adjusted generated files to match.  For an example of the default behavior, take a look at the example project .",
+            "title": "Start using Gadget"
+        },
+        {
+            "location": "/10_BUILD/",
+            "text": "Code Structure \n Build Process\n\n\n\n\nWhat\ns your codebase and how is it used in a working Drupal site?\n\n\n\n\nContinuing discussing of code structure begun in the\n\nSetup section\n, Grunt Drupal Tasks is a build system driven by a\nknown \nscaffolding\n configuration to assemble a working Drupal site from custom\ncode and dependency manifests.\n\n\nThe Build\n\n\n$\n grunt\n\n\n\n\nThe build process is managed by running \ngrunt\n. If there are no errors, this\nwill result in assembling all the code and assets needed to run your Drupal site\nin \nbuild/html\n. The full process includes a number of steps, which assumes\nthe checkout of the codebase has already run \nnpm install\n to retrieve all Node\ndependencies.\n\n\n\n\nComposer Install:\n Retrieve all development dependencies in the project\n  composer.json. For Drupal 8.x, this also includes the management of Drupal\n  dependencies via Composer.\n\n\nValidate:\n Run static analysis and code quality checks against custom code.\n\n\nDrush Make:\n For Drupal 7.x projects, if the Drush makefiles are newer\n  than the built codebase, Drush Make will run to assemble upstream\n  dependencies. For Drupal 8.x projects, Composer is used instead of Drush Make.\n\n\nScaffold:\n Copy and symlink custom code into the assembled codebase.\n\n\nTheme Triggers:\n Run any theme triggers to validate code or build assets\n  on a per-theme basis.\n\n\n\n\nThe Scaffold\n\n\nThe scaffold, which can be thought of as the root directory and the conventions\naround having discrete \nsrc/\n, \nbuild/\n, \ntest/\n, and other folders, focuses on\nproviding clear context to developers for the different pieces of the codebase.\n\n\nOperational code and build artifacts are contained in the \nbuild/\n directory,\nthe other parts of the repository are intuitively discovered for easy editing.\n\n\nExamples in the documentation and the default behavior of Grunt Drupal Tasks,\nuse a standardized convention that is significantly configurable for individual\nproject needs.\n\n\nStructure of the Code Repository\n\n\nOn looking at the code repository, there is no sign of Drupal core. That is\nbecause Drupal core, contributed modules, and any other upstream dependency or\ngenerated code is not part of the code repository. This structure organizes\ncustom code, configuration, and manifests of dependencies which are downloaded\nas-needed by the \nbuild process\n.\n\n\nsrc/\n  \u21b3 libraries/\n  \u21b3 modules/\n  \u21b3 profiles/\n  \u21b3 sites/\n  \u21b3 static/\n  \u21b3 themes/\n  \u21b3 project.make\ntest/\n  \u21b3 behat.yml\n  \u21b3 features/\ncomposer.json\nGruntconfig.json\nGruntfile.js\npackage.json\nphpmd.xml\n\n\n\n\nSetting up Source Code\n\n\n\n\n\n\nPlace custom modules in \nsrc/modules/\n. When the project is built, the\n  contents of src/modules/ become part of the Drupal\ns sites/all/modules/\n  directory (via a symlink from sites/all/modules/custom/ to src/modules/).\n\n\n\n\n\n\nPlace custom installation profiles in \nsrc/profiles/\n. When the project is\n  built, the contents of src/profiles become part of Drupal\ns sites/all/modules/\n  directory (via symlink from profiles/ to each profile in src/profiles/).\n\n\n\n\n\n\nFor Drupal 8.x projects, customize the \ncomposer.json\n file to add module\n  dependencies. Patches can also be specified.\n\n\n\n\n\n\nFor Drupal 7.x projects, customize the Drush make file that is used at the\n  start of the build process. The example includes \nproject.make\n but this\n  file can be replaced or renamed with a setting change in Gruntconfig.json\n  (see below).\n\n\n\n\n\n\nInclude any sites directories (like \ndefault\n), optionally with settings.php\n  or other files, and if needed a multi-site sites.php in \nsrc/sites/\n. (The\n  contents of src/sites/ are copied into sites/.)\n\n\n\n\n\n\nInclude any static files that should be copied into the Drupal docroot on\n  build in \nsrc/static/\n. This allows for overriding files like \n.htaccess\n.\n\n\n\n\n\n\nPlace custom themes in \nsrc/themes/\n. When the project is built, the\n  contents of src/themes/ become part of the Drupal\ns sites/all/themes/\n  directory (via a symlink from sites/all/themes/custom/ to src/themes/).\n\n\n\n\n\n\nBuild Directory Structure\n\n\nbuild/\n  \u21b3 cache\n  \u21b3 html\n  \u21b3 packages\n  \u21b3 reports\n  \u21b3 temp\nnode_modules/\nvendor/\n\n\n\n\nCustomizing the Build\n\n\nGrunt Drupal Tasks is designed to provide sensible default behaviors for Drupal\nprojects, but allow these assumptions to be overridden.\n\n\nGruntconfig.json\n is a settings file that allows certain paths and optional\nfeatures to be configured on a project-specific basis.\n\n\nConfiguration Options\n\n\nThe core set of configuration options for Gruntconfig.json specify the basic\nbuild parameters: the code to build, and the output directories to use.\n\n\nThis is the minimum set of configuration options:\n\n\n{\n  \nsrcPaths\n: {\n    \ndrupal\n: \nsrc\n,\n  }\n}\n\n\n\n\nsrcPaths.drupal\n: The directory that contains all project-specific Drupal\ncode and configuration. Grunt Drupal Tasks assumes this directory has the\nfollowing structure:\n\n\nsrc/\n  modules/\n  profiles/\n  sites/\n  static/\n  themes/\n\n\n\n\nThe following build output paths are optional to specify in the project\ns\n\nGruntconfig.json\n file.\n\n\nsrcPaths.make\n: The Drush make file used to assemble the Drupal project.\nThis is only used for Drupal 7.x projects.  Example is \nsrc/project.make\n.\n\n\nbuildPaths.build\n: The directory that should be used for miscellaneous build\nartifacts. This can be the parent directory of the following build paths.\n\n\nbuildPaths.html\n: The directory that should be used for the Drupal docroot\nbuild destination generated by the default build operation.\n\n\nbuildPaths.package\n: The directory that should be used to store packages\ngenerated on demand by the \npackage\n operation.\n\n\nbuildPaths.reports\n: The directory that should be used for output from the\nanalysis and validation tools.\n\n\nbuildPaths.temp\n: The directory that should be used for temporary build\nartifacts. This can be a subdirectory of \nbuildPaths.html\n.\n\n\nDeveloper Modification\n\n\nThere are two ways to change the default build process (which is run when simply\ntyping \ngrunt\n into the command-line.)\n\n\nFork the Build Process\n\n\nAdd the following code snippet after the Grunt Drupal Tasks \nbootstrap.js\n file\nis loaded in your \ngruntfile.js\n.\n\n\ngrunt.registerTask('default', [\n  'alternate',\n  'list',\n  'of',\n  'tasks'\n]);\n\n\n\n\nYou may use any of the tasks available to Grunt when doing this, though\nsignificant changes to the build process may make it difficult to get support.\n\n\nPrepend or Append New Tasks\n\n\nIf you want to avoid forking the build process, but have some additional tasks\nthat need to be done, you can use this trick to add new tasks to the build.\n\n\nThis trick can be done multiple times after the initial load of \nbootstrap.js\n,\nwhich allows for modular customizations.\n\n\ngrunt.task.renameTask('default', 'default-pre-custom');\ngrunt.registerTask('default', ['shell:custom', 'default-pre-custom']);\n\n\n\n\nHacking Drush Make\n\n\nDrush Settings\n\n\nThis is an example of the settings for Drush tasks:\n\n\n{\n  \ndrush\n: {\n    \npath\n: \n/usr/bin/drush\n,\n    \nmake\n: {\n      \nargs\n: [\n--force-complete\n, \n--working-copy\n]\n    }\n  }\n}\n\n\n\n\ndrush.path\n: The path to the Drush executable that should be used for all\nDrush operations. If none is specified, the Drush executable found in the\ndefault PATH will be used.\n\n\ndrush.make.args\n: An array of arguments to pass to Drush for the make\noperation.",
+            "title": "Build Process"
+        },
+        {
+            "location": "/10_BUILD/#code-structure-build-process",
+            "text": "What s your codebase and how is it used in a working Drupal site?   Continuing discussing of code structure begun in the Setup section , Grunt Drupal Tasks is a build system driven by a\nknown  scaffolding  configuration to assemble a working Drupal site from custom\ncode and dependency manifests.",
+            "title": "Code Structure &amp; Build Process"
+        },
+        {
+            "location": "/10_BUILD/#the-build",
+            "text": "$  grunt  The build process is managed by running  grunt . If there are no errors, this\nwill result in assembling all the code and assets needed to run your Drupal site\nin  build/html . The full process includes a number of steps, which assumes\nthe checkout of the codebase has already run  npm install  to retrieve all Node\ndependencies.   Composer Install:  Retrieve all development dependencies in the project\n  composer.json. For Drupal 8.x, this also includes the management of Drupal\n  dependencies via Composer.  Validate:  Run static analysis and code quality checks against custom code.  Drush Make:  For Drupal 7.x projects, if the Drush makefiles are newer\n  than the built codebase, Drush Make will run to assemble upstream\n  dependencies. For Drupal 8.x projects, Composer is used instead of Drush Make.  Scaffold:  Copy and symlink custom code into the assembled codebase.  Theme Triggers:  Run any theme triggers to validate code or build assets\n  on a per-theme basis.",
+            "title": "The Build"
+        },
+        {
+            "location": "/10_BUILD/#the-scaffold",
+            "text": "The scaffold, which can be thought of as the root directory and the conventions\naround having discrete  src/ ,  build/ ,  test/ , and other folders, focuses on\nproviding clear context to developers for the different pieces of the codebase.  Operational code and build artifacts are contained in the  build/  directory,\nthe other parts of the repository are intuitively discovered for easy editing.  Examples in the documentation and the default behavior of Grunt Drupal Tasks,\nuse a standardized convention that is significantly configurable for individual\nproject needs.",
+            "title": "The Scaffold"
+        },
+        {
+            "location": "/10_BUILD/#structure-of-the-code-repository",
+            "text": "On looking at the code repository, there is no sign of Drupal core. That is\nbecause Drupal core, contributed modules, and any other upstream dependency or\ngenerated code is not part of the code repository. This structure organizes\ncustom code, configuration, and manifests of dependencies which are downloaded\nas-needed by the  build process .  src/\n  \u21b3 libraries/\n  \u21b3 modules/\n  \u21b3 profiles/\n  \u21b3 sites/\n  \u21b3 static/\n  \u21b3 themes/\n  \u21b3 project.make\ntest/\n  \u21b3 behat.yml\n  \u21b3 features/\ncomposer.json\nGruntconfig.json\nGruntfile.js\npackage.json\nphpmd.xml",
+            "title": "Structure of the Code Repository"
+        },
+        {
+            "location": "/10_BUILD/#setting-up-source-code",
+            "text": "Place custom modules in  src/modules/ . When the project is built, the\n  contents of src/modules/ become part of the Drupal s sites/all/modules/\n  directory (via a symlink from sites/all/modules/custom/ to src/modules/).    Place custom installation profiles in  src/profiles/ . When the project is\n  built, the contents of src/profiles become part of Drupal s sites/all/modules/\n  directory (via symlink from profiles/ to each profile in src/profiles/).    For Drupal 8.x projects, customize the  composer.json  file to add module\n  dependencies. Patches can also be specified.    For Drupal 7.x projects, customize the Drush make file that is used at the\n  start of the build process. The example includes  project.make  but this\n  file can be replaced or renamed with a setting change in Gruntconfig.json\n  (see below).    Include any sites directories (like  default ), optionally with settings.php\n  or other files, and if needed a multi-site sites.php in  src/sites/ . (The\n  contents of src/sites/ are copied into sites/.)    Include any static files that should be copied into the Drupal docroot on\n  build in  src/static/ . This allows for overriding files like  .htaccess .    Place custom themes in  src/themes/ . When the project is built, the\n  contents of src/themes/ become part of the Drupal s sites/all/themes/\n  directory (via a symlink from sites/all/themes/custom/ to src/themes/).",
+            "title": "Setting up Source Code"
+        },
+        {
+            "location": "/10_BUILD/#build-directory-structure",
+            "text": "build/\n  \u21b3 cache\n  \u21b3 html\n  \u21b3 packages\n  \u21b3 reports\n  \u21b3 temp\nnode_modules/\nvendor/",
+            "title": "Build Directory Structure"
+        },
+        {
+            "location": "/10_BUILD/#customizing-the-build",
+            "text": "Grunt Drupal Tasks is designed to provide sensible default behaviors for Drupal\nprojects, but allow these assumptions to be overridden.  Gruntconfig.json  is a settings file that allows certain paths and optional\nfeatures to be configured on a project-specific basis.",
+            "title": "Customizing the Build"
+        },
+        {
+            "location": "/10_BUILD/#configuration-options",
+            "text": "The core set of configuration options for Gruntconfig.json specify the basic\nbuild parameters: the code to build, and the output directories to use.  This is the minimum set of configuration options:  {\n   srcPaths : {\n     drupal :  src ,\n  }\n}  srcPaths.drupal : The directory that contains all project-specific Drupal\ncode and configuration. Grunt Drupal Tasks assumes this directory has the\nfollowing structure:  src/\n  modules/\n  profiles/\n  sites/\n  static/\n  themes/  The following build output paths are optional to specify in the project s Gruntconfig.json  file.  srcPaths.make : The Drush make file used to assemble the Drupal project.\nThis is only used for Drupal 7.x projects.  Example is  src/project.make .  buildPaths.build : The directory that should be used for miscellaneous build\nartifacts. This can be the parent directory of the following build paths.  buildPaths.html : The directory that should be used for the Drupal docroot\nbuild destination generated by the default build operation.  buildPaths.package : The directory that should be used to store packages\ngenerated on demand by the  package  operation.  buildPaths.reports : The directory that should be used for output from the\nanalysis and validation tools.  buildPaths.temp : The directory that should be used for temporary build\nartifacts. This can be a subdirectory of  buildPaths.html .",
+            "title": "Configuration Options"
+        },
+        {
+            "location": "/10_BUILD/#developer-modification",
+            "text": "There are two ways to change the default build process (which is run when simply\ntyping  grunt  into the command-line.)",
+            "title": "Developer Modification"
+        },
+        {
+            "location": "/10_BUILD/#fork-the-build-process",
+            "text": "Add the following code snippet after the Grunt Drupal Tasks  bootstrap.js  file\nis loaded in your  gruntfile.js .  grunt.registerTask('default', [\n  'alternate',\n  'list',\n  'of',\n  'tasks'\n]);  You may use any of the tasks available to Grunt when doing this, though\nsignificant changes to the build process may make it difficult to get support.",
+            "title": "Fork the Build Process"
+        },
+        {
+            "location": "/10_BUILD/#prepend-or-append-new-tasks",
+            "text": "If you want to avoid forking the build process, but have some additional tasks\nthat need to be done, you can use this trick to add new tasks to the build.  This trick can be done multiple times after the initial load of  bootstrap.js ,\nwhich allows for modular customizations.  grunt.task.renameTask('default', 'default-pre-custom');\ngrunt.registerTask('default', ['shell:custom', 'default-pre-custom']);",
+            "title": "Prepend or Append New Tasks"
+        },
+        {
+            "location": "/10_BUILD/#hacking-drush-make",
+            "text": "",
+            "title": "Hacking Drush Make"
+        },
+        {
+            "location": "/10_BUILD/#drush-settings",
+            "text": "This is an example of the settings for Drush tasks:  {\n   drush : {\n     path :  /usr/bin/drush ,\n     make : {\n       args : [ --force-complete ,  --working-copy ]\n    }\n  }\n}  drush.path : The path to the Drush executable that should be used for all\nDrush operations. If none is specified, the Drush executable found in the\ndefault PATH will be used.  drush.make.args : An array of arguments to pass to Drush for the make\noperation.",
+            "title": "Drush Settings"
+        },
+        {
+            "location": "/20_QUALITY/",
+            "text": "Quality\n\n\n\n\nMaintaining code quality and managing static analysis.\n\n\n\n\nGrunt Drupal Tasks makes a point of easing management of good coding practices\nby building code quality checks into the default build process, and applying\nseveral best-of-breed tools to evaluate code changes.\n\n\n\n\nThe \ngrunt validate\n task runs the same operation the build process executes.\n\n\nThe \ngrunt analyze\n task runs the same, along with the PHP Mess Detector, and\n\n\noutputs all results in checkstyle XML format for consumption by Jenkins or\n\n\nother reporting tools.\n\n\n\n\nIf you are interested in applying validation against files changed in your git\nrepository, read more on\n\nhow Grunt Drupal Tasks can manage your Git Hooks\n.\n\n\nValidate Settings\n\n\nThe \nvalidate\n task runs eslint, phpcs, phplint against all custom code. If a\ntheme has it\ns own \nvalidate\n operation configured for grunt, it will skip\neslint.\n\n\nvalidate.ignoreError\n: Set to \ntrue\n to prevent failing the build if code\nquality validation fails (which also prevents other tasks from executing).\n\n\neslint\n\n\nExample of eslint configuration:\n\n\neslint\n: {\n  \ndir\n: [\n    '\n%= config.srcPaths.drupal %\n/themes/*/js/**/*.js',\n    '\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries}/**/*.js'\n  ]\n},\n\n\n\n\neslint\n: To enable eslint, set to \ntrue\n to use default options or an object\nwith the following optional settings.\n\n\neslint.configFile\n: The path to the eslint config file to use. If no value\nis specified, then \n.eslintrc\n in the project root is used.\n\n\neslint.dir\n: An array of glob patterns to include/exclude files for\nreview by eslint. The following is used by default:\n\n\nPHPLint\n\n\nphplint.dir\n: An array of globbing patterns which phplint should include or\nexclude from PHP code syntax validation.\n\n\nphplint\n: {\n  \ndir\n: [\n    '\n%= config.srcPaths.drupal %\n/sites/**/*.{php,inc}',\n    '\n%= config.srcPaths.drupal %\n/themes/*/template.php',\n    '\n%= config.srcPaths.drupal %\n/themes/*/templates/**/*.php',\n    '\n%= config.srcPaths.drupal %\n/themes/*/includes/**/*.{inc,php}',\n    '\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.{php,module,inc,install,profile}',\n    '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.{box,pages_default,views_default,panelizer,strongarm}.inc',\n    '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.features.*inc',\n    '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/vendor/**'\n  ]\n}\n\n\n\n\nPHPCS\n\n\nphpcs.path\n: The path to the PHPCS executable.\n\n\nphpcs.standard\n: The PHPCS coding standard to use. The example composer.json\ninstalls the Drupal Coder\ns standard, the path of which is shown above.\n\n\nphpcs.dir\n: An array of globbing pattern where phpcs should search for files.\nThis can be used to replace the defaults supplied by grunt-drupal-tasks.\n\n\nThis example placed in the Gruntconfig.json file ignores directories named\n\npattern-lab\n and a \nbower_components\n in addition to the defaults that come\nwith grunt-drupal-tasks:\n\n\n{\n  \nphpcs\n: {\n    \npath\n: \nvendor/bin/phpcs\n,\n    \ndir\n: [\n      '\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.{php,module,inc,install,profile}',\n      '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.{box,pages_default,views_default,panelizer,strongarm}.inc',\n      '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.features.*inc',\n      '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/vendor/**',\n      '!\n%= config.srcPaths.drupal %\n/{modules,profiles,libraries,static}/**/*.tpl.php'\n    ]\n  }\n}\n\n\n\n\n\n\nIf there is no \nphpcs\n key in the configuration, the system will assume you\nare not using PHPCS and will suppress it from the system.\n\n\nThe formal coding standards for PHPTemplate files (ending in \n.tpl.php\n)\nseem to be rarely followed or enforced. By default we skip PHPCS processing\nof these files.\n\n\n\n\nAnalyze Settings\n\n\nIn addition to all the behaviors under the Validate section, Analyze adds\nadditional reporting that does not make sense as part of the build process,\nsuch as tools that are too time-consuming to run on a regular basis.\n\n\nPHP Mess Detector (PHPMD)\n\n\nThis tool is less focused on codified practice, and more on the architectural\nimplications of code complexity, though there is some overlap in the rulesets.\n\n\n{\n  \nphpmd\n: {\n    \nconfigPath\n: \nphpmd.xml\n,\n    \npath\n: \nbin/phpmd\n\n    \nexcludePaths\n: [\n      \nbower_components\n,\n      \nnode_modules\n\n    ]\n  }\n}\n\n\n\n\nphpmd.configPath\n: The configuration file to use with PHPMD. Defaults to\n\nphpmd.xml\n.\n\n\nphpmd.excludePaths\n: An array of string path patterns that should be skipped\nby PHPMD.\n\n\nphpmd.path\n: The path to the PHPMD executable.\n\n\n\n\nIf there is no \nphpmd\n key in the configuration, the system will assume you\nare not using PHPMD and will suppress it from the system.",
+            "title": "Code Quality"
+        },
+        {
+            "location": "/20_QUALITY/#quality",
+            "text": "Maintaining code quality and managing static analysis.   Grunt Drupal Tasks makes a point of easing management of good coding practices\nby building code quality checks into the default build process, and applying\nseveral best-of-breed tools to evaluate code changes.   The  grunt validate  task runs the same operation the build process executes.  The  grunt analyze  task runs the same, along with the PHP Mess Detector, and  outputs all results in checkstyle XML format for consumption by Jenkins or  other reporting tools.   If you are interested in applying validation against files changed in your git\nrepository, read more on how Grunt Drupal Tasks can manage your Git Hooks .",
+            "title": "Quality"
+        },
+        {
+            "location": "/20_QUALITY/#validate-settings",
+            "text": "The  validate  task runs eslint, phpcs, phplint against all custom code. If a\ntheme has it s own  validate  operation configured for grunt, it will skip\neslint.  validate.ignoreError : Set to  true  to prevent failing the build if code\nquality validation fails (which also prevents other tasks from executing).",
+            "title": "Validate Settings"
+        },
+        {
+            "location": "/20_QUALITY/#eslint",
+            "text": "Example of eslint configuration:  eslint : {\n   dir : [\n    ' %= config.srcPaths.drupal % /themes/*/js/**/*.js',\n    ' %= config.srcPaths.drupal % /{modules,profiles,libraries}/**/*.js'\n  ]\n},  eslint : To enable eslint, set to  true  to use default options or an object\nwith the following optional settings.  eslint.configFile : The path to the eslint config file to use. If no value\nis specified, then  .eslintrc  in the project root is used.  eslint.dir : An array of glob patterns to include/exclude files for\nreview by eslint. The following is used by default:",
+            "title": "eslint"
+        },
+        {
+            "location": "/20_QUALITY/#phplint",
+            "text": "phplint.dir : An array of globbing patterns which phplint should include or\nexclude from PHP code syntax validation.  phplint : {\n   dir : [\n    ' %= config.srcPaths.drupal % /sites/**/*.{php,inc}',\n    ' %= config.srcPaths.drupal % /themes/*/template.php',\n    ' %= config.srcPaths.drupal % /themes/*/templates/**/*.php',\n    ' %= config.srcPaths.drupal % /themes/*/includes/**/*.{inc,php}',\n    ' %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.{php,module,inc,install,profile}',\n    '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.{box,pages_default,views_default,panelizer,strongarm}.inc',\n    '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.features.*inc',\n    '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/vendor/**'\n  ]\n}",
+            "title": "PHPLint"
+        },
+        {
+            "location": "/20_QUALITY/#phpcs",
+            "text": "phpcs.path : The path to the PHPCS executable.  phpcs.standard : The PHPCS coding standard to use. The example composer.json\ninstalls the Drupal Coder s standard, the path of which is shown above.  phpcs.dir : An array of globbing pattern where phpcs should search for files.\nThis can be used to replace the defaults supplied by grunt-drupal-tasks.  This example placed in the Gruntconfig.json file ignores directories named pattern-lab  and a  bower_components  in addition to the defaults that come\nwith grunt-drupal-tasks:  {\n   phpcs : {\n     path :  vendor/bin/phpcs ,\n     dir : [\n      ' %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.{php,module,inc,install,profile}',\n      '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.{box,pages_default,views_default,panelizer,strongarm}.inc',\n      '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.features.*inc',\n      '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/vendor/**',\n      '! %= config.srcPaths.drupal % /{modules,profiles,libraries,static}/**/*.tpl.php'\n    ]\n  }\n}   If there is no  phpcs  key in the configuration, the system will assume you\nare not using PHPCS and will suppress it from the system.  The formal coding standards for PHPTemplate files (ending in  .tpl.php )\nseem to be rarely followed or enforced. By default we skip PHPCS processing\nof these files.",
+            "title": "PHPCS"
+        },
+        {
+            "location": "/20_QUALITY/#analyze-settings",
+            "text": "In addition to all the behaviors under the Validate section, Analyze adds\nadditional reporting that does not make sense as part of the build process,\nsuch as tools that are too time-consuming to run on a regular basis.",
+            "title": "Analyze Settings"
+        },
+        {
+            "location": "/20_QUALITY/#php-mess-detector-phpmd",
+            "text": "This tool is less focused on codified practice, and more on the architectural\nimplications of code complexity, though there is some overlap in the rulesets.  {\n   phpmd : {\n     configPath :  phpmd.xml ,\n     path :  bin/phpmd \n     excludePaths : [\n       bower_components ,\n       node_modules \n    ]\n  }\n}  phpmd.configPath : The configuration file to use with PHPMD. Defaults to phpmd.xml .  phpmd.excludePaths : An array of string path patterns that should be skipped\nby PHPMD.  phpmd.path : The path to the PHPMD executable.   If there is no  phpmd  key in the configuration, the system will assume you\nare not using PHPMD and will suppress it from the system.",
+            "title": "PHP Mess Detector (PHPMD)"
+        },
+        {
+            "location": "/30_FRONTEND/",
+            "text": "Frontend \n Theme Operations\n\n\n\n\nFacilitate integration with Drupal themes as owners of their own script-driven\ntooling.\n\n\n\n\nMaking Grunt Theme-Aware\n\n\nFor each theme Grunt should be aware of, it will need an entry in the\n\nGruntconfig.json\n under the themes property. This might look like the\nfollowing:\n\n\n{\n  \nthemes\n: {\n    \nspartan\n: {\n      \npath\n: \n%= config.srcPaths.drupal %\n/themes/spartan\n\n    }\n  }\n}\n\n\n\n\nthemes\n: Defines each custom Drupal theme and enables features, like\nintegration with theme scripts.\n\n\nthemes.\\\ntheme>.path\n: Specify the path to the theme. Defaults to\n\n%= config.srcPaths.drupal %\n/themes/\\\ntheme\\\n.\n\n\nTheme Scripts\n\n\nMany themes come with their own tooling, possibly grunt-based as well. In those\ncases you can configure Grunt-Drupal-Tasks with the ability to trigger those\ntasks, and by magic naming attach some theme-specific functions to the more\ngeneral project tasks.\n\n\nlegionaire\n: {\n  \npath\n: \n%= config.srcPaths.drupal %\n/themes/legionaire\n,\n  \nscripts\n: {\n    \ncompile-theme\n: \ngrunt compile\n\n    \nvalidate\n: \ngrunt eslint\n,\n    \nanalyze\n: \necho 'No theme-specific analysis tools here!'\n,\n    \nls\n: \nls -lR\n\n  }\n}\n\n\n\n\ngrunt themes\n may be run to list all themes setup in your project\nGruntconfig.json. \ngrunt themes:\\\ntheme\\\n will list all the options in the\ntheme\ns scripts config as a means of providing usage documentation.\n\ngrunt themes:\\\ntheme\\\n:\\\ntask\\\n will run the script keyed by \n\\\ntask\\\n from\nthe theme\ns directory.\n\n\nThree of the key names are magic: \ncompile-theme\n, \nvalidate\n, and \nanalyze\n.\nWhen one of those three is specified, Grunt Drupal Tasks will automatically\nrun the command as part of the actions it takes for \ngrunt compile-theme\n,\n\ngrunt validate\n, and \ngrunt analyze\n.\n\n\nNote that Theme Scripts support the \npre-\n and \npost-\n operations explained in\nProject Operations. This means if you configure a \ncompile-theme\n task in\n\nGruntconfig.json\n, you may also configure a \npre-compile-theme\n and a\n\npost-compile-theme\n.",
+            "title": "Frontend Ties"
+        },
+        {
+            "location": "/30_FRONTEND/#frontend-theme-operations",
+            "text": "Facilitate integration with Drupal themes as owners of their own script-driven\ntooling.",
+            "title": "Frontend &amp; Theme Operations"
+        },
+        {
+            "location": "/30_FRONTEND/#making-grunt-theme-aware",
+            "text": "For each theme Grunt should be aware of, it will need an entry in the Gruntconfig.json  under the themes property. This might look like the\nfollowing:  {\n   themes : {\n     spartan : {\n       path :  %= config.srcPaths.drupal % /themes/spartan \n    }\n  }\n}  themes : Defines each custom Drupal theme and enables features, like\nintegration with theme scripts.  themes.\\ theme>.path : Specify the path to the theme. Defaults to %= config.srcPaths.drupal % /themes/\\ theme\\ .",
+            "title": "Making Grunt Theme-Aware"
+        },
+        {
+            "location": "/30_FRONTEND/#theme-scripts",
+            "text": "Many themes come with their own tooling, possibly grunt-based as well. In those\ncases you can configure Grunt-Drupal-Tasks with the ability to trigger those\ntasks, and by magic naming attach some theme-specific functions to the more\ngeneral project tasks.  legionaire : {\n   path :  %= config.srcPaths.drupal % /themes/legionaire ,\n   scripts : {\n     compile-theme :  grunt compile \n     validate :  grunt eslint ,\n     analyze :  echo 'No theme-specific analysis tools here!' ,\n     ls :  ls -lR \n  }\n}  grunt themes  may be run to list all themes setup in your project\nGruntconfig.json.  grunt themes:\\ theme\\  will list all the options in the\ntheme s scripts config as a means of providing usage documentation. grunt themes:\\ theme\\ :\\ task\\  will run the script keyed by  \\ task\\  from\nthe theme s directory.  Three of the key names are magic:  compile-theme ,  validate , and  analyze .\nWhen one of those three is specified, Grunt Drupal Tasks will automatically\nrun the command as part of the actions it takes for  grunt compile-theme , grunt validate , and  grunt analyze .  Note that Theme Scripts support the  pre-  and  post-  operations explained in\nProject Operations. This means if you configure a  compile-theme  task in Gruntconfig.json , you may also configure a  pre-compile-theme  and a post-compile-theme .",
+            "title": "Theme Scripts"
+        },
+        {
+            "location": "/40_OPERATIONS/",
+            "text": "Project Operations\n\n\n\n\nOperations other than testing involved in the creation, hosting, and\nmanagement of a running Drupal site.\n\n\n\n\nInvoking Ad Hoc Operations\n\n\nSome of the most common use cases for any Drupal site are the basic operations\nof installation, running database updates, and clearing the cache. These are not\ndifficult operations, but many developers appreciate the common shorthand a\nlittle grunt magic can provide.\n\n\nTo keep this flexible the new Operations system offers nothing out of the box,\nbut facilitates creating lightweight commands or callouts to the shell for more\nadvanced scripts you want easily run on the project by the entire team.\n\n\nThis should remind you of the \nFrontend \n Theming Operations\n.\n\n\n{\n  \nscripts\n: {\n    \nupdate\n: \ndrush \n%= config.alias %\n updatedb -yv \n drush \n%= config.alias %\n features-revert-all -yv\n,\n    \nreset\n: \ndrush \n%= config.alias %\n registry-rebuild \n drush \n%= config.alias %\n cc all\n\n  }\n}\n\n\n\n\nHere you see two commands defined inside the top-level \nscripts\n configuration.\n\n\n\n\ngrunt update\n demonstrates running database updates and reverting all\n\nFeatures\n.\n\n\ngrunt reset\n demonstrates a thorough reset of the file registry and Drupal\ncaches.\n\n\n\n\nThe Alias and Profile is specified per the rules for \nMagic Configuration\n.\n\n\nalias\n: The Drush Site Alias. This is computed as a helper for use in\nproject operations, but is not yet applied as part of other tasks. Defaults to\n\n@\ndomain\n. The environment variable to override is \nGDT_SITE_ALIAS\n.\n\n\nPre and Post Operations\n\n\nSimilar to \nnpm run\n, the operations defined in your Gruntconfig will support\n\npre-\n and \npost-\n variants. If the main script exists the pre-script will be\ntriggered first and the post-script will be triggered after. This allows you to\neasily extend any project operation with separate grunt, bash, or other tasks.\n\n\nFor example, if you define a new script \nupdate\n, you may also configure\n\npre-update\n and \npost-update\n.\n\n\nInstall settings\n\n\nThe \ninstall\n task will either install Drupal via the configured \nprofile\n, or\nif a path to a database is configured, load this database:\n\n\nTo specify a profile other than the \nstandard\n profile:\n\n\n{\n  \nproject\n: {\n    \nprofile\n: \nopenatrium\n\n  }\n}\n\n\n\n\nto specify a database to load:\n\n\n{\n  \nproject\n: {\n    \ndb\n: \npath/to/project.sql.gz\n\n  }\n}\n\n\n\n\nproject.profile\n The Drupal installation profile, this will be used to\nconfigure the behavior of the \ngrunt install\n and \ngrunt serve\n tasks. Defaults\nto \nstandard\n. The environment variable is \nGDT_INSTALL_PROFILE\n\n\nproject.db\n If specified, this database will be loaded instead of running a\nsite installation. If the file referenced is not present \ngrunt install\n will\nfall back to a standard \ndrush site-install\n.\n\n\nPre and Post Installation\n\n\nThe install task has a unique implementation of support for the pre and post\nscripts otherwise made available for themes and project operations. This allows\nyou to implement simple directives or scripts to prepare for installation or\nperform non-standardized operations after the main installation routine.\n\n\nServe Settings\n\n\nThe Serve task allows you to run Drupal using PHP\ns built-in webserver. This\nfacilitates quick demos and low-overhead development for projects with simple\ninfrastructure requirements. When using this task it will take over the\nterminal window.\n\n\ngrunt serve\n will not install the Drupal site. Run with \ngrunt serve:demo\n to\nskip starting up watch tasks.\n\n\n{\n  \nproject\n: {\n    \nprofile\n: 'project_profile_name'\n  },\n  \nserve\n: {\n    \nport\n: 9043,\n    \nconcurrent\n: [\n      \nwatch-theme\n\n    ]\n  }\n}\n\n\n\n\nserve.port\n: The port number to bind for the webserver. Only one service may\noccupy a port on a machine, so a project-specific port may be worthwhile.\nDefaults to \n8080\n.\n\n\nserve.concurrent\n: An array of grunt tasks to be run concurrently to the\nserver. When run with \nserve:demo\n or \nserve:test\n these tasks are not used. By\ndefault they include \nwatch-test\n and \nwatch-theme\n. If you use this\nconfiguration to add tasks be sure to include these as they will be suppressed\nby any configuration.",
+            "title": "Project Operations"
+        },
+        {
+            "location": "/40_OPERATIONS/#project-operations",
+            "text": "Operations other than testing involved in the creation, hosting, and\nmanagement of a running Drupal site.",
+            "title": "Project Operations"
+        },
+        {
+            "location": "/40_OPERATIONS/#invoking-ad-hoc-operations",
+            "text": "Some of the most common use cases for any Drupal site are the basic operations\nof installation, running database updates, and clearing the cache. These are not\ndifficult operations, but many developers appreciate the common shorthand a\nlittle grunt magic can provide.  To keep this flexible the new Operations system offers nothing out of the box,\nbut facilitates creating lightweight commands or callouts to the shell for more\nadvanced scripts you want easily run on the project by the entire team.  This should remind you of the  Frontend   Theming Operations .  {\n   scripts : {\n     update :  drush  %= config.alias %  updatedb -yv   drush  %= config.alias %  features-revert-all -yv ,\n     reset :  drush  %= config.alias %  registry-rebuild   drush  %= config.alias %  cc all \n  }\n}  Here you see two commands defined inside the top-level  scripts  configuration.   grunt update  demonstrates running database updates and reverting all Features .  grunt reset  demonstrates a thorough reset of the file registry and Drupal\ncaches.   The Alias and Profile is specified per the rules for  Magic Configuration .  alias : The Drush Site Alias. This is computed as a helper for use in\nproject operations, but is not yet applied as part of other tasks. Defaults to @ domain . The environment variable to override is  GDT_SITE_ALIAS .",
+            "title": "Invoking Ad Hoc Operations"
+        },
+        {
+            "location": "/40_OPERATIONS/#pre-and-post-operations",
+            "text": "Similar to  npm run , the operations defined in your Gruntconfig will support pre-  and  post-  variants. If the main script exists the pre-script will be\ntriggered first and the post-script will be triggered after. This allows you to\neasily extend any project operation with separate grunt, bash, or other tasks.  For example, if you define a new script  update , you may also configure pre-update  and  post-update .",
+            "title": "Pre and Post Operations"
+        },
+        {
+            "location": "/40_OPERATIONS/#install-settings",
+            "text": "The  install  task will either install Drupal via the configured  profile , or\nif a path to a database is configured, load this database:  To specify a profile other than the  standard  profile:  {\n   project : {\n     profile :  openatrium \n  }\n}  to specify a database to load:  {\n   project : {\n     db :  path/to/project.sql.gz \n  }\n}  project.profile  The Drupal installation profile, this will be used to\nconfigure the behavior of the  grunt install  and  grunt serve  tasks. Defaults\nto  standard . The environment variable is  GDT_INSTALL_PROFILE  project.db  If specified, this database will be loaded instead of running a\nsite installation. If the file referenced is not present  grunt install  will\nfall back to a standard  drush site-install .",
+            "title": "Install settings"
+        },
+        {
+            "location": "/40_OPERATIONS/#pre-and-post-installation",
+            "text": "The install task has a unique implementation of support for the pre and post\nscripts otherwise made available for themes and project operations. This allows\nyou to implement simple directives or scripts to prepare for installation or\nperform non-standardized operations after the main installation routine.",
+            "title": "Pre and Post Installation"
+        },
+        {
+            "location": "/40_OPERATIONS/#serve-settings",
+            "text": "The Serve task allows you to run Drupal using PHP s built-in webserver. This\nfacilitates quick demos and low-overhead development for projects with simple\ninfrastructure requirements. When using this task it will take over the\nterminal window.  grunt serve  will not install the Drupal site. Run with  grunt serve:demo  to\nskip starting up watch tasks.  {\n   project : {\n     profile : 'project_profile_name'\n  },\n   serve : {\n     port : 9043,\n     concurrent : [\n       watch-theme \n    ]\n  }\n}  serve.port : The port number to bind for the webserver. Only one service may\noccupy a port on a machine, so a project-specific port may be worthwhile.\nDefaults to  8080 .  serve.concurrent : An array of grunt tasks to be run concurrently to the\nserver. When run with  serve:demo  or  serve:test  these tasks are not used. By\ndefault they include  watch-test  and  watch-theme . If you use this\nconfiguration to add tasks be sure to include these as they will be suppressed\nby any configuration.",
+            "title": "Serve Settings"
+        },
+        {
+            "location": "/40_TESTING/",
+            "text": "Testing\n\n\n\n\nUnit, Functional, Integration, and End-to-End test running.\n\n\n\n\nConfiguration\n\n\ndomain\n: The domain of the site without protocol. It may also be a Base URL\n(with a path prefix) so long as the protocol is excluded. This domain is used\nto construct complete URLs for testing purposes. This may be overridden by the\n\nGDT_DOMAIN\n environment variable, and if neither is set will fall back to the\nenvironment\ns hostname. If a domain is specified, we recommend it is lined up\nwith any standard set for local development, as development processes should\nnot default to hitting a production or staging environment.\n\n\nsiteUrls\n: (Optional) A map of Drupal subsite names to the URLs by which\neach can be accessed for end-to-end testing by tools such as Behat. For clarity\nplease align the site names (keys) with any Drush Site Aliases. If no siteUrls\nare specified it will default to \nhttp://\n%= config.domain %\n. The environment\nvariable override is \nGDT_SITEURLS\n.\n\n\n  \nsiteUrls\n: {\n    \ndefault\n: \nhttp://\n%= config.domain %\n,\n    \nsubsite\n: \nhttp://sub.\n%= config.domain %\n.local\n,\n    \nexternal\n: \nhttp://example.com\n\n  },\n\n\n\n\nBehat Settings\n\n\nTo support Behat tests, the example includes a basic \nbehat.yml\n configuration\nfile and a \nfeatures/\n directory for test cases inside the general \ntest/\n\ndirectory.\n\n\nThis is an example of the settings for Behat tasks:\n\n\n{\n  \nbehat\n: {\n    \nflags\n: \n--tags '~@javascript'\n,\n    \npath\n: \n/usr/local/bin/behat\n,\n    \nsubsite\n: {\n      \nsrc\n: \n./test/features/subsite/*.feature\n,\n      \ndebug\n: false\n    }\n  }\n}\n\n\n\n\nbehat.\\\nsiteurl>\n: A map of Drupal subsite names to a configuration object,\nwhich will extend the defaults passed to\n\ngrunt-parallel-behat\n\n\nbehat.flags\n: A string with any command-line arguments and options that\nshould be used while invoking Behat. These flags can be overridden by using the\n\n--behat-flags\n option when running \ngrunt\n. Common use cases are to include or\nexclude tests according to tags or to use an alternative profile defined in\n\nbehat.yml\n.\n\n\nbehat.path\n: A string with the path to the Behat executable. By default, this\nis set to \nvendor/bin/behat\n to use the version of Behat installed by Composer.\nOnly set this option if you need to use a specific version of Behat that is\ninstalled elsewhere.",
+            "title": "Testing"
+        },
+        {
+            "location": "/40_TESTING/#testing",
+            "text": "Unit, Functional, Integration, and End-to-End test running.",
+            "title": "Testing"
+        },
+        {
+            "location": "/40_TESTING/#configuration",
+            "text": "domain : The domain of the site without protocol. It may also be a Base URL\n(with a path prefix) so long as the protocol is excluded. This domain is used\nto construct complete URLs for testing purposes. This may be overridden by the GDT_DOMAIN  environment variable, and if neither is set will fall back to the\nenvironment s hostname. If a domain is specified, we recommend it is lined up\nwith any standard set for local development, as development processes should\nnot default to hitting a production or staging environment.  siteUrls : (Optional) A map of Drupal subsite names to the URLs by which\neach can be accessed for end-to-end testing by tools such as Behat. For clarity\nplease align the site names (keys) with any Drush Site Aliases. If no siteUrls\nare specified it will default to  http:// %= config.domain % . The environment\nvariable override is  GDT_SITEURLS .     siteUrls : {\n     default :  http:// %= config.domain % ,\n     subsite :  http://sub. %= config.domain % .local ,\n     external :  http://example.com \n  },",
+            "title": "Configuration"
+        },
+        {
+            "location": "/40_TESTING/#behat-settings",
+            "text": "To support Behat tests, the example includes a basic  behat.yml  configuration\nfile and a  features/  directory for test cases inside the general  test/ \ndirectory.  This is an example of the settings for Behat tasks:  {\n   behat : {\n     flags :  --tags '~@javascript' ,\n     path :  /usr/local/bin/behat ,\n     subsite : {\n       src :  ./test/features/subsite/*.feature ,\n       debug : false\n    }\n  }\n}  behat.\\ siteurl> : A map of Drupal subsite names to a configuration object,\nwhich will extend the defaults passed to grunt-parallel-behat  behat.flags : A string with any command-line arguments and options that\nshould be used while invoking Behat. These flags can be overridden by using the --behat-flags  option when running  grunt . Common use cases are to include or\nexclude tests according to tags or to use an alternative profile defined in behat.yml .  behat.path : A string with the path to the Behat executable. By default, this\nis set to  vendor/bin/behat  to use the version of Behat installed by Composer.\nOnly set this option if you need to use a specific version of Behat that is\ninstalled elsewhere.",
+            "title": "Behat Settings"
+        },
+        {
+            "location": "/60_PACKAGE/",
+            "text": "Deployment Packaging\n\n\n\n\nPackage up the operational codebase to use outside the development scaffolding.\n\n\n\n\nThe \ngrunt package\n task allows you to assemble and independently exported\nDrupal codebase. This is used to facilitate deployment of the minimal code\nneeded to run Drupal in a formal environment such as Production.\n\n\nDefault Packaging\n\n\nYou can find the resulting package in \nbuild/packages/package\n by default as a\nstandard directory, all symlinks from the grunt scaffolding dereferenced. If\nrun with \ngrunt package:compress\n it will also output\n\nbuild/packages/package.tgz\n as an easily stored archive. \nRemember, this\ndirectory is wiped by \ngrunt clean\n unless you configure your package directory\nto be outside the build directory.\n\n\nThis is an example of the settings for package tasks:\n\n\n{\n  \npackages\n: {\n    \nsrcFiles\n: [\n!sites/*/files/**\n, \n!xmlrpc.php\n, \n!modules/php/*\n],\n    \nprojFiles\n: [\nREADME*\n, \nbin/**\n]\n  }\n}\n\n\n\n\nPackaging Customization\n\n\npackages.srcFiles\n: An array of files or file patterns to include or exclude\nfrom the build output when building a package. The above excludes files within\nany \nsites/*/files\n directory, and Drupal\ns \nxmlrpc.php\n file and PHP Filter\nmodule. For more on this format, see: http://gruntjs.com/configuring-tasks#files\n\n\npackages.projFiles\n: An array of files or file patterns to include or exclude\nfrom the project directory when building a package. The above includes README\nfiles and files under \nbin/\n in the project\ns package.\n\n\npackages.dest.docroot\n: Specify where within the package directory the\n\nsrcFiles\n should be placed. Defaults to the package root. For Acquia set this\nto \n/docroot\n.\n\n\npackages.dest.vendor\n: Specify where to place the composer.json and vendor\ndirectory.  Defaults to the docroot.\n\n\npackages.dest.devResources\n: Specify where within the package directory the\n\nprojFiles\n should be placed. Defaults to package root.\n\n\npackages.name\n: The default name of the package, used as the path within the\npackages directory. This can be overridden by calling grunt package with the\n\n--name\n parameter.\n\n\nPackaging for Acquia\n\n\nThe \npackage\n command has the flexibility to support many different use cases,\ninclude structure for PaaS services such as Acquia. This is currently handled\nby convention rather than specific coded support.\n\n\nThe example configuration below for your Gruntconfig.json file structures an\nAcquia repository with support for custom hooks and scripts.\n\n\n{\n  \npackages\n: {\n    \nsrcFiles\n: [\n!sites/*/files/**\n, \n!xmlrpc.php\n, \n!modules/php/*\n],\n    \nprojFiles\n: [\nREADME*\n, \nbin/**\n, \nhooks/**\n],\n    \ndest\n: {\n      \ndocroot\n: \ndocroot\n\n    }\n  }\n}",
+            "title": "Deploy Packaging"
+        },
+        {
+            "location": "/60_PACKAGE/#deployment-packaging",
+            "text": "Package up the operational codebase to use outside the development scaffolding.   The  grunt package  task allows you to assemble and independently exported\nDrupal codebase. This is used to facilitate deployment of the minimal code\nneeded to run Drupal in a formal environment such as Production.",
+            "title": "Deployment Packaging"
+        },
+        {
+            "location": "/60_PACKAGE/#default-packaging",
+            "text": "You can find the resulting package in  build/packages/package  by default as a\nstandard directory, all symlinks from the grunt scaffolding dereferenced. If\nrun with  grunt package:compress  it will also output build/packages/package.tgz  as an easily stored archive.  Remember, this\ndirectory is wiped by  grunt clean  unless you configure your package directory\nto be outside the build directory.  This is an example of the settings for package tasks:  {\n   packages : {\n     srcFiles : [ !sites/*/files/** ,  !xmlrpc.php ,  !modules/php/* ],\n     projFiles : [ README* ,  bin/** ]\n  }\n}",
+            "title": "Default Packaging"
+        },
+        {
+            "location": "/60_PACKAGE/#packaging-customization",
+            "text": "packages.srcFiles : An array of files or file patterns to include or exclude\nfrom the build output when building a package. The above excludes files within\nany  sites/*/files  directory, and Drupal s  xmlrpc.php  file and PHP Filter\nmodule. For more on this format, see: http://gruntjs.com/configuring-tasks#files  packages.projFiles : An array of files or file patterns to include or exclude\nfrom the project directory when building a package. The above includes README\nfiles and files under  bin/  in the project s package.  packages.dest.docroot : Specify where within the package directory the srcFiles  should be placed. Defaults to the package root. For Acquia set this\nto  /docroot .  packages.dest.vendor : Specify where to place the composer.json and vendor\ndirectory.  Defaults to the docroot.  packages.dest.devResources : Specify where within the package directory the projFiles  should be placed. Defaults to package root.  packages.name : The default name of the package, used as the path within the\npackages directory. This can be overridden by calling grunt package with the --name  parameter.",
+            "title": "Packaging Customization"
+        },
+        {
+            "location": "/60_PACKAGE/#packaging-for-acquia",
+            "text": "The  package  command has the flexibility to support many different use cases,\ninclude structure for PaaS services such as Acquia. This is currently handled\nby convention rather than specific coded support.  The example configuration below for your Gruntconfig.json file structures an\nAcquia repository with support for custom hooks and scripts.  {\n   packages : {\n     srcFiles : [ !sites/*/files/** ,  !xmlrpc.php ,  !modules/php/* ],\n     projFiles : [ README* ,  bin/** ,  hooks/** ],\n     dest : {\n       docroot :  docroot \n    }\n  }\n}",
+            "title": "Packaging for Acquia"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/",
+            "text": "Git Integrations\n\n\n\n\nTricks to better manage your project using it\ns Git version control.\n\n\n\n\nAdding Git Hooks\n\n\nThe \nGit Hook system\n (not to be confused with\nthe Drupal Hook system), triggers events on certain git interactions. The git\n\npre-commit\n hook allows us to add a validation step to the commit process\nthat will block developer\ns from committing work if it does not get approved by\na script.\n\n\nGit hook scripts need to be manually installed on a per-repository basis, so\nGrunt Drupal Tasks facilitates by allowing easy configuration of the\ngrunt-githooks plugin as part of our \ngrunt git-setup\n task.\n\n\nDefault Task\n\n\nBy default, Grunt Drupal Tasks installs a special variant of the \nvalidate\n\ntask. This version, specifically invoked by \nvalidate:staged\n attempts to\nminimize the number of files scanned by checking only those that have changed\nsince the last successful commit.\n\n\nConfiguring Git Hooks\n\n\nconfig.git.hooks\n: An array of grunt tasks to run on pre-commit in addition\nto \nvalidate:staged\n.\n\n\nconfig.git.hook-command\n: A substitute for a simple \ngrunt\n command to handle\nthe individual grunt tasks. Allows specification of more complex bin paths or\nexecution wrappers such as \ntime\n or \ndocker-compose\n.\n\n\nOverriding a Commit Rejection\n\n\nUsing the \n-f\n flag with your git commit will override the pre-commit script\neven if it fails the commit will proceed.\n\n\nFurther Git Reading\n\n\n\n\nCustomizing Git - Git Hooks\n\n\ngithooks.com",
+            "title": "Git Integration"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#git-integrations",
+            "text": "Tricks to better manage your project using it s Git version control.",
+            "title": "Git Integrations"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#adding-git-hooks",
+            "text": "The  Git Hook system  (not to be confused with\nthe Drupal Hook system), triggers events on certain git interactions. The git pre-commit  hook allows us to add a validation step to the commit process\nthat will block developer s from committing work if it does not get approved by\na script.  Git hook scripts need to be manually installed on a per-repository basis, so\nGrunt Drupal Tasks facilitates by allowing easy configuration of the\ngrunt-githooks plugin as part of our  grunt git-setup  task.",
+            "title": "Adding Git Hooks"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#default-task",
+            "text": "By default, Grunt Drupal Tasks installs a special variant of the  validate \ntask. This version, specifically invoked by  validate:staged  attempts to\nminimize the number of files scanned by checking only those that have changed\nsince the last successful commit.",
+            "title": "Default Task"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#configuring-git-hooks",
+            "text": "config.git.hooks : An array of grunt tasks to run on pre-commit in addition\nto  validate:staged .  config.git.hook-command : A substitute for a simple  grunt  command to handle\nthe individual grunt tasks. Allows specification of more complex bin paths or\nexecution wrappers such as  time  or  docker-compose .",
+            "title": "Configuring Git Hooks"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#overriding-a-commit-rejection",
+            "text": "Using the  -f  flag with your git commit will override the pre-commit script\neven if it fails the commit will proceed.",
+            "title": "Overriding a Commit Rejection"
+        },
+        {
+            "location": "/70_GIT_INTEGRATION/#further-git-reading",
+            "text": "Customizing Git - Git Hooks  githooks.com",
+            "title": "Further Git Reading"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/",
+            "text": "Advanced Configuration\n\n\n\n\nTips and tricks in customizing Grunt Drupal Tasks, contextually adjusting\nbehaviors, and more.\n\n\n\n\nDesktop Notification Settings\n\n\nThis is an example of the settings for the notify feature:\n\n\n{\n  \nnotify\n: {\n    \nthreshold\n: 3\n  }\n}\n\n\n\n\nnotify.threshold\n: Minimum number of seconds a task must execute for a\nnotification to be triggered when the task ends.\n\n\nMagic Configuration\n\n\nThe domain, project.profile, alias, and siteUrls configurations are all built\nusing the same system that allows for maximum flexibility in project and\nenvironment configuration. Note that all configuration is subject to the Project\nGruntfile override.\n\n\nIn order of precedence it checks the following:\n\n\nPriority 1: Project Gruntfile.js\n\n\nThe value of the configuration prefixed with \ngdt.\n. This allows a project\nGruntfile to dynamically specify the value before bootstrapping Grunt Drupal\nTasks. This is valuable because the code of grunt-drupal-tasks sets up many\nbehaviors based on that configuration that would be difficult to replicate\nafter the bootstrap.\n\n\nThis can be done with any configuration you might place into your\nGruntconfig.json, and is merged recursively as an override to whatever you place\nin that file.\n\n\nFor example:\n\n\n\n\nalias\n: \ngdt.alias\n\n\ndomain\n: \ngdt.domain\n\n\nprofile\n: \ngdt.profile\n\n\nsiteUrls\n: \ngdt.siteUrls\n\n\n\n\nSuppose your environment is set up with the following directory structure:\n\n\n\n\n\n\nproject.example.com\n\n\nproject-repository\n\n\nGruntfile.js\n\n\nGruntconfig.json\n\n\nsrc/\n\n\n\n\n\n\n\n\nproject2.example.net\n\n\n\n\n\n\n\n\n\n\n\n\nGiven this structure, you will not want to use environment variables because\neach of your projects might need different values in the host machine. However,\na little logic in the project Gruntfile.js can allow you to dynamically derive\nyour development domain or Drush site alias.\n\n\nFor example, here is a Gruntfile that derives the site alias and domain\nbased on the parent directory name of the project repository.\n\n\nvar path = require('path');\nmodule.exports = function(grunt) {\n  var name = path.basename(path.resolve(__dirname, '..'));\n  // Set domain to \nproject.example.com\n. If nothing else sets the `alias`\n  // it will default to @project.example.com.\n  grunt.initConfig({ gdt: { domain: name });\n  // Load all plugins and tasks defined by the grunt-drupal-tasks package.\n  require('grunt-drupal-tasks')(grunt);\n};\n\n\n\n\nPriority 2: Environment Variable\n\n\nEach magic configuration property can also be set via an Environment Variable.\n\n\nEnvironment Variables are extremely powerful, but only useful where the\nenvironment contains only a single project using Grunt Drupal Tasks. This is\nmore effective for dedicated environments, such as official production and\nstaging servers, or virtual and containerized environments.\n\n\nThe specific environment variable name is covered as part of the property\ndescriptions.\n\n\nPriority 3: Project Gruntconfig.json\n\n\nThe configuration placed in Gruntconfig.json. This is good for straightforward\ndefaults and is how all \nnon-magical\n configuration works.\n\n\nIf you want to include your task in one of the existing groups, copy the text\nexactly as seen in the output of the \ngrunt help\n task.",
+            "title": "Advanced Options"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#advanced-configuration",
+            "text": "Tips and tricks in customizing Grunt Drupal Tasks, contextually adjusting\nbehaviors, and more.",
+            "title": "Advanced Configuration"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#desktop-notification-settings",
+            "text": "This is an example of the settings for the notify feature:  {\n   notify : {\n     threshold : 3\n  }\n}  notify.threshold : Minimum number of seconds a task must execute for a\nnotification to be triggered when the task ends.",
+            "title": "Desktop Notification Settings"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#magic-configuration",
+            "text": "The domain, project.profile, alias, and siteUrls configurations are all built\nusing the same system that allows for maximum flexibility in project and\nenvironment configuration. Note that all configuration is subject to the Project\nGruntfile override.  In order of precedence it checks the following:",
+            "title": "Magic Configuration"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#priority-1-project-gruntfilejs",
+            "text": "The value of the configuration prefixed with  gdt. . This allows a project\nGruntfile to dynamically specify the value before bootstrapping Grunt Drupal\nTasks. This is valuable because the code of grunt-drupal-tasks sets up many\nbehaviors based on that configuration that would be difficult to replicate\nafter the bootstrap.  This can be done with any configuration you might place into your\nGruntconfig.json, and is merged recursively as an override to whatever you place\nin that file.  For example:   alias :  gdt.alias  domain :  gdt.domain  profile :  gdt.profile  siteUrls :  gdt.siteUrls   Suppose your environment is set up with the following directory structure:    project.example.com  project-repository  Gruntfile.js  Gruntconfig.json  src/     project2.example.net       Given this structure, you will not want to use environment variables because\neach of your projects might need different values in the host machine. However,\na little logic in the project Gruntfile.js can allow you to dynamically derive\nyour development domain or Drush site alias.  For example, here is a Gruntfile that derives the site alias and domain\nbased on the parent directory name of the project repository.  var path = require('path');\nmodule.exports = function(grunt) {\n  var name = path.basename(path.resolve(__dirname, '..'));\n  // Set domain to  project.example.com . If nothing else sets the `alias`\n  // it will default to @project.example.com.\n  grunt.initConfig({ gdt: { domain: name });\n  // Load all plugins and tasks defined by the grunt-drupal-tasks package.\n  require('grunt-drupal-tasks')(grunt);\n};",
+            "title": "Priority 1: Project Gruntfile.js"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#priority-2-environment-variable",
+            "text": "Each magic configuration property can also be set via an Environment Variable.  Environment Variables are extremely powerful, but only useful where the\nenvironment contains only a single project using Grunt Drupal Tasks. This is\nmore effective for dedicated environments, such as official production and\nstaging servers, or virtual and containerized environments.  The specific environment variable name is covered as part of the property\ndescriptions.",
+            "title": "Priority 2: Environment Variable"
+        },
+        {
+            "location": "/70_ADVANCED_CONFIG/#priority-3-project-gruntconfigjson",
+            "text": "The configuration placed in Gruntconfig.json. This is good for straightforward\ndefaults and is how all  non-magical  configuration works.  If you want to include your task in one of the existing groups, copy the text\nexactly as seen in the output of the  grunt help  task.",
+            "title": "Priority 3: Project Gruntconfig.json"
+        },
+        {
+            "location": "/80_CI/",
+            "text": "Continuous Integration\n\n\nOne of the key advantages of the \ngrunt-drupal-tasks\n system is the ability to\neasily roll a broad suite of generalizable tests into your CI process. In order\nto integrate with your CI system, there is often small snippets of code to be\nwritten.\n\n\nJenkins\n\n\nIn order to best leverage Jenkins for your CI process, you will want to use\nthe grunt tools for their full range of testing.\n\n\ntrap 'exit' ERR\ncd /opt/development/example.com\ngit fetch origin\ngit rebase origin/develop\nnpm install\ngrunt\ngrunt test\n\n\n\n\nReports\n\n\nIn addition to the core CI routine, you may configure Jenkins to run the\n\nanalyze\n task to collect reports on build behavior. Properly configured, you\nwill get charts and the ability to inspect error messages within the Jenkins UI.\n\n\ngrunt analyze\n\nif [ -f \nbuild/reports/phpmd.xml\n ]; then\n  cp build/reports/phpmd.xml $WORKSPACE\nfi\n\nif [ -f \nbuild/reports/phpcs.xml\n ]; then\n  cp build/reports/phpcs.xml $WORKSPACE\nfi\n\n\n\n\nConfigure PHPCS\n\n\n\n\nIf you have not yet, install the \nCheckstyle Plugin\n\n\nIn \nPost-build Actions\n add \nPublish Checkstyle analysis results\n\n\nConfigure the results to be phpcs.xml\n\n\n\n\nConfigure PHPMD\n\n\n\n\nIf you have not yet, install the \nPMD Plugin\n\n\nIn \nPost-build Actions\n add \nPublish PHPMD analysis results\n\n\nConfigure the results to be phpmd.xml",
+            "title": "Continuous Integration"
+        },
+        {
+            "location": "/80_CI/#continuous-integration",
+            "text": "One of the key advantages of the  grunt-drupal-tasks  system is the ability to\neasily roll a broad suite of generalizable tests into your CI process. In order\nto integrate with your CI system, there is often small snippets of code to be\nwritten.",
+            "title": "Continuous Integration"
+        },
+        {
+            "location": "/80_CI/#jenkins",
+            "text": "In order to best leverage Jenkins for your CI process, you will want to use\nthe grunt tools for their full range of testing.  trap 'exit' ERR\ncd /opt/development/example.com\ngit fetch origin\ngit rebase origin/develop\nnpm install\ngrunt\ngrunt test",
+            "title": "Jenkins"
+        },
+        {
+            "location": "/80_CI/#reports",
+            "text": "In addition to the core CI routine, you may configure Jenkins to run the analyze  task to collect reports on build behavior. Properly configured, you\nwill get charts and the ability to inspect error messages within the Jenkins UI.  grunt analyze\n\nif [ -f  build/reports/phpmd.xml  ]; then\n  cp build/reports/phpmd.xml $WORKSPACE\nfi\n\nif [ -f  build/reports/phpcs.xml  ]; then\n  cp build/reports/phpcs.xml $WORKSPACE\nfi",
+            "title": "Reports"
+        },
+        {
+            "location": "/80_CI/#configure-phpcs",
+            "text": "If you have not yet, install the  Checkstyle Plugin  In  Post-build Actions  add  Publish Checkstyle analysis results  Configure the results to be phpcs.xml",
+            "title": "Configure PHPCS"
+        },
+        {
+            "location": "/80_CI/#configure-phpmd",
+            "text": "If you have not yet, install the  PMD Plugin  In  Post-build Actions  add  Publish PHPMD analysis results  Configure the results to be phpmd.xml",
+            "title": "Configure PHPMD"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/",
+            "text": "Extending Grunt Drupal Tasks\n\n\n\n\nGuide for advanced project-specific extensions to Grunt Drupal Tasks.\n\n\n\n\nAdding new tasks\n\n\nTo add additional tasks to your project\ns grunt implementation, you may define\nthem directly in your Gruntfile.js or include them from separate files.\n\n\nLoad a plugin managed by npm\n\n\ngrunt.loadNpmTasks('grunt-plugin-name');\n\n\n\n\nLoad a local grunt plugin\n\n\ngrunt.loadTasks(__dirname + '/grunt/tasks');\n\n\n\n\nOverriding existing tasks\n\n\nTo override an existing task the trick is to add code that will be the final\npiece to adjust the configuration of the task. This may be a specific\nconfiguration element, or a redefinition of the entire task.\n\n\nOverride a task\ns configuration\n\n\nIn your project\ns \nGruntfile.js\n, use the \ngrunt.config.set()\n function to\noverride the task\ns default configuration provided by Grunt Drupal Tasks.\n\n\nThe following example changes the list of files scanned by the \nphplint:all\n\ncommand:\n\n\ngrunt.config.set('phplint', {\n  all: [\n    '\n%= config.srcPaths.drupal %\n/**/*.php'\n  ]\n});\n\n\n\n\nRe-register the validate task\n\n\nIn your project\ns \nGruntfile.js\n, use the \ngrunt.registerTask()\n function to\noverride task aliases, like default, validate, and analyze.\n\n\nThe following example changes the list of tasks run by the \nvalidate\n command:\n\n\nvar taskList = ['phpcs:full'];\ngrunt.registerTask('validate', taskList);\n\n\n\n\nCustomizing Help Output (Help API)\n\n\nIf you add custom tasks to your project and want them exposed as part of the\n\nhelp\n task, you may add a simple code snippet to your Gruntfile.js or any\nloaded task file.\n\n\nvar Help = require('grunt-drupal-tasks/lib/help');\n\nHelp.addItem('existing-task', 'Named Group', 'Optional description that avoids the default task description.');\n\nHelp.add({\n  task: 'existing-task',\n  group: 'Named Group',\n  description: 'Optional description that avoids the default task description.'\n});\n\nHelp.add([\n  {\n    task: 'existing-task',\n    group: 'Named Group',\n    description: 'Optional description that avoids the default task description.'\n  },\n  {\n    task: 'second-task',\n    group: 'Named Group',\n    description: 'A second registered task to register with the help system.'\n  }\n]);\n\n\n\n\nIf you want to include your task in one of the existing groups, copy the text\nexactly as seen in the output of the \ngrunt help\n task.\n\n\nLeveraging Bash Scripts\n\n\nIf you have an existing project or a kit of useful project utilities, you may\nhave some Bash scripts laying around that you want to keep. Sometimes Bash\nor PHP are simply better for managing a Drupal system, other times you want to\nkeep the up-front time of integrating the Grunt tools minimal.\n\n\nThe preferred approach is to configure your scripts via the \nProject\nOperations\n system. This allows you to run your script via\n\ngrunt custom-install\n, and pass any grunt-derived configuration you might need\nto the script.\n\n\nIf you want to automatically load your scripts, here is a script based on\n\ngrunt-shell\n you can use.\n\n\nmodule.exports = function(grunt) {\n\n/**\n * Define \nbin\n wrapper tasks.\n */\nvar files = grunt.file.expand(\nbin/*.sh\n);\nif (files) {\n  for (var f in files) {\n    var name = files[f].split('/').pop().split('.').shift();\n      grunt.config(['shell', name], {\n        command: 'bash ' + files[f]\n      });\n      grunt.registerTask(name, ['shell:' + name]);\n    }\n  }\n};\n\n\n\n\nThis particular snippet requires your bash scripts end in \n.sh\n and be located\nin the directory \nroot:bin/\n.",
+            "title": "Extending GDT"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#extending-grunt-drupal-tasks",
+            "text": "Guide for advanced project-specific extensions to Grunt Drupal Tasks.",
+            "title": "Extending Grunt Drupal Tasks"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#adding-new-tasks",
+            "text": "To add additional tasks to your project s grunt implementation, you may define\nthem directly in your Gruntfile.js or include them from separate files.",
+            "title": "Adding new tasks"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#load-a-plugin-managed-by-npm",
+            "text": "grunt.loadNpmTasks('grunt-plugin-name');",
+            "title": "Load a plugin managed by npm"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#load-a-local-grunt-plugin",
+            "text": "grunt.loadTasks(__dirname + '/grunt/tasks');",
+            "title": "Load a local grunt plugin"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#overriding-existing-tasks",
+            "text": "To override an existing task the trick is to add code that will be the final\npiece to adjust the configuration of the task. This may be a specific\nconfiguration element, or a redefinition of the entire task.",
+            "title": "Overriding existing tasks"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#override-a-tasks-configuration",
+            "text": "In your project s  Gruntfile.js , use the  grunt.config.set()  function to\noverride the task s default configuration provided by Grunt Drupal Tasks.  The following example changes the list of files scanned by the  phplint:all \ncommand:  grunt.config.set('phplint', {\n  all: [\n    ' %= config.srcPaths.drupal % /**/*.php'\n  ]\n});",
+            "title": "Override a task's configuration"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#re-register-the-validate-task",
+            "text": "In your project s  Gruntfile.js , use the  grunt.registerTask()  function to\noverride task aliases, like default, validate, and analyze.  The following example changes the list of tasks run by the  validate  command:  var taskList = ['phpcs:full'];\ngrunt.registerTask('validate', taskList);",
+            "title": "Re-register the validate task"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#customizing-help-output-help-api",
+            "text": "If you add custom tasks to your project and want them exposed as part of the help  task, you may add a simple code snippet to your Gruntfile.js or any\nloaded task file.  var Help = require('grunt-drupal-tasks/lib/help');\n\nHelp.addItem('existing-task', 'Named Group', 'Optional description that avoids the default task description.');\n\nHelp.add({\n  task: 'existing-task',\n  group: 'Named Group',\n  description: 'Optional description that avoids the default task description.'\n});\n\nHelp.add([\n  {\n    task: 'existing-task',\n    group: 'Named Group',\n    description: 'Optional description that avoids the default task description.'\n  },\n  {\n    task: 'second-task',\n    group: 'Named Group',\n    description: 'A second registered task to register with the help system.'\n  }\n]);  If you want to include your task in one of the existing groups, copy the text\nexactly as seen in the output of the  grunt help  task.",
+            "title": "Customizing Help Output (Help API)"
+        },
+        {
+            "location": "/80_CUSTOM_TASKS/#leveraging-bash-scripts",
+            "text": "If you have an existing project or a kit of useful project utilities, you may\nhave some Bash scripts laying around that you want to keep. Sometimes Bash\nor PHP are simply better for managing a Drupal system, other times you want to\nkeep the up-front time of integrating the Grunt tools minimal.  The preferred approach is to configure your scripts via the  Project\nOperations  system. This allows you to run your script via grunt custom-install , and pass any grunt-derived configuration you might need\nto the script.  If you want to automatically load your scripts, here is a script based on grunt-shell  you can use.  module.exports = function(grunt) {\n\n/**\n * Define  bin  wrapper tasks.\n */\nvar files = grunt.file.expand( bin/*.sh );\nif (files) {\n  for (var f in files) {\n    var name = files[f].split('/').pop().split('.').shift();\n      grunt.config(['shell', name], {\n        command: 'bash ' + files[f]\n      });\n      grunt.registerTask(name, ['shell:' + name]);\n    }\n  }\n};  This particular snippet requires your bash scripts end in  .sh  and be located\nin the directory  root:bin/ .",
+            "title": "Leveraging Bash Scripts"
+        },
+        {
+            "location": "/90_FAQ/",
+            "text": "FAQ\n\n\n\n\nAnswers to common questions from conversation.\n\n\n\n\nWill you be switching to Gulp or another Task Runner?\n\n\nGulp\ns significant advantage of Grunt is it\ns ability to easily pipeline a\nsingle set of files through multiple operations. That is not a common element of\nthis project, so a port to Gulp is not planned. If you have a compelling\nargument and the time for significant contributions, please open or join a\nrelevant issue.",
+            "title": "FAQ"
+        },
+        {
+            "location": "/90_FAQ/#faq",
+            "text": "Answers to common questions from conversation.",
+            "title": "FAQ"
+        },
+        {
+            "location": "/90_FAQ/#will-you-be-switching-to-gulp-or-another-task-runner",
+            "text": "Gulp s significant advantage of Grunt is it s ability to easily pipeline a\nsingle set of files through multiple operations. That is not a common element of\nthis project, so a port to Gulp is not planned. If you have a compelling\nargument and the time for significant contributions, please open or join a\nrelevant issue.",
+            "title": "Will you be switching to Gulp or another Task Runner?"
+        }
+    ]
+}

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Git Integration - Grunt-Drupal-Tasks</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Git Integration";
+    var mkdocs_page_input_path = "70_GIT_INTEGRATION.md";
+    var mkdocs_page_url = "/70_GIT_INTEGRATION/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Grunt-Drupal-Tasks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../05_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_BUILD/">Build Process</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_QUALITY/">Code Quality</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_FRONTEND/">Frontend Ties</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_OPERATIONS/">Project Operations</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_TESTING/">Testing</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_PACKAGE/">Deploy Packaging</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Git Integration</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#git-integrations">Git Integrations</a></li>
+                
+                    <li><a class="toctree-l4" href="#adding-git-hooks">Adding Git Hooks</a></li>
+                
+                    <li><a class="toctree-l4" href="#further-git-reading">Further Git Reading</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_ADVANCED_CONFIG/">Advanced Options</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../80_CI/">Continuous Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../80_CUSTOM_TASKS/">Extending GDT</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../90_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Grunt-Drupal-Tasks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Git Integration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/phase2/grunt-drupal-tasks/" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="git-integrations">Git Integrations</h1>
+<blockquote>
+<p>Tricks to better manage your project using it&rsquo;s Git version control.</p>
+</blockquote>
+<h2 id="adding-git-hooks">Adding Git Hooks</h2>
+<p>The <a href="http://git-scm.com/docs/githooks">Git Hook system</a> (not to be confused with
+the Drupal Hook system), triggers events on certain git interactions. The git
+<strong>pre-commit</strong> hook allows us to add a validation step to the commit process
+that will block developer&rsquo;s from committing work if it does not get approved by
+a script.</p>
+<p>Git hook scripts need to be manually installed on a per-repository basis, so
+Grunt Drupal Tasks facilitates by allowing easy configuration of the
+grunt-githooks plugin as part of our <code>grunt git-setup</code> task.</p>
+<h3 id="default-task">Default Task</h3>
+<p>By default, Grunt Drupal Tasks installs a special variant of the <code>validate</code>
+task. This version, specifically invoked by <code>validate:staged</code> attempts to
+minimize the number of files scanned by checking only those that have changed
+since the last successful commit.</p>
+<h3 id="configuring-git-hooks">Configuring Git Hooks</h3>
+<p><strong>config.git.hooks</strong>: An array of grunt tasks to run on pre-commit in addition
+to <code>validate:staged</code>.</p>
+<p><strong>config.git.hook-command</strong>: A substitute for a simple <code>grunt</code> command to handle
+the individual grunt tasks. Allows specification of more complex bin paths or
+execution wrappers such as <code>time</code> or <code>docker-compose</code>.</p>
+<h3 id="overriding-a-commit-rejection">Overriding a Commit Rejection</h3>
+<p>Using the <code>-f</code> flag with your git commit will override the pre-commit script
+even if it fails the commit will proceed.</p>
+<h2 id="further-git-reading">Further Git Reading</h2>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Customizing Git - Git Hooks</a></li>
+<li><a href="http://githooks.com">githooks.com</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../70_ADVANCED_CONFIG/" class="btn btn-neutral float-right" title="Advanced Options">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../60_PACKAGE/" class="btn btn-neutral" title="Deploy Packaging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/phase2/grunt-drupal-tasks/" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../60_PACKAGE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../70_ADVANCED_CONFIG/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
