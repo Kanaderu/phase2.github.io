@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  
+  <title>Troubleshooting - DevTools CLI Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Troubleshooting";
+    var mkdocs_page_input_path = "50_TROUBLESHOOTING.md";
+    var mkdocs_page_url = "/50_TROUBLESHOOTING/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_TOOLCHAIN/">Tool Chain</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../XDEBUG/">Xdebug</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_INTEGRATION/">Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Troubleshooting</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#troubleshooting">Troubleshooting</a></li>
+                
+                    <li><a class="toctree-l4" href="#run-doctor">Run doctor</a></li>
+                
+                    <li><a class="toctree-l4" href="#ensure-the-environment-is-setup-correctly">Ensure the environment is setup correctly</a></li>
+                
+                    <li><a class="toctree-l4" href="#ensure-your-images-are-up-to-date">Ensure your images are up to date</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-your-shell">Configure Your Shell</a></li>
+                
+                    <li><a class="toctree-l4" href="#reset-everything">Reset everything</a></li>
+                
+                    <li><a class="toctree-l4" href="#files-not-found">Files Not Found</a></li>
+                
+                    <li><a class="toctree-l4" href="#log-in-to-docker-hub">Log in to Docker Hub</a></li>
+                
+                    <li><a class="toctree-l4" href="#docker-client-and-server-version-incompatibilities">Docker client and server version incompatibilities</a></li>
+                
+                    <li><a class="toctree-l4" href="#network-timed-out-and-cant-pull-container-image">Network timed out and can't pull container image</a></li>
+                
+                    <li><a class="toctree-l4" href="#started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</a></li>
+                
+                    <li><a class="toctree-l4" href="#containers-started-but-service-not-available">Containers Started but Service Not Available</a></li>
+                
+                    <li><a class="toctree-l4" href="#service-became-non-responsive">Service Became Non-Responsive</a></li>
+                
+                    <li><a class="toctree-l4" href="#nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</a></li>
+                
+                    <li><a class="toctree-l4" href="#migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users:</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="troubleshooting">Troubleshooting</h2>
+<p>See the following sections for common problems and ways to solve them.</p>
+<h3 id="run-doctor">Run doctor</h3>
+<p>Run <code>devtools doctor</code> to determine if your environment is set to run DevTools.</p>
+<h3 id="ensure-the-environment-is-setup-correctly">Ensure the environment is setup correctly</h3>
+<p>It can be useful to ensure everything is in a clean state. The following should ensure that</p>
+<ul>
+<li><code>devtools stop</code> stops the docker machine and cleans up networking</li>
+<li><code>eval "$(devtools config)"</code> clears environmental variables docker uses to communicate with the docker host</li>
+<li><code>devtools start</code> starts the docker machine</li>
+<li><code>eval "$(devtools config)"</code> sets environmental variables docker uses to communicate with the docker host</li>
+</ul>
+<h3 id="ensure-your-images-are-up-to-date">Ensure your images are up to date</h3>
+<p>From time to time images are updated to fix bugs or add functionality. You won't automatically receive these updates but you can fetch them when you hear new ones are available.</p>
+<p><code>docker pull imagename</code> can be used if you want to update a specific image. For example, if you wanted to make sure you had the latest dnsdock you'd run <code>docker pull phase2/dnsdock</code>.</p>
+<p><code>docker-compose pull</code> can be used within a project directory to make sure you've got the latest version of all images in the docker-compose.yml file.</p>
+<h3 id="configure-your-shell">Configure Your Shell</h3>
+<p>If you do not have any containers listed when running <code>docker ps</code> or you get an error message like:</p>
+<pre><code>Get http:///var/run/docker.sock/v1.20/containers/json: dial unix /var/run/docker.sock: no such file or directory.
+
+* Are you trying to connect to a TLS-enabled daemon without TLS?
+
+* Is your docker daemon up and running?
+</code></pre>
+<p>Or an error message like:</p>
+<pre><code>Couldn't connect to Docker daemon - you might need to run `boot2docker up`.
+</code></pre>
+<p>Make sure your shell has the necessary environment variables by running:</p>
+<p><code>eval "$(devtools config)"</code></p>
+<h3 id="reset-everything">Reset everything</h3>
+<p>If a problem continue to persists and the Docker Host is non-responsive, you may need to resort to the nuclear option of blowing everything away and starting over. Note this is a <strong>nuclear option</strong> as even your persistent data area will be removed if you don't back it up. If you have any data that needs to be maintained be sure to get a copy of it off of your VM first with the scripts provided.</p>
+<p>To wipe everything out and start over</p>
+<ol>
+<li>
+<p>First backup your existing data (if desired) by running <code>devtools data-backup</code>. This will sync your entire <code>/data</code> directory to your host machine.</p>
+</li>
+<li>
+<p>Then you can run <code>devtools remove</code> This removes the broken Docker Host and it’s state, making way for a clean start.</p>
+</li>
+<li>
+<p>Next you can rebuild everything by running <code>devtools start</code>. This will create you new Docker Host.</p>
+</li>
+<li>
+<p>If you wish to restore the <code>/data</code> directory that you previously backed up, then run <code>devtools data-restore</code></p>
+</li>
+</ol>
+<h3 id="files-not-found">Files Not Found</h3>
+<p>If you get messages about files not being found in the container that should be shared from your host computer, check the following:</p>
+<ol>
+<li>
+<p>Is the project checked out under the <code>/Users</code> folder? Only files under the <code>/Users</code> folder are shared into the Docker Host (and thus containers) by default.</p>
+</li>
+<li>
+<p>Does the <code>docker-compose.yml</code> file have a volume mount set up that contains the missing files?</p>
+</li>
+<li>
+<p>Get shell in the Docker container via <code>docker exec -it &lt;container name&gt; /bin/bash</code> and check if the files are shared in the wrong place.</p>
+</li>
+<li>
+<p>Get shell in the Docker Machine with <code>docker-machine ssh dev</code> and check if you find the files under /Users.</p>
+</li>
+</ol>
+<h3 id="log-in-to-docker-hub">Log in to Docker Hub</h3>
+<p>If you encounter the following error about the Docker image not being found when starting a project, it may indicate that your Docker client is not logged into a required private Docker Hub repository:</p>
+<pre><code>Pulling repository phase2/mariadb
+
+Error: image phase2/mariadb:latest not found
+</code></pre>
+<p>To solve this, run <code>docker login</code> and provide the relevant credentials.</p>
+<h3 id="docker-client-and-server-version-incompatibilities">Docker client and server version incompatibilities</h3>
+<p>If you see an error similar to this:</p>
+<pre><code>Error response from daemon: client is newer than server (client API version: 1.20, server API version: 1.19)
+</code></pre>
+<p>You likely need to upgrade your Docker Machine ISO. Do that with:</p>
+<pre><code>`devtools upgrade`
+</code></pre>
+<p>However, please check in #devtools-support to ensure that upgrading your Docker Machine is the right course of action.</p>
+<h3 id="network-timed-out-and-cant-pull-container-image">Network timed out and can't pull container image</h3>
+<p>Example:</p>
+<pre><code>Pulling cache (phase2/memcache:latest)...
+Pulling repository docker.io/phase2/memcache
+Network timed out while trying to connect to https://index.docker.io/v1/repositories/phase2/memcache/images. You may want to check your internet connection or if you are behind a proxy.
+</code></pre>
+
+<p>Try restarting docker-machine: <code>devtools restart</code></p>
+<p><strong>Upstream tracking issue:</strong> <a href="https://github.com/docker/machine/issues/1857">docker/machine #1857</a></p>
+<h3 id="started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</h3>
+<p>Example:</p>
+<pre><code>Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+[WARN] Docker daemon not running! Trying again in 3 seconds.  Try 1 of 10.
+...
+[WARN] Docker daemon not running! Trying again in 3 seconds.  Try 10 of 10.
+[ERROR] Docker daemon failed to start!
+</code></pre>
+
+<p>The Docker VM (probably called dev) has it's IP changed. The generated TLS Certs are no longer valid and must be regenerated.</p>
+<p>Possible causes or relations/patterns:</p>
+<ul>
+<li>Another VM was started in VirtualBox.</li>
+<li>Machine went to sleep and somehow caused issues with the running VM.</li>
+</ul>
+<p>Fix:</p>
+<p>Try running: <code>docker-machine env</code></p>
+<p>If that does not work, you should be able to start the VM directly through docker-machine: <code>docker-machine start dev</code></p>
+<p>Next, check the IP / TLS status by running: <code>docker-machine ls</code></p>
+<p>The output will likely report something akin to:</p>
+<pre><code>dev       -        virtualbox   Running   tcp://192.168.99.100:2376 Unknown
+Unable to query docker version: Get https://192.168.99.100:2376/v1.15/version: x509: certificate is valid for 192.168.99.101, not 192.168.99.100
+</code></pre>
+
+<p>Now, regenerate the TLS Certs: <code>docker-machine regenerate-certs dev -f</code>
+Devtools should now be able to start. Don't forget to run `eval "$(devtools config)" after.</p>
+<h3 id="containers-started-but-service-not-available">Containers Started but Service Not Available</h3>
+<p>Docker-Machine is running, the project's containers are up, and command-line operations work fine. Why can't you view the site in your web browser?</p>
+<h4 id="dns-services">DNS Services</h4>
+<p>The DNS services that DevTools spins up may not be working. Run <code>docker ps</code> and see that you have a dnsdock and dnsmasq container.</p>
+<p>If those services are not running, try <code>devtools dns</code> to bring them up, or a full <code>devtools restart</code> if that does not work.</p>
+<p><code>devtools dns-records</code> is also useful to see what containers have registered names.</p>
+<h4 id="dns-configuration">DNS Configuration</h4>
+<p>It is also possible that the DNS services are running for your environment, but somehow the configuration is wrong. Run <code>devtools dns-records</code> and make sure your project has an entry. If not, you may need another restart, or perhaps you are missing <code>DNSDOCK_NAME</code> and <code>DNSDOCK_IMAGE</code> environment variable entries in your docker-compose.yml manifest.</p>
+<h4 id="slow-starting-services">Slow-starting Services</h4>
+<p>Some services, such as Apache Solr or Varnish, can take longer to start up than Apache and PHP-FPM. As a result you might load the browser so fast that not all services are available, which in the case of a proxy may prevent the page from loading at all. Wait a short time and try reloading the page.</p>
+<h4 id="failed-health-checks">Failed Health Checks</h4>
+<p>Some services such as Varnish depend on others to operate, and have built-in health checks to verify the other service is operating.</p>
+<p>If such a health check fails, there could be two problems:</p>
+<ol>
+<li>The internal DNS routing between Docker containers is broken. Make sure the
+configuration of your services is correct.</li>
+<li>The dependency (e.g., Apache behing Varnish) is not yet up and running when Varnish performs its checks.</li>
+</ol>
+<p>In either case, you can often repair the problem by performing a clean restart of the broken service.</p>
+<pre><code>docker-compose stop proxy
+docker-compose rm -f proxy
+docker-compose up -d proxy
+</code></pre>
+
+<p>Your other services should already be up and functional when this is done, so the health check will not fail on account of (2).</p>
+<blockquote>
+<p><strong>Checking on Varnish Health</strong></p>
+<p>If you suspect Varnish may be failing, run <code>docker exec -it [VARNISH_CONTAINER] varnishlog</code> and scan for VCL compilation errors.</p>
+</blockquote>
+<h3 id="service-became-non-responsive">Service Became Non-Responsive</h3>
+<p>Sometimes a service locks up. Apache stops serving results, Solr stops indexing or responding to search queries. These things happen on servers all the time. It may even happen more often on Docker, especially since we are now using more "infrastructure" in our local environments.</p>
+<p>Docker is meant to easily sandbox these problems from the rest of your machine, and to easily resolve these problems by allowing you to dump the problem and start over fresh very easily.</p>
+<p>Hard reset on a service (as describe above), is very much like a power cycle:</p>
+<pre><code>docker-compose stop [BROKEN_SERVICE]
+docker-compose rm -f [BROKEN_SERVICE]
+docker-compose up -d [BROKEN_SERVICE]
+</code></pre>
+
+<p>Sometimes data for a service is volume mounted from outside the container. This persistence is good when the data is healthy, but can be really bad if the data is part of the problem (e.g., broken lockfiles).</p>
+<pre><code>docker-machine ssh [MACHINE_NAME]
+rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
+</code></pre>
+
+<p>Remember that your service may have configuration or data in another service, you may need to perform this operation against multilpe containers (e.g., Solr)</p>
+<h3 id="nfs-conflicts-with-other-environments">NFS Conflicts with other Environments</h3>
+<p>Running the Devtools VM in conjunction with other development environments (such as Vagrant) can sometimes cause conflicts with volume mounts. This is due to the fact that the Devtools VM mounts the entirety of <code>/Users</code> into the VM on OS X. Additional NFS mounts from other environments that target subdirectories of <code>/Users</code> will fail.</p>
+<p>The easiest workaround is to keep projects that use non-Devtools environments like Vagrant in a directory <em>outside</em> of <code>/Users</code>, such as <code>/opt</code>. Alternatively, you can run a single VM at a time and manually clear out <code>/etc/exports</code> prior to switching environments/projects.</p>
+<h3 id="migrating-vagrant-boxes-outside-of-users">Migrating Vagrant boxes outside of /Users:</h3>
+<p>If you'd like to move your vagrant boxes outside of your home directory, perform the following steps:</p>
+<p>1) Choose a destination folder.  We'll be using /opt/vms for this example. Insure the destination has enough free space. Typically this is not a problem because our Macs are one single partition.</p>
+<p>2) Make the new directory, and ensure your userid owns it:  <code>sudo mkdir /opt/vms; sudo chown -R userid:userid /opt/vms</code></p>
+<p>3) Add <code>export VAGRANT_HOME=/opt/vms</code> to ~/.bash_profile</p>
+<p>4) Move your vagrant folders over to /opt/vms.</p>
+<p>5) edit /etc/exports, updating any vagrant mount point to use the new location.  (example: /Users/userid/vagrant/projectx/cms)</p>
+<p>6) While a reboot isn't neccesary, it'll help to make sure nothing is running and using the old mount points.</p>
+<p>7) cd into your new vagrant directory, and do a vagrant up.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../60_FAQ/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../40_INTEGRATION/" class="btn btn-neutral" title="Integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../40_INTEGRATION/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../60_FAQ/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
