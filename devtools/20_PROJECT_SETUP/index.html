@@ -211,7 +211,7 @@
 <p>Install DevTools via Homebrew. First, tap the Homebrew repository <code>brew tap phase2/devtools</code>, then install DevTools <code>brew install devtools</code>. </p>
 </li>
 <li>
-<p>Follow the instructions in the <a href="..">DevTools Index</a> to get your environment configured. All of the following sample commands will assume you’ve installed things as suggested in the README.</p>
+<p>Follow the instructions in the <a href="..">DevTools Index</a> to get your environment configured. All of the following sample commands will assume you've installed things as suggested in the README.</p>
 </li>
 </ol>
 <h2 id="get-ready-to-run-containers">Get ready to run containers</h2>
@@ -223,7 +223,7 @@
 <li>This will create a Docker Host if one does not exist already</li>
 <li>To customize this Docker Host you can provide the following configuration options.<ul>
 <li><strong>name:</strong> The Docker Machine name for the VM. Defaults to <code>dev</code></li>
-<li><strong>driver:</strong> The driver to create the Docker Machine with. Choices are <code>virtualbox</code>, <code>vmwarefuaion</code>, and <code>xhyve</code>. Defaults to <code>virtualbox</code></li>
+<li><strong>driver:</strong> The driver to create the Docker Machine with. Choices are <code>virtualbox</code>, <code>vmwarefusion</code>, and <code>xhyve</code>. Defaults to <code>virtualbox</code></li>
 <li><strong>cpuCount:</strong> The number of virtual CPU you want to allocate to this VM. Defaults to 2</li>
 <li><strong>memSize:</strong> The size memory you want to configure for this VM, in Megabytes. Defaults to 4096</li>
 <li><strong>diskSize:</strong> The size drive you want to configure for this VM, in Gigabytes. Defaults to 40</li>
@@ -303,7 +303,7 @@
 <p><code>./build/html:/var/www/html</code></p>
 <p>This takes the Drupal site we have in our local project directory of <code>build/html</code> and it overrides the default content of the images <code>/var/www/html</code> directory.</p>
 <p><strong>Persist data longer than the life of the container</strong></p>
-<p>When using a database like mysql the container will store the database files in <code>/var/lib/mysql</code> and by default that directory will be reset every time the container restarts. This means each time you restart your container you’d need to reinstall your application and database, which can make life difficult. So in order to persist mysql data for longer than the current run of the container we will map a directory from the Docker Host into the container and override the default <code>/var/lib/mysql</code> directory. The configuration will look something like this.</p>
+<p>When using a database like mysql the container will store the database files in <code>/var/lib/mysql</code> and by default that directory will be reset every time the container restarts. This means each time you restart your container you'd need to reinstall your application and database, which can make life difficult. So in order to persist mysql data for longer than the current run of the container we will map a directory from the Docker Host into the container and override the default <code>/var/lib/mysql</code> directory. The configuration will look something like this.</p>
 <p><code>/data/drupal/mysql:/var/lib/mysql</code></p>
 <p>Now when your database container creates files in <code>/var/lib/mysql</code> they are actually saved in the <code>/data/drupal/mysql</code> directory on the Docker Host. Be sure to namespace your directories inside /data so that separate projects don't conflict with each other. You'll also want to ensure you clean up when you are done with your project to keep from using up all of your disk space. See the cleaning up section for more info.</p>
 <p><strong>Override directories and files that exist in an image</strong></p>
@@ -317,7 +317,7 @@
 <p>This command will remove all stopped containers defined in the docker-compose.yml.  You could also  remove an individual container by running: <code>docker-compose rm &lt;name in yml&gt;</code></p>
 <p>After removing the container, it will revert to the original state from the Docker image, removing any packages installed or files modified that are not included in a volume mount. Start your containers again with <code>docker-compose up</code> and you should have your new volume mounts.</p>
 <h3 id="creating-a-dockerfile">Creating a Dockerfile</h3>
-<p>The Dockerfile you create for your project should represent the application as it will need to run in production. There are many reasons to have a Dockerfile to create an image, but if you don’t intend on running containers in production you can likely skip this part. </p>
+<p>The Dockerfile you create for your project should represent the application as it will need to run in production. There are many reasons to have a Dockerfile to create an image, but if you don't intend on running containers in production you can likely skip this part. </p>
 <p>The most minimal project container will need to have your code in it.</p>
 <ul>
 <li>

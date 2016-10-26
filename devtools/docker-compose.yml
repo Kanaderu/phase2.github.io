@@ -3,4 +3,4 @@ docs:
   working_dir: /documents
   volumes:
     - .:/documents
-    - ../build:/site
+    - ~/Projects/phase2.github.io/devtools:/site

@@ -187,16 +187,13 @@
 <p>When running Docker containers on Linux, it is not necessary to run the Docker Machine VM. The instructions here describe how to run DevTools projects on Linux.</p>
 <h2 id="linux-requirements">Linux requirements</h2>
 <ol>
-<li>The phase2/dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers<ul>
-<li>This is a public container that is only about 12M; you may freely pull it</li>
-</ul>
-</li>
-<li>Use of one of three options to forward DNS queries to the dnsdock container (see <a href="#markdown-header-linux-dns-configuration-options">Linux DNS configuration options</a> below</li>
+<li>The dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers</li>
+<li>Use of one of three options to forward DNS queries to the dnsdock container (see <a href="#markdown-header-linux-dns-configuration-options">Linux DNS configuration options</a> below)</li>
 </ol>
 <h3 id="linux-installation-on-fedora-22">Linux installation on Fedora 22+</h3>
 <ol>
-<li>Install Docker 1.9.1 and docker-compose<ul>
-<li><code>sudo dnf install docker docker-compose</code></li>
+<li>Install Docker 1.x.x and docker-compose<ul>
+<li><code>sudo dnf install docker-engine docker-compose</code></li>
 </ul>
 </li>
 <li>Add your user to the Docker group<ul>
@@ -204,9 +201,14 @@
 </ul>
 </li>
 <li>Log out, then back in, in order to pick up your new group assignments</li>
-<li>Set the DNS configuration for dnsdock, as well as known RFC-1918 address space<ul>
-<li>Please note that the following command will over-write your existing Docker daemon configuration file.  Please set the -dns=172.17.0.1 option manually as an alternative</li>
-<li><code>echo 'OPTIONS=-dns=172.17.0.1' | sudo tee /etc/sysconfig/docker</code></li>
+<li>Set the DNS configuration for dnsdock<ul>
+<li>We need to modify the command that docker uses within systemd</li>
+<li><code>sudo mkdir /etc/systemd/system/docker.service.d</code></li>
+<li><code>sudo vi /etc/systemd/system/docker.service.d/docker.conf</code></li>
+<li>In that file put something like the following:  <br />
+<code>[Service]
+    ExecStart=
+    ExecStart=/usr/bin/dockerd -H fd:// --dns=172.17.0.1</code></li>
 </ul>
 </li>
 <li>Set up the docker0 network as trusted<ul>
@@ -220,8 +222,8 @@
 </ol>
 <h3 id="linux-installation-on-ubuntulinux-mintdebian">Linux installation on Ubuntu/Linux Mint/Debian</h3>
 <ol>
-<li>Install Docker 1.9.1<ul>
-<li><code>curl -sSL https://get.docker.com/ | sh</code></li>
+<li>Install Docker 1.x.x<ul>
+<li><code>sudo apt-get install docker-engine</code></li>
 </ul>
 </li>
 <li>Install Pip<ul>
@@ -239,7 +241,7 @@
 <li>Log out, then back in, in order to pick up your new group assignments</li>
 <li>Set the DNS configuration for dnsdock, as well as known RFC-1918 address space<ul>
 <li>Please note that the following command will over-write your existing Docker daemon configuration file.  Please set the -dns=172.17.0.1 option manually as an alternative</li>
-<li><code>echo 'OPTIONS=-dns=172.17.0.1' | sudo tee /etc/default/docker</code></li>
+<li><code>echo 'DOCKER_OPTS="-dns=172.17.0.1"' | sudo tee /etc/default/docker</code></li>
 </ul>
 </li>
 <li>Start the docker daemon<ul>
@@ -262,7 +264,7 @@ If you already have a local configuration, ensure that it is not configured to s
 </ul>
 </li>
 <li>Run the dnsdock container<ul>
-<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock aacebedo/dnsdock:latest-amd64 -domain=vm</code></li>
 <li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
@@ -274,7 +276,7 @@ If you already have a local configuration, ensure that it is not configured to s
 <li>
 <p>Run the dnsdock container, specifying your upstream DNS server at the end.</p>
 <ul>
-<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock /opt/bin/dnsdock -domain=vm -nameserver='192.168.0.1:53'</code></li>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock aacebedo/dnsdock:latest-amd64 /opt/bin/dnsdock -domain=vm -nameserver="192.168.0.1:53"</code></li>
 <li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
@@ -292,7 +294,7 @@ If you already have a local configuration, ensure that it is not configured to s
 </ul>
 </li>
 <li>Run the dnsdock container<ul>
-<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock phase2/dnsdock</code></li>
+<li><code>docker run -d --name=dnsdock -e DNSDOCK_NAME=dnsdock -e DNSDOCK_IMAGE=devtools -p 172.17.0.1:53:53/udp -v /var/run/docker.sock:/var/run/docker.sock aacebedo/dnsdock:latest-amd64 -domain=vm</code></li>
 <li><em>Note</em>: if you want this container to run automatically when the docker daemon starts, add the <code>--restart=always</code> flag to the above command.</li>
 </ul>
 </li>
