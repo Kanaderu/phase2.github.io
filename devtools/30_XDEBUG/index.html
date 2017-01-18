@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Phase2">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Xdebug - DevTools CLI Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Xdebug";
+    var mkdocs_page_input_path = "30_XDEBUG.md";
+    var mkdocs_page_url = "/30_XDEBUG/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-305109-83', 'auto');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> DevTools CLI Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../00_INTRO/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../10_TOOLCHAIN/">Tool Chain</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../20_PROJECT_SETUP/">Project Setup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../30_PROJECT_USAGE/">Project Usage</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Xdebug</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#local-xdebug-with-devtools-phpstorm">Local Xdebug with DevTools &amp; PHPStorm</a></li>
+                
+                    <li><a class="toctree-l4" href="#setup-steps">Setup Steps</a></li>
+                
+                    <li><a class="toctree-l4" href="#overriding-the-default-xdebug-configuration">Overriding the Default Xdebug Configuration</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../40_INTEGRATION/">Integration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../50_TROUBLESHOOTING/">Troubleshooting</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_UPGRADE/">Upgrade</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../99_LINUX/">LINUX</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">DevTools CLI Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Xdebug</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/30_XDEBUG.md"
+          class="icon icon-bitbucket"
+        > Edit on Bitbucket</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="local-xdebug-with-devtools-phpstorm">Local Xdebug with DevTools &amp; PHPStorm</h2>
+<p>Getting <a href="https://xdebug.org/">Xdebug</a> set up can be a bit challenging but while there are many discrete steps, they are individually straightforward. This guide will walk you through getting setup quickly with PHPStorm.</p>
+<div class="admonition note">
+<p class="admonition-title">Applies to use of Phase2 Docker Images</p>
+<p>This documentation specifically pertains to using Phase2's <a href="https://hub.docker.com/r/phase2/apache-php-base/">Apache-PHP Docker Images</a> or the Phase2 <a href="https://hub.docker.com/r/phase2/devtools-build/">Drupal Build Image</a>.</p>
+<p><code>devtools-cli</code> itself is only relevant in that it brokers standardized DNS practices.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Make sure your environment is up-to-date</p>
+<p>In case there might be fixes for any problems you might encounter, consider <a href="../70_UPGRADE/">updating devtools</a> before proceeding.</p>
+<p>Once done, run <code>devtools doctor</code> to confirm devtools is in a healthy. Check out <a href="../50_TROUBLESHOOTING/">Troubleshooting</a> or the <a href="../60_FAQ/">F.A.Q.</a> if anything comes up.</p>
+<p>If you haven't updated your Docker Images in awhile, doing so now is a good precautionary step that you have everything you need. Check out the <a href="../30_PROJECT_USAGE/#routine-environment-maintenance">Routine Environment Maintenance</a></p>
+</div>
+<h3 id="setup-steps">Setup Steps</h3>
+<h4 id="1-activate-xdebug-for-your-running-drupal-site">1. Activate Xdebug for your running Drupal site</h4>
+<p>In your docker command or your docker-compose.yml manifest, ensure the environment variable <code>PHP_XDEBUG="true"</code>. This will load the PHP Xdebug extension with the default configuration.</p>
+<p>For details of the Xdebug configuration of Phase2's Apache PHP containers, check out the <a href="https://hub.docker.com/r/phase2/apache-php-base/">apache-php-base DockerHub page</a>.</p>
+<h4 id="2-configure-phpstorm-for-xdebug">2. Configure PHPStorm for Xdebug</h4>
+<p>To get started configuring your PHPStorm IDE open the application settings.</p>
+<p>Click on the wrench icon in the toolbar:</p>
+<p><img alt="PHPStorm Toolbar" src="../readme_images/phpstorm_toolbar.png" /></p>
+<p>You can also get to the project settings by going to: PHPStorm &gt; Preferences (OSX) or File &gt; Settings (Windows, Linux).</p>
+<h4 id="3-adjust-the-php-project-settings">3. Adjust the PHP Project settings.</h4>
+<p>Make sure you have the correct version of PHP selected:</p>
+<p><img alt="PHP Project settings" src="../readme_images/php_preferences.png" /></p>
+<h4 id="4-adjust-the-debug-project-settings">4. Adjust the Debug Project settings.</h4>
+<ul>
+<li>Xdebug is using Port 9000.</li>
+<li>Accept external connections.</li>
+</ul>
+<p><img alt="Debug Project Settings" src="../readme_images/debug_preferences.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Eyes on Your Xdebug Configuration</p>
+<p>You can view your Xdebug configuration by looking inside the Apache container.
+With the container name (found via <code>docker ps</code>), try running:</p>
+<p><code>docker exec -it [container_name] exec /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
+<p>if using docker-compose with your Apache container named *<em>www</em>, you can more simply run:</p>
+<p><code>fig exec www /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
+<p>This path varies by PHP version. For PHP 5.6 check <code>/etc/opt/rh/rh-php56/php.d/15-xhprof.ini</code>.</p>
+</div>
+<h4 id="5-for-the-dbgp-proxy-just-ensure-that-the-port-is-the-same">5. For the DBGp Proxy, just ensure that the port is the same.</h4>
+<p>You can leave the other settings blank.</p>
+<p><img alt="DBGP Proxy Project Settings" src="../readme_images/dbgp_proxy_preferences.png" /></p>
+<h4 id="6-adjust-the-server-project-settings">6. Adjust the Server Project settings.</h4>
+<p>Create a new Server by clicking on the "+" button. Give your server a name and input the host.</p>
+<p>Be sure to add the docroot mappings. The example shown here is using the <a href="https://github.com/phase2/grunt-drupal-tasks">Grunt Drupal Tasks</a> project structure. There are two mappings in this case. One for the docroot (<code>build/html</code>) and the other for the <code>src</code> directory so that breakpoints can be set in the custom modules in the <code>src</code> directory as well.</p>
+<p>These mappings are used to match paths from inside the Docker container to the paths
+used in the local filesystem where PHPStorm is run.</p>
+<p><img alt="Server Project Settings" src="../readme_images/servers_preferences.png" /></p>
+<h4 id="7-validate-your-debug-settings">7. Validate your debug settings.</h4>
+<div class="admonition important">
+<p class="admonition-title">Proxies Interfere with Xdebug</p>
+<p>When setting your server URL, be sure to use the URL associated with your web container. If you are using a proxy (such as Varnish) that URL may validate but will not work in practice.</p>
+</div>
+<p>Select the "Web Server Debug Validation" option from the "Run" menu option. (Confirm your Apache container is running or this validation will fail.)</p>
+<p><img alt="Validate Debug Option" src="../readme_images/web_server_debug_validation.png" /></p>
+<p>This will display a dialog window that allows you to validate your settings. Make sure that your "Path to create validation script" points to your project docroot and the URL is your project URL.</p>
+<p>If all goes well, clicking the "Validate" button should give you something like this:</p>
+<p><img alt="Validate Debug Screen" src="../readme_images/validate_debugger.png" /></p>
+<p>Click the dialog 'x' (close) button to close this dialog window.</p>
+<h4 id="8-restart-phpstorm">8. Restart PHPStorm.</h4>
+<p>In order to ensure that all your settings are applying, you will need to restart PHPStorm.</p>
+<h4 id="9-make-sure-that-you-listen-for-connections">9. Make sure that you listen for connections!</h4>
+<p><img alt="PHPStorm Toolbar" src="../readme_images/phpstorm_toolbar.png" /></p>
+<h4 id="10-configure-a-debugger">10. Configure a Debugger</h4>
+<ul>
+<li>Select Run -&gt; Edit Configurations from the main PHPStorm menu</li>
+<li>Click + and add a "PHP Web Application"</li>
+<li>Give it a name, then select the Server defined in the previous section from the drop-down menu.</li>
+<li>Enter a Start URL of <code>/</code>.</li>
+<li>Select your Browser (e.g. Chrome)</li>
+<li>Click <strong>OK</strong>.</li>
+</ul>
+<p><img alt="Validate Debug Screen" src="../readme_images/run_debug_configuration.png" /></p>
+<h3 id="overriding-the-default-xdebug-configuration">Overriding the Default Xdebug Configuration</h3>
+<p>If your project or workflow has special needs, you can override the Xdebug configuration
+using Volume Mounts to substitute your own template file. Copy <a href="https://bitbucket.org/phase2tech/docker-apache-php-base/src/master/root/etc/confd/templates/xdebug.ini.tmpl?at=master&amp;fileviewer=file-view-default">the original template</a> into your project and make the necessary changes. (You can also pull your current version of this file from the locally running docker image.)</p>
+<p>Commit your version of the file and add a volume mount to your docker-compose manifest with an entry such as:</p>
+<pre><code>./env/local/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl
+</code></pre>
+
+<p>Once that's in place, you will have to restart the container to pick up the new volume mount:</p>
+<pre><code>docker-compose restart www
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../40_INTEGRATION/" class="btn btn-neutral float-right" title="Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../30_PROJECT_USAGE/" class="btn btn-neutral" title="Project Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
+      
+      
+        <span><a href="../30_PROJECT_USAGE/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../40_INTEGRATION/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

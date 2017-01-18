@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Phase2">
-  
-  <title>Project Usage - DevTools CLI Documentation</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>Project Usage - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -40,7 +32,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('create', 'UA-305109-83', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -62,7 +54,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -106,6 +98,8 @@
                 
                     <li><a class="toctree-l4" href="#how-and-why-to-use-the-build-container">How and why to use the build container</a></li>
                 
+                    <li><a class="toctree-l4" href="#routine-environment-maintenance">Routine Environment Maintenance</a></li>
+                
             
             </ul>
         
@@ -114,7 +108,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">Xdebug</a>
+        <a class="" href="../30_XDEBUG/">Xdebug</a>
         
     </li>
 <li>
@@ -136,6 +130,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../60_FAQ/">FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_UPGRADE/">Upgrade</a>
         
     </li>
 <li>
@@ -172,9 +173,9 @@
     <li>Project Usage</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
-        
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/30_PROJECT_USAGE.md"
+          class="icon icon-bitbucket"
+        > Edit on Bitbucket</a>
       
     </li>
   </ul>
@@ -207,6 +208,33 @@
 <p><code>~/.ssh/id_rsa:/root/.ssh/devtools.key</code></p>
 <h4 id="multiple-docker-machines-using-other-docker-machines">Multiple Docker Machines / Using other Docker Machines</h4>
 <p>There are special cases in which you may want to have multiple Docker Hosts running. For example to test the performance differences between VirtualBox and xhyve.  For these cases, all <code>devtools</code> commands that interact with a Docker Host now take a <code>--name</code> flag that will allow you to specify name of the Docker Host. For all commands this name defaults to <code>dev</code> but you can configure this name if needed.  Also, if you dont want to specify the Docker Host name on every command you can specify the <code>DEVTOOLS_ACTIVE_MACHINE</code> environment variable to be Docker Machine name of the VM you care to interact with.  This way you can set it once and forget about it.  Unless otherwise specified, the name defaults to <code>dev</code> for all commands.</p>
+<h3 id="routine-environment-maintenance">Routine Environment Maintenance</h3>
+<ul>
+<li>Restart devtools on a regular basis to minimize the risk of filesystem or other performance problems with your containers.</li>
+<li>Periodically update your Docker Images to ensure you have the correct environment configuration.</li>
+</ul>
+<p>If your project uses "loosely versioned" Docker images (such as specifying <code>latest</code> as an image version tag) your local update schedule should be coordinated with updates to other environments.</p>
+<h4 id="docker-image-updates-end-to-end-for-a-working-developer">Docker Image Updates (end-to-end for a working Developer)</h4>
+<pre><code>// Stop your containers in case they are running.
+docker-compose stop
+
+// Pull the latest changes for all images referenced in docker-compose.yml
+docker-compose pull
+// Pull the latest changes for all images referenced in build.yml.
+docker-compose -f build.yml pull
+
+// Remove your old containers to make sure you're using the latest images.
+docker-compose rm
+
+// Re-create your containers based on the freshly updated images.
+docker-compose up -d
+</code></pre>
+
+<h4 id="docker-images-updates-for-a-specified-image">Docker Images Updates for a Specified Image</h4>
+<pre><code>docker pull phase2/devtools-build
+</code></pre>
+
+<p>If either form of <code>pull</code> command fails, try re-running with the <code>--no-cache</code> option.</p>
               
             </div>
           </div>
@@ -214,7 +242,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../XDEBUG/" class="btn btn-neutral float-right" title="Xdebug">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../30_XDEBUG/" class="btn btn-neutral float-right" title="Xdebug">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../20_PROJECT_SETUP/" class="btn btn-neutral" title="Project Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -236,10 +264,10 @@
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
@@ -248,10 +276,11 @@
         <span><a href="../20_PROJECT_SETUP/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../XDEBUG/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../30_XDEBUG/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>

@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Phase2">
-  
-  <title>FAQ - DevTools CLI Documentation</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>FAQ - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -40,7 +32,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('create', 'UA-305109-83', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -62,7 +54,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -101,7 +93,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">Xdebug</a>
+        <a class="" href="../30_XDEBUG/">Xdebug</a>
         
     </li>
 <li>
@@ -150,8 +142,19 @@
                 
                     <li><a class="toctree-l4" href="#can-i-get-vm-addresses-working-with-an-existing-docker-machine">Can I get .vm addresses working with an existing Docker machine?</a></li>
                 
+                    <li><a class="toctree-l4" href="#is-there-any-regular-maintenance-needed">Is there any regular maintenance needed?</a></li>
+                
+                    <li><a class="toctree-l4" href="#working-with-multiple-docker-tool-installations-homebrew">Working with multiple Docker tool installations [Homebrew]</a></li>
+                
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../70_UPGRADE/">Upgrade</a>
         
     </li>
 <li>
@@ -188,9 +191,9 @@
     <li>FAQ</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
-        
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/60_FAQ.md"
+          class="icon icon-bitbucket"
+        > Edit on Bitbucket</a>
       
     </li>
   </ul>
@@ -210,10 +213,10 @@
 <h3 id="how-do-i-configure-my-web-container-so-i-can-run-multiple-projects-at-once-from-the-same-container">How do I configure my web container so I can run multiple projects at once from the same container?</h3>
 <p>You don’t. Seriously. This is a place where you must change your thinking from that of treating a <em>server</em> as a unit to treating the <strong>service</strong> as a unit. If you have multiple projects active at once, you’ll have a web serving container active for each of them. This is ok because containers are much lighter weight than full virtual machines, though you do want to be careful about starting too many at once.  Consider that you will have a docker-compose file for each project you are working on, and each docker-compose file represents your application and all the services required to run it.  You could be running multiple docker-compose applications on a single Docker Host.  Realistically, for the performance of your computer you would stop one docker-compose environment before you would run another.</p>
 <h3 id="how-do-i-debug-or-get-a-shell-into-my-application">How do I debug or get a shell into my application?</h3>
-<p>The way to run a command in a container is: <code>docker-compose run &lt;container name&gt; &lt;command&gt;</code>. For example, to get a shell into your web container you might run <code>docker-compose run web /bin/bash</code> </p>
+<p>The way to run a command in a container is: <code>docker-compose run &lt;container name&gt; &lt;command&gt;</code>. For example, to get a shell into your web container you might run <code>docker-compose run web /bin/bash</code></p>
 <p>To run a series of commands, you must wrap them in a single command using a shell. For example: <code>docker-compose run &lt;name in yml&gt; sh -c '&lt;command 1&gt; &amp;&amp; &lt;command 2&gt; &amp;&amp; &lt;command 3&gt;'</code></p>
 <p>In some cases you may want to run a container that is not defined by a docker-compose.yml file, for example to test a new container configuration. Use docker run to start a new container with a given image: <code>docker run -it &lt;image name&gt; &lt;command&gt;</code></p>
-<p>The docker run command accepts command line options to specify volume mounts, environment variables, the working directory, and more. </p>
+<p>The docker run command accepts command line options to specify volume mounts, environment variables, the working directory, and more.</p>
 <h3 id="how-do-i-connect-to-an-existing-container-that-is-already-running">How do I connect to an existing container that is already running</h3>
 <p>There is also a docker exec command that can be used to connect to a container that is already running.  </p>
 <ul>
@@ -236,10 +239,10 @@
 <h3 id="performance-monitoring-of-containers">Performance monitoring of containers</h3>
 <p>If you need some insight into how many resources a given Docker container may be using, take advantage of the command <code>docker stats &lt;container name&gt;</code>.  This handy command will show you CPU%, Memory%, Memory Usage vs Limit, and Network I/O.  It is rudimentary but can be very useful in the first line of inspection on a container.</p>
 <h3 id="i-previously-used-boot2docker-instead-of-this-docker-machine-whats-the-difference">I previously used boot2docker instead of this docker-machine. What's the difference?</h3>
-<p>DevTools still uses the boot2docker <strong>virtual machine</strong>. The "boot2docker CLI" has been phased out in favor of docker-machine. docker-machine still uses the boot2docker linux distribution. docker-machine spins up a vm named <strong>dev</strong> in Virtualbox or VMWare Fusion, whereas boot2docker previously spun up a vm named <strong>boot2docker</strong>. </p>
+<p>DevTools still uses the boot2docker <strong>virtual machine</strong>. The "boot2docker CLI" has been phased out in favor of docker-machine. docker-machine still uses the boot2docker linux distribution. docker-machine spins up a vm named <strong>dev</strong> in Virtualbox or VMWare Fusion, whereas boot2docker previously spun up a vm named <strong>boot2docker</strong>.</p>
 <h3 id="can-i-get-vm-addresses-working-with-an-existing-docker-machine">Can I get .vm addresses working with an existing Docker machine?</h3>
 <p>Yes, with an important caveat that containers will not be able to resolve .vm addresses without reconfiguring the daemon.</p>
-<p>As of v0.3.0 a <code>devtools dns</code> command has been added. It can accept a <code>--name</code> parameter to run on an existing docker-machine virtual machine.</p>
+<p>The <code>devtools dns</code> command can accept a <code>--name</code> parameter to run on an existing docker-machine virtual machine.</p>
 <p>When we start a machine with <code>devtools start</code>, we do the following things:</p>
 <ul>
 <li>Start a machine with the <code>-dns=172.17.0.1</code> Docker daemon option set so that all containers will try dnsdock for DNS</li>
@@ -248,6 +251,14 @@
 <li>Set up <code>/etc/resolver/vm</code> so that OS X will look up .vm addresses through DNS queries to <code>172.17.0.1</code></li>
 </ul>
 <p>If you run <code>devtools dns --name=$DOCKER_MACHINE_NAME</code>, every step except the first will run, so your OS X host will be able to reach containers by their .vm addresses but other containers will not. This is the major difference between creating a machine with <code>devtools start</code> and applying the DNS configuration to an existing machine with <code>devtools dns</code>.</p>
+<h3 id="is-there-any-regular-maintenance-needed">Is there any regular maintenance needed?</h3>
+<p>Yes, to keep your environment working smoothly and with current infrastructure configurations, implement a personal regimen of <a href="../devtools/30_PROJECT_USAGE/#routine-environment-maintenance">Routine Environment Maintenance</a>.</p>
+<h3 id="working-with-multiple-docker-tool-installations-homebrew">Working with multiple Docker tool installations [Homebrew]</h3>
+<p>If you have multiple versions installed, doing <code>brew info docker-compose</code> will list the versions you have installed. The one with the <strong>"*"</strong> will be the version that is active.</p>
+<p>If you need to switch versions, use the <code>brew switch</code> command and run any additional commands like <code>brew unlink ...</code>. (The <code>switch</code> command will provide next command steps if you need to link or unlink any formulae).</p>
+<p>Example:</p>
+<pre><code>brew switch docker 1.9.1
+</code></pre>
               
             </div>
           </div>
@@ -255,7 +266,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../99_LINUX/" class="btn btn-neutral float-right" title="LINUX">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../70_UPGRADE/" class="btn btn-neutral float-right" title="Upgrade">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../50_TROUBLESHOOTING/" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -277,10 +288,10 @@
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
@@ -289,10 +300,11 @@
         <span><a href="../50_TROUBLESHOOTING/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../99_LINUX/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../70_UPGRADE/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>

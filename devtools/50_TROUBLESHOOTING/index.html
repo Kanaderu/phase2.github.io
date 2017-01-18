@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Phase2">
-  
-  <title>Troubleshooting - DevTools CLI Documentation</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>Troubleshooting - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -40,7 +32,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-305109-83', 'readthedocs.org/projects/devtools');
+      ga('create', 'UA-305109-83', 'auto');
       ga('send', 'pageview');
   </script>
   
@@ -62,7 +54,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -101,7 +93,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../XDEBUG/">Xdebug</a>
+        <a class="" href="../30_XDEBUG/">Xdebug</a>
         
     </li>
 <li>
@@ -164,6 +156,13 @@
           
             <li>
     <li class="toctree-l1 ">
+        <a class="" href="../70_UPGRADE/">Upgrade</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
         <a class="" href="../99_LINUX/">LINUX</a>
         
     </li>
@@ -194,9 +193,9 @@
     <li>Troubleshooting</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket"> Edit on BitBucket</a>
-        
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/50_TROUBLESHOOTING.md"
+          class="icon icon-bitbucket"
+        > Edit on Bitbucket</a>
       
     </li>
   </ul>
@@ -269,9 +268,9 @@
 </ol>
 <h3 id="log-in-to-docker-hub">Log in to Docker Hub</h3>
 <p>If you encounter the following error about the Docker image not being found when starting a project, it may indicate that your Docker client is not logged into a required private Docker Hub repository:</p>
-<pre><code>Pulling repository phase2/mariadb
+<pre><code>Pulling repository phase2/privateimage
 
-Error: image phase2/mariadb:latest not found
+Error: image phase2/privateimage:latest not found
 </code></pre>
 <p>To solve this, run <code>docker login</code> and provide the relevant credentials.</p>
 <h3 id="docker-client-and-server-version-incompatibilities">Docker client and server version incompatibilities</h3>
@@ -290,7 +289,6 @@ Network timed out while trying to connect to https://index.docker.io/v1/reposito
 </code></pre>
 
 <p>Try restarting docker-machine: <code>devtools restart</code></p>
-<p><strong>Upstream tracking issue:</strong> <a href="https://github.com/docker/machine/issues/1857">docker/machine #1857</a></p>
 <h3 id="started-machines-may-have-a-new-ip-address">Started machines may have a new IP address</h3>
 <p>Example:</p>
 <pre><code>Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
@@ -402,10 +400,10 @@ rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
@@ -418,6 +416,7 @@ rm -Rf /data/[PROJECT]/[DIRECTORY_FOR_SERVICE]
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>

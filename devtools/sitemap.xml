@@ -3,80 +3,88 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/00_INTRO/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/00_INTRO/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/10_TOOLCHAIN/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/10_TOOLCHAIN/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/20_PROJECT_SETUP/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/20_PROJECT_SETUP/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/30_PROJECT_USAGE/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/30_PROJECT_USAGE/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/XDEBUG/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/30_XDEBUG/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/40_INTEGRATION/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/40_INTEGRATION/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/50_TROUBLESHOOTING/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/50_TROUBLESHOOTING/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/60_FAQ/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/60_FAQ/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/99_LINUX/</loc>
-     <lastmod>2016-10-26</lastmod>
+     <loc>/70_UPGRADE/</loc>
+     <lastmod>2017-01-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/99_LINUX/</loc>
+     <lastmod>2017-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
