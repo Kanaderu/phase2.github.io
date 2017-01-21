@@ -4,89 +4,215 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
     <url>
-     <loc>/00_INTRO/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/getting-started/system-requirements/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/getting-started/mac-installation/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/getting-started/linux-installation/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/getting-started/windows-installation/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/getting-started/how-to-contribute/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
+        
     <url>
-     <loc>/10_TOOLCHAIN/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/project-setup/common-setup/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/project-setup/new-projects/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/project-setup/existing-projects/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/project-setup/docker-images/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
+        
     <url>
-     <loc>/20_PROJECT_SETUP/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/common-tasks/starting-your-project-containers/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/common-tasks/stopping-containers-and-cleanup/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/using-the-build-container/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/working-with-volumes/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/ssh-into-a-container/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/using-watches/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/using-xdebug-with-phpstorm/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/accessing-logs/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/tbd/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/tbd/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/ssh-keys-for-private-repos/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/tbd/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/dns-resolution/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/upgrading-devtools/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/multiple-docker-machines/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/routine-image-maintenance/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/common-tasks/creating-your-own-images/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
+        
     <url>
-     <loc>/30_PROJECT_USAGE/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/faq/general/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/faq/troubleshooting/</loc>
+     <lastmod>2017-01-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
+        
     <url>
-     <loc>/30_XDEBUG/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/appendix/glossary/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
-     <loc>/40_INTEGRATION/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/appendix/architecture/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
-     <loc>/50_TROUBLESHOOTING/</loc>
-     <lastmod>2017-01-18</lastmod>
+     <loc>/appendix/library/</loc>
+     <lastmod>2017-01-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-    <url>
-     <loc>/60_FAQ/</loc>
-     <lastmod>2017-01-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/70_UPGRADE/</loc>
-     <lastmod>2017-01-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/99_LINUX/</loc>
-     <lastmod>2017-01-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
+        
     
 
 </urlset>
