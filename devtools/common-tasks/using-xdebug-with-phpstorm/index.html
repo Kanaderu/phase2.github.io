@@ -223,7 +223,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tbd/">Changing container configuration</a>
+        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
         
     </li>
 
@@ -323,6 +323,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../appendix/background/">Background</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../appendix/library/">Library</a>
         
     </li>
@@ -375,7 +382,7 @@
 <p>Getting <a href="https://xdebug.org/">Xdebug</a> set up can be a bit challenging but while there are many discrete steps, they are 
 individually straightforward. This guide will walk you through getting setup quickly with PHPStorm.</p>
 <div class="admonition note">
-<p class="admonition-title">Applies to use of Phase2 Docker Images</p>
+<p class="admonition-title">Applies to use of the Phase2 Docker Images</p>
 <p>This documentation specifically pertains to using Phase2's <a href="https://hub.docker.com/r/phase2/apache-php-base/">Apache-PHP Docker Images</a> 
 or the Phase2 <a href="https://hub.docker.com/r/phase2/devtools-build/">Drupal Build Image</a>.</p>
 <p><code>devtools-cli</code> itself is only relevant in that it brokers standardized DNS practices.</p>
@@ -412,10 +419,10 @@ will load the PHP Xdebug extension with the default configuration.</p>
 <p class="admonition-title">Eyes on Your Xdebug Configuration</p>
 <p>You can view your Xdebug configuration by looking inside the Apache container.
 With the container name (found via <code>docker ps</code>), try running:</p>
-<p><code>docker exec -it [container_name] exec /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
+<p><code>docker exec [container_name] /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
 <p>if using docker-compose with your Apache container named *<em>www</em>, you can more simply run:</p>
-<p><code>fig exec www /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
-<p>This path varies by PHP version. For PHP 5.6 check <code>/etc/opt/rh/rh-php56/php.d/15-xhprof.ini</code>.</p>
+<p><code>docker-compose exec www /usr/bin/env cat /etc/opt/remi/php70/php.d/15-xdebug.ini</code></p>
+<p>This path varies by PHP version. For PHP 5.6 check <code>/etc/opt/rh/rh-php56/php.d/15-xdebug.ini</code>.</p>
 </div>
 <h4 id="5-for-the-dbgp-proxy-just-ensure-that-the-port-is-the-same">5. For the DBGp Proxy, just ensure that the port is the same.</h4>
 <p>You can leave the other settings blank.</p>

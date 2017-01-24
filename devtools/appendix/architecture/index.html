@@ -212,7 +212,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/tbd/">Changing container configuration</a>
+        <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
         
     </li>
 
@@ -311,14 +311,17 @@
             
                 <li class="toctree-l3"><a href="#architecture">Architecture</a></li>
                 
-                    <li><a class="toctree-l4" href="#background-whats-in-it-for-you">Background / What’s in it for you?</a></li>
-                
                     <li><a class="toctree-l4" href="#containerization">Containerization</a></li>
-                
-                    <li><a class="toctree-l4" href="#putting-it-all-together">Putting it all together</a></li>
                 
             
             </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../background/">Background</a>
         
     </li>
 
@@ -374,85 +377,63 @@
             <div class="section">
               
                 <h1 id="architecture">Architecture</h1>
-<p>Here is a run down on the tooling that ties it all together and that you’ll download to get started.</p>
-<h2 id="background-whats-in-it-for-you">Background / What’s in it for you?</h2>
-<p>DevTools covers an entire toolbox of solutions to accelerate development and smoothly implement best practices.  We 
-intend to use the DevTools umbrella to help us roll these tools and approaches out to the whole company in a more 
-consistent fashion.</p>
-<p>Across a wide variety of projects and clients, keeping a development, integration, staging, production and other 
-environments synchronized in terms of server configuration and supporting software versions and tooling has always been 
-a challenge. The multitude of platforms and versions of operating systems and software is only growing. In the past we 
-have used Vagrant in conjunction with a virtual machine (VM) for local development environments, project-based VMs on 
-Dev Cloud for integration environments and tools like Puppet to try and ensure all of those match each other and the 
-deployment environments. </p>
-<p>It’s been better than doing it all by hand but it has required building additional expertise above typical system 
-management tools and it’s relatively inefficient to have many project-specific VMs locally. On top of that are the 
-various, sometimes conflicting, versions of development toolchains which the VMs don’t always address.</p>
-<p>DevTools is going to address this problem by providing an efficient way to have project/app-specific environments as well 
-as development tooling by using a concept called containerization. This lets us focus on items at a service-and-tools 
-level rather than at a server level and make the details of our hosting implementation more transparent to all technical 
-team members .</p>
+<p>DevTools uses a containerization based approach to providing a project environment. Project services running as containers
+are combined with configuration for persistent data storage, DNS services and network manipulation which allows for easy
+access via names like service.project.vm rather than IP addresses.</p>
+<p>The DevTools CLI facilitates setting up a VM to act as a container host on systems which can not host containers natively.
+It also configures the VM with the following:</p>
+<ul>
+<li>Filesystem sharing for high performance file access of the host machine</li>
+<li>Container initiation for DNS services</li>
+<li>Network and name resolution configuration</li>
+</ul>
+<p>Layered with this core are a set of docker images which provide common project services such as a web server along with
+the ability to configure these services with commonly desired development options. Any docker image can be used if desired.</p>
+<p>Docker Compose is used to control containers to provide a complete environment and a set of Yeoman based generators are
+used to help initial project setup to ensure all pieces fit together using the current best known options..</p>
 <h2 id="containerization">Containerization</h2>
-<p>In order to provide lightweight environments and tooling we will be using a technical approach called containers.<br />
-Containers attempt to move the unit of environment from server to application. This allows separation of concerns between 
-how an application is configured, how the containers communicate with each other, and where the containers are deployed.<br />
-Take an advanced Drupal stack that includes Apache/PHP, MySQL, Memcache, and SOLR. With each component configured to run 
-in its own container, the containers can all run on a single VM for local development and be spread across multiple 
-servers for an optimized production deployment. Let us briefly touch on the technology we will be using and how it 
+<p>In order to provide lightweight environments and tooling we use a technical approach called containers.
+Containers attempt to move the unit of environment from server to application. This allows separation of concerns between
+how an application is configured, how the containers communicate with each other, and where the containers are deployed.
+Take an advanced Drupal stack that includes Apache/PHP, MySQL, Memcache, and SOLR. With each component configured to run
+in its own container, the containers can all run on a single VM for local development and be spread across multiple
+servers for an optimized production deployment. Let us briefly touch on the technology we will be using and how it
 conceptually fits together.</p>
 <h3 id="docker">Docker</h3>
-<p>The container implementation we use is called Docker which is explained in the intro: <a href="https://www.docker.com/whatisdocker">What is Docker</a>? 
-This is the way we capture environment units for our application/services and share them with everyone on the team.<br />
-Environments are captured as images, similar to a VM, so when anyone runs that image they all start with the exact same 
-set of files. For example, nearly every Phase2 project needs a web server so we have a container image that can be run 
-to provide that service. </p>
+<p>The container implementation we use is called Docker which is explained in the intro: <a href="https://www.docker.com/whatisdocker">What is Docker</a>?
+This is the way we capture environment units for our application/services and share them with everyone on the team.
+Environments are captured as images, similar to a VM, so when anyone runs that image they all start with the exact same
+set of files. For example, nearly every project needs a web server so we have a container image that can be run
+to provide that service. Our Docker images are also set up to allow for configuration adjustment to enable common
+development options.</p>
 <h3 id="devtools-cli">devtools-cli</h3>
-<p>This is a project that glues all of the hosting aspects of these tools together into an easy to use unit. You can find 
-devtools-cli in our BitBucket repository <a href="https://bitbucket.org/phase2tech/devtools-cli/overview">here</a>.  There are 2 
+<p>This is a project that glues all of the hosting aspects of these tools together into an easy to use unit. You can find
+devtools-cli in our BitBucket repository <a href="https://bitbucket.org/phase2tech/devtools-cli/overview">here</a>. There are 2
 basic services that devtools-cli provides:</p>
 <h4 id="manage-virtual-machines-for-running-containers">Manage virtual machines for running containers</h4>
-<p>The devtools binary will manage the creation/configuration/upgrade/start/stop of boot2docker virtual machines (a.k.a 
-Docker Hosts) via docker-machine.  It ensures that the docker-machine virtual machine is the right version, is named 
+<p>The devtools binary will manage the creation/configuration/upgrade/start/stop of boot2docker virtual machines (a.k.a
+Docker Hosts) via docker-machine. It ensures that the docker-machine virtual machine is the right version, is named
 correctly and configured to run efficiently within Virtualbox, VMWare Fusion or xhyve.</p>
 <h4 id="nice-dns-names-and-routing-for-running-containers">Nice DNS names and routing for running containers</h4>
-<p>Once there is a safe environment to run our containers we need a way to route traffic to them and provide easy to 
-use/remember domain names to make accessing these services simple. Domain names for containers are set in the 
-docker-compose yaml files using the <code>DNSDOCK_NAME</code> and <code>DNSDOCK_IMAGE</code> environment variables.</p>
-<p>We use a pair of services: <strong>dnsdock</strong> and <strong>dnsmasq</strong> running as containers within the Docker Host. <strong>dnsmasq</strong> listens 
-on 172.17.0.1:53 and it is currently configured to send all queries for *.p2devcloud.com to our internal 10.10.7.2 
-resolver and the rest will be sent to the <strong>dnsdock</strong> service, which listens on 172.17.0.1:53535. The <strong>dnsdock</strong> container 
-resolves the .vm domain names to the IP addresses of the containers.</p>
-<p>The practical effect of this is that you must be on the Phase2 VPN or on the private Wi-Fi of a Phase2 office to get 
-access to *.p2devcloud.com domains, but once you are either on the VPN or in an office, you will bypass the Dev Cloud 
-public proxy.</p>
-<p>Internal container names will look like <em>web.openatrium.vm</em>.  All DevTools containers will carry the <strong>.vm</strong> extension 
-for name resolution. There is additional information about these variables in <a href="../../common-tasks/dns-resolution/">DNS Resolution</a>.</p>
+<p>Once there is a safe environment to run our containers we need a way to route traffic to them and provide easy to
+use/remember domain names to make accessing these services simple. Domain names for containers are set in the
+docker-compose yaml files using configuration that the <strong>dnsdock</strong> container reads to create a mapping between domain
+name and container.</p>
+<p>We use <strong>dnsdock</strong> running as a container within the Docker Host. The <strong>dnsdock</strong> service, which listens on
+172.17.0.1:53535. The <strong>dnsdock</strong> container resolves the *.vm domain names to the IP addresses of the containers.</p>
+<p>Internal container names will look like <em>web.openatrium.vm</em>. All DevTools containers will carry the <strong>.vm</strong> extension
+for name resolution. There is additional information in <a href="../../common-tasks/dns-resolution/">DNS Resolution</a>.</p>
 <h3 id="docker-hub">Docker Hub</h3>
-<p>Docker Hub is where container images are stored and retrieved when your local machine does not already have a copy of 
-the requested container image.  Docker Hub can be thought of like GitHub or BitBucket and Docker Hub images can be thought 
+<p>Docker Hub is where container images are stored and retrieved when your local machine does not already have a copy of
+the requested container image. Docker Hub can be thought of like GitHub or BitBucket and Docker Hub images can be thought
 of as git repositories. We can make new versions of the images and they can be pushed and pulled to the Docker Hub service.</p>
-<h2 id="putting-it-all-together">Putting it all together</h2>
-<p>There are some important pieces to remember about how containerization is similar and different to concepts you may be 
-familiar with.</p>
-<h3 id="vagrant">Vagrant</h3>
-<p>Vagrant is being replaced by the combination of Docker Compose and Docker Machine.</p>
-<h3 id="virtual-machines">Virtual Machines</h3>
-<p>For local development, you should no longer worry about Virtual Machines as they are replaced by a single Docker Machine 
-instance. In environments where containers are meant to run on a cluster of hosts, orchestration tools like 
-<a href="http://kubernetes.io/">Kubernetes</a> or <a href="https://www.docker.com/products/docker-swarm/">Swarm</a> may be used to distribute 
-and coordinate containers across multiple Docker Hosts.</p>
-<h3 id="puppet-ansible-etc">Puppet / Ansible, etc.</h3>
-<p>Goodbye, for local environments at least. Docker uses a conceptually different approach to configuration management than 
-Puppet. It’s perfectly possible to use Puppet from within a Dockerfile to get a container image prepared though typically 
-simple shell commands are preferred.  The idea is that systems like Puppet are no longer needed to manage upgrades across 
-working servers/containers. When there are updates needed you will update the image, pull down the new version of the image 
-to your server and then stop the containers running the old version of the image and start containers based on the new 
-version of the image.</p>
-<p>If a container wants to offer configurable options it will document how to control it within the README or via Environment 
-variables in the Dockerfile itself.  See our Apache / PHP <a href="https://hub.docker.com/r/phase2/apache-php/~/dockerfile/">Dockerfile</a> 
-for an example. In this Docker Image, passing environment variables can override the PHP memory limit. Those variables 
-can either be passed on the command line when executing a <code>docker run</code> command directly, or in the <code>environment</code> section 
-of a docker-compose file.</p>
+<h3 id="container-configuration">Container Configuration</h3>
+<p>If a container wants to offer configurable options it will document how to control it within the README or via Environment
+variables in the Dockerfile itself. See our Apache / PHP <a href="https://hub.docker.com/r/phase2/apache-php/~/dockerfile/">Dockerfile</a>
+for an example. In this Docker Image, passing environment variables can override the PHP memory limit. Those variables
+can either be passed on the command line when executing a <code>docker run</code> command directly, or in the <code>environment</code> section
+of a docker-compose file. Documentation entries within the <strong>Common Tasks</strong> section provide additional approaches to
+container configuration.</p>
               
             </div>
           </div>
@@ -460,7 +441,7 @@ of a docker-compose file.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../library/" class="btn btn-neutral float-right" title="Library">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../background/" class="btn btn-neutral float-right" title="Background">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../glossary/" class="btn btn-neutral" title="Glossary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -494,7 +475,7 @@ of a docker-compose file.</p>
         <span><a href="../glossary/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../library/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../background/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -88,13 +88,17 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#phase2-devtools-vm-for-linux">Phase2 DevTools VM for Linux</a></li>
+                <li class="toctree-l3"><a href="#linux-installation">Linux Installation</a></li>
                 
-                    <li><a class="toctree-l4" href="#linux-requirements">Linux requirements</a></li>
+                    <li><a class="toctree-l4" href="#linux-requirements">Linux Requirements</a></li>
+                
+                    <li><a class="toctree-l4" href="#linux-installation-on-fedora-22">Linux installation on Fedora 22+</a></li>
+                
+                    <li><a class="toctree-l4" href="#linux-installation-on-ubuntulinux-mintdebian">Linux installation on Ubuntu/Linux Mint/Debian</a></li>
                 
                     <li><a class="toctree-l4" href="#linux-dns-configuration-options">Linux DNS configuration options</a></li>
                 
-                    <li><a class="toctree-l4" href="#dns-resolution-tests">DNS resolution tests</a></li>
+                    <li><a class="toctree-l4" href="#verifying-dns-is-working">Verifying DNS is working</a></li>
                 
             
             </ul>
@@ -225,7 +229,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/tbd/">Changing container configuration</a>
+        <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
         
     </li>
 
@@ -325,6 +329,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../appendix/background/">Background</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../appendix/library/">Library</a>
         
     </li>
@@ -373,16 +384,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="phase2-devtools-vm-for-linux">Phase2 DevTools VM for Linux</h1>
+                <h1 id="linux-installation">Linux Installation</h1>
 <p>When running Docker containers on Linux, it is not necessary to run the Docker Machine VM. The instructions here describe 
 how to run DevTools projects on Linux.</p>
-<h2 id="linux-requirements">Linux requirements</h2>
+<h2 id="linux-requirements">Linux Requirements</h2>
 <ol>
 <li>The dnsdock container, used to support automatic creation and maintenance of DNS namespace for the containers</li>
 <li>Use of one of three options to forward DNS queries to the dnsdock container 
 (see <a href="#markdown-header-linux-dns-configuration-options">Linux DNS configuration options</a> below)</li>
 </ol>
-<h3 id="linux-installation-on-fedora-22">Linux installation on Fedora 22+</h3>
+<h2 id="linux-installation-on-fedora-22">Linux installation on Fedora 22+</h2>
 <ol>
 <li>Install Docker 1.x.x and docker-compose<ul>
 <li><code>sudo dnf install docker-engine docker-compose</code></li>
@@ -412,7 +423,7 @@ how to run DevTools projects on Linux.</p>
 </ul>
 </li>
 </ol>
-<h3 id="linux-installation-on-ubuntulinux-mintdebian">Linux installation on Ubuntu/Linux Mint/Debian</h3>
+<h2 id="linux-installation-on-ubuntulinux-mintdebian">Linux installation on Ubuntu/Linux Mint/Debian</h2>
 <ol>
 <li>Install Docker 1.x.x<ul>
 <li><code>sudo apt-get install docker-engine</code></li>
@@ -502,7 +513,7 @@ flag to the above command.</li>
 </ul>
 </li>
 </ol>
-<h2 id="dns-resolution-tests">DNS resolution tests</h2>
+<h2 id="verifying-dns-is-working">Verifying DNS is working</h2>
 <p>Once you have your environment set up, you can use the following tests to ensure things are running properly.</p>
 <ul>
 <li><code>dig @172.17.0.1 dnsdock.devtools.vm.</code><ul>

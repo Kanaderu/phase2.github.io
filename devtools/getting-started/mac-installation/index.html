@@ -221,7 +221,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/tbd/">Changing container configuration</a>
+        <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
         
     </li>
 
@@ -321,6 +321,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../appendix/background/">Background</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../appendix/library/">Library</a>
         
     </li>
@@ -388,7 +395,12 @@
 <p>Here are some configuration options available to you to customize your setup:</p>
 <ul>
 <li><strong>name:</strong> The Docker Machine name for the VM. Defaults to <code>dev</code></li>
-<li><strong>driver:</strong> The driver to create the Docker Machine with. Choices are <code>virtualbox</code>, <code>vmwarefusion</code>, and <code>xhyve</code>. Defaults to <code>virtualbox</code></li>
+<li><strong>driver:</strong> The driver to create the Docker Machine with. Choices are:<ul>
+<li><code>virtualbox</code> - default</li>
+<li><code>vmwarefusion</code></li>
+<li><code>xhyve</code></li>
+</ul>
+</li>
 <li><strong>cpuCount:</strong> The number of virtual CPU you want to allocate to this VM. Defaults to 2</li>
 <li><strong>memSize:</strong> The size memory you want to configure for this VM, in Megabytes. Defaults to 4096</li>
 <li><strong>diskSize:</strong> The size drive you want to configure for this VM, in Gigabytes. Defaults to 40</li>
@@ -408,7 +420,7 @@ alias dte='eval &quot;$(devtools config)&quot;'
 <p class="admonition-title">Running devtools config</p>
 <p>Even with automatic execution in your shell, this command must be run in any existing 
 terminal windows after <code>devtools start</code> or <code>devtools restart</code> commands. To support that
-seel the <code>dte</code> alias in the shell init file above. Just run <code>dte</code> after a <code>devtools start</code></p>
+see the <code>dte</code> alias in the shell init file above. Just run <code>dte</code> after a <code>devtools start</code></p>
 </div>
 <h3 id="support-for-docker-for-mac">Support for Docker for Mac</h3>
 <p>We don't yet have official support for Docker for Mac, we rely on docker binaries installed 

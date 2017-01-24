@@ -8,7 +8,7 @@
   
   <meta name="author" content="Phase2">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Stopping containers and cleanup - DevTools CLI Documentation</title>
+  <title>Changing container configuration - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Stopping containers and cleanup";
-    var mkdocs_page_input_path = "common-tasks/stopping-containers-and-cleanup.md";
-    var mkdocs_page_url = "/common-tasks/stopping-containers-and-cleanup/";
+    var mkdocs_page_name = "Changing container configuration";
+    var mkdocs_page_input_path = "common-tasks/customizing-container-configuration.md";
+    var mkdocs_page_url = "/common-tasks/customizing-container-configuration/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -155,19 +155,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Stopping containers and cleanup</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#stopping-containers-and-cleanup">Stopping containers and cleanup</a></li>
-                
-                    <li><a class="toctree-l4" href="#stopping-the-containers-for-your-project">Stopping the containers for your project</a></li>
-                
-                    <li><a class="toctree-l4" href="#cleaning-up">Cleaning Up</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../stopping-containers-and-cleanup/">Stopping containers and cleanup</a>
         
     </li>
 
@@ -222,8 +211,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Changing container configuration</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#customizing-configuration">Customizing Configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-image-provided-environmental-variables">Using image provided environmental variables</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-volume-mounts-to-override-configuration">Using volume mounts to override configuration</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -364,10 +364,10 @@
         
       
     
-    <li>Stopping containers and cleanup</li>
+    <li>Changing container configuration</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/stopping-containers-and-cleanup.md"
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/customizing-container-configuration.md"
           class="icon icon-bitbucket"
         > Edit on Bitbucket</a>
       
@@ -378,29 +378,43 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="stopping-containers-and-cleanup">Stopping containers and cleanup</h1>
-<h2 id="stopping-the-containers-for-your-project">Stopping the containers for your project</h2>
-<p>You may want to recoup the resources used by your projects containers and the docker host for other things if you are 
-done with development for a while.  You can stop the containers for a single project only or all containers and the docker 
-host depending on what you are finished using.</p>
-<ol>
-<li>
-<p>If you only want to stop the containers for your project, in the project directory, run <code>docker-compose stop</code> or 
-press Ctrl-C to stop a docker-compose process running in the foreground and then run <code>docker-compose stop</code> to ensure 
-the project containers have stopped.</p>
-</li>
-<li>
-<p>If you want to shut down the docker host as well as any containers, run <code>devtools stop</code></p>
-</li>
-</ol>
-<h2 id="cleaning-up">Cleaning Up</h2>
-<p>From time to time you'll want to clean up stopped containers. You'll also want to take special care when finishing a 
-project to release all the resources used by it.</p>
-<p>For periodic cleanup of all stopped containers, run the following script while your docker host is running: <code>devtools prune</code></p>
-<p>If you only want to clean up project specific stopped containers, you can run: <code>docker-compose rm</code> from your project directory.</p>
-<p>When you are finished with a project, if you used any persistent data storage you'll want to run a command to clean it 
-up. The exact directory to request removal from will depend on your project (see suggested directory naming guidelines in 
-<a href="../../project-setup/common-setup/">Common Setup</a>): <code>docker ssh dev sudo rm -rf /data/[project]/</code></p>
+                <h1 id="customizing-configuration">Customizing Configuration</h1>
+<p>There are a few primary mechanisms for customizing the configuration of a container.</p>
+<h2 id="using-image-provided-environmental-variables">Using image provided environmental variables</h2>
+<p>Many images will react to environmental variables to alter their behavior. Images which offer
+this functionality should document it in the README for the image. For an example see the
+<a href="https://hub.docker.com/r/phase2/devtools-build/">DevTools Build</a> image. When environmental
+configuration is available it can be triggered by specifying the appropriate value in the
+environments section of your docker compose file.</p>
+<pre><code class="yaml">www:
+  image: phase2/apache-php:php56
+  environment:
+    # Change some core container settings
+    PHP_MAX_EXECUTION_TIME: 45
+    # These enable debug/profiling support
+    PHP_XDEBUG: &quot;true&quot;
+    PHP_XHPROF: &quot;false&quot;
+</code></pre>
+
+<h2 id="using-volume-mounts-to-override-configuration">Using volume mounts to override configuration</h2>
+<p>If the container image you are using doesn't allow for change via environmental variables, your 
+next option is to override the configuration file using volume mounting. In this setup, you
+replace the configuration file inside a container with a file from your host machine.</p>
+<div class="admonition important">
+<p class="admonition-title">Phase2 images often use <a href="http://www.confd.io/">confd</a></p>
+<p>The configuration file you may be trying to override might be generated on container
+initiation. If this is the case, you'll need to override the template file from which the
+configuration file is created. If you find that your copy of the configuration file on your
+host machine is updated when you start a container this is likely the cause. See the section
+on <a href="../tbd">Container configuration</a> for more information.</p>
+</div>
+<pre><code class="yaml">www:
+  image: phase2/apache-php:php56
+  volumes:
+    # substitute in a special mime magic file because our project handles files
+    # of special types
+    - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic
+</code></pre>
               
             </div>
           </div>
@@ -408,10 +422,10 @@ up. The exact directory to request removal from will depend on your project (see
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../using-the-build-container/" class="btn btn-neutral float-right" title="Using the build container">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ssh-keys-for-private-repos/" class="btn btn-neutral float-right" title="SSH Keys for private repos">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../starting-your-project-containers/" class="btn btn-neutral" title="Starting your project containers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tbd/" class="btn btn-neutral" title="Container configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -439,10 +453,10 @@ up. The exact directory to request removal from will depend on your project (see
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
-        <span><a href="../starting-your-project-containers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tbd/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../using-the-build-container/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ssh-keys-for-private-repos/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
