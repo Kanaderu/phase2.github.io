@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,31 +13,31 @@
         
     <url>
      <loc>/getting-started/system-requirements/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/getting-started/mac-installation/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/getting-started/linux-installation/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/getting-started/windows-installation/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/getting-started/how-to-contribute/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -47,25 +47,25 @@
         
     <url>
      <loc>/project-setup/common-setup/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/project-setup/new-projects/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/project-setup/existing-projects/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/project-setup/docker-images/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -75,103 +75,103 @@
         
     <url>
      <loc>/common-tasks/starting-your-project-containers/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/stopping-containers-and-cleanup/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/using-the-build-container/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/working-with-volumes/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/ssh-into-a-container/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/using-watches/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/using-xdebug-with-phpstorm/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/accessing-logs/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/tbd/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/customizing-container-configuration/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/ssh-keys-for-private-repos/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/tbd/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/dns-resolution/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/upgrading-devtools/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/multiple-docker-machines/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/routine-image-maintenance/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/common-tasks/creating-your-own-images/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -181,13 +181,13 @@
         
     <url>
      <loc>/faq/general/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/faq/troubleshooting/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -197,25 +197,25 @@
         
     <url>
      <loc>/appendix/glossary/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/appendix/architecture/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/appendix/background/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/appendix/library/</loc>
-     <lastmod>2017-01-24</lastmod>
+     <lastmod>2017-01-25</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
