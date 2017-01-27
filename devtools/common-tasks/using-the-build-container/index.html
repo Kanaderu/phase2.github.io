@@ -169,9 +169,11 @@
             
                 <li class="toctree-l3"><a href="#using-the-build-container">Using the Build Container</a></li>
                 
-                    <li><a class="toctree-l4" href="#how-and-why-to-use-the-build-container">How and why to use the build container</a></li>
+                    <li><a class="toctree-l4" href="#getting-a-build-container-command-line">Getting a build container command line.</a></li>
                 
-                    <li><a class="toctree-l4" href="#where-do-i-run-a-build">Where do I run a build?</a></li>
+                    <li><a class="toctree-l4" href="#running-a-command-container">Running a command container</a></li>
+                
+                    <li><a class="toctree-l4" href="#share-output-from-the-build-container">Share output from the build container</a></li>
                 
             
             </ul>
@@ -189,6 +191,13 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../ssh-into-a-container/">SSH into a container</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
         
     </li>
 
@@ -216,20 +225,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tbd/">Container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../ssh-keys-for-private-repos/">SSH Keys for private repos</a>
         
     </li>
@@ -237,7 +232,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tbd/">Seting up mail</a>
+        <a class="" href="../setting-up-mail/">Seting up mail</a>
         
     </li>
 
@@ -380,22 +375,44 @@
               
                 <h1 id="using-the-build-container">Using the Build Container</h1>
 <p>Part of DevTools is a <a href="https://hub.docker.com/r/phase2/devtools-build/">devtools-build</a> image.  The idea of the build 
-container is that it will have installed nearly all of the tools you'd need to work on a project and the proper versions 
+container is that it will have installed many of the tools you'd need to work on a project and the proper versions 
 so that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. 
 Providing these tools in a container means that you'll never have to worry about having the right tools installed on 
 your laptop or integration environment to get your job done.</p>
-<h2 id="how-and-why-to-use-the-build-container">How and why to use the build container</h2>
 <p>The example Drupal project contains a <a href="https://github.com/phase2/devtools-examples/blob/master/drupal8/build.yml">build.yml</a> 
-Docker Compose file that shows a variety of ways to use the container that we will highlight below.</p>
-<h2 id="where-do-i-run-a-build">Where do I run a build?</h2>
-<p>You should run a build from within the build container for your project.  Look at the example 
-<a href="https://github.com/phase2/devtools-examples/blob/master/drupal8/build.yml">drupal8/build.yml</a> 
-file to see the various way you can configure build containers for your environment.  That docker-compose file contains 
-instructions on how you could use each of those containers for executing build commands on your codebase.</p>
-<h3 id="how-do-i-share-the-output-from-my-build-container-with-my-web-container">How do I share the output from my build container with my web container?</h3>
-<p>First have your build container define a volume to mount your project code into the container, then when you perform a 
-build it will write the output to you local project. Then if your web container defines a volume to mount the build output 
-into the docroot you will have seamless integration of build output to web container running the site.</p>
+Docker Compose file that shows a variety of ways to use the container.  </p>
+<h2 id="getting-a-build-container-command-line">Getting a build container command line.</h2>
+<p>One of the most common ways to use the build container is to launch a shell into the container and run commands from the 
+command line interface (cli). The following command get you to the cli</p>
+<p><code>docker-compose -f build.yml run cli</code></p>
+<div class="admonition note">
+<p class="admonition-title">Making a command alias</p>
+<p>Using a shell alias you can make a really quick CLI command that is reusable across projects if you name your build.yml
+file the same everywhere. <code>alias cli='docker-compose -f build.yml run cli</code> then you only need to <code>cli</code> to get into
+your build containers shell.  This <em>trick</em> can be used with all of the command below as well.</p>
+</div>
+<h2 id="running-a-command-container">Running a command container</h2>
+<p>A "command container" is a term we have coined for a specific approach we use, where containers are spun up to run a single 
+command in a consistent environment and then shut down.  Here are some example of command containers that we have configured 
+into the <code>build.yml</code> file from our example repository above.</p>
+<h3 id="drush-command-container">Drush Command Container</h3>
+<p>This is a general purpose Drush command container that allows you to run any drush command in a consistent environment</p>
+<p><code>docker-compose -f build.yml run drush [command here]</code></p>
+<h3 id="grunt-command-container">Grunt Command Container</h3>
+<p>This is a general purpose Grunt command container that allows you to run any grunt command in a consistent environment</p>
+<p><code>docker-compose -f build.yml run grunt [command here]</code></p>
+<h3 id="composer-command-container">Composer Command Container</h3>
+<p>This is a general purpose Composer command container that allows you to run any composer command in a consistent environment</p>
+<p><code>docker-compose -f build.yml run composer [command here]</code></p>
+<h3 id="composer-install-command-container">Composer Install Command Container</h3>
+<p>This one goes a step further when there is a specific command you want to run and control all the arguments used to run it.</p>
+<p><code>docker-compose -f build.yml run composer-install</code></p>
+<h2 id="share-output-from-the-build-container">Share output from the build container</h2>
+<p>Using the example project from above, we have a volume mount of your project code into the build container. Now, when you perform a 
+build and it writes the output to the local project directory (e.g in ./build/html or something else in the working directory), 
+those changes to the filesystem are effectively outside of the container. The web container shoudl also define a volume mount 
+for the build output into the docroot, or mount your project directory in the container and configure the docroot to be the
+ absolute path to your build output and you will have seamless integration of build output to a web container running your project.</p>
               
             </div>
           </div>

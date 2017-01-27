@@ -183,6 +183,26 @@
 
         
             
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Changing container configuration</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#customizing-configuration">Customizing Configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#environment-variables">Environment Variables</a></li>
+                
+                    <li><a class="toctree-l4" href="#volume-mounts">Volume Mounts</a></li>
+                
+                    <li><a class="toctree-l4" href="#volume-mounts-for-confd">Volume Mounts for confd</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
     <li class="toctree-l1 ">
         <a class="" href="../using-watches/">Using watches</a>
         
@@ -205,31 +225,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tbd/">Container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Changing container configuration</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#customizing-configuration">Customizing Configuration</a></li>
-                
-                    <li><a class="toctree-l4" href="#using-image-provided-environmental-variables">Using image provided environmental variables</a></li>
-                
-                    <li><a class="toctree-l4" href="#using-volume-mounts-to-override-configuration">Using volume mounts to override configuration</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../ssh-keys-for-private-repos/">SSH Keys for private repos</a>
         
     </li>
@@ -237,7 +232,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tbd/">Seting up mail</a>
+        <a class="" href="../setting-up-mail/">Seting up mail</a>
         
     </li>
 
@@ -380,7 +375,7 @@
               
                 <h1 id="customizing-configuration">Customizing Configuration</h1>
 <p>There are a few primary mechanisms for customizing the configuration of a container.</p>
-<h2 id="using-image-provided-environmental-variables">Using image provided environmental variables</h2>
+<h2 id="environment-variables">Environment Variables</h2>
 <p>Many images will react to environmental variables to alter their behavior. Images which offer
 this functionality should document it in the README for the image. For an example see the
 <a href="https://hub.docker.com/r/phase2/devtools-build/">DevTools Build</a> image. When environmental
@@ -396,24 +391,30 @@ environments section of your docker compose file.</p>
     PHP_XHPROF: &quot;false&quot;
 </code></pre>
 
-<h2 id="using-volume-mounts-to-override-configuration">Using volume mounts to override configuration</h2>
+<h2 id="volume-mounts">Volume Mounts</h2>
 <p>If the container image you are using doesn't allow for change via environmental variables, your 
 next option is to override the configuration file using volume mounting. In this setup, you
 replace the configuration file inside a container with a file from your host machine.</p>
-<div class="admonition important">
-<p class="admonition-title">Phase2 images often use <a href="http://www.confd.io/">confd</a></p>
-<p>The configuration file you may be trying to override might be generated on container
-initiation. If this is the case, you'll need to override the template file from which the
-configuration file is created. If you find that your copy of the configuration file on your
-host machine is updated when you start a container this is likely the cause. See the section
-on <a href="../tbd">Container configuration</a> for more information.</p>
-</div>
 <pre><code class="yaml">www:
   image: phase2/apache-php:php56
   volumes:
     # substitute in a special mime magic file because our project handles files
     # of special types
     - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic
+</code></pre>
+
+<h2 id="volume-mounts-for-confd">Volume Mounts for confd</h2>
+<p>Phase2 images often use <a href="http://www.confd.io/">confd</a> to template configuration from environment variable and other sources.
+The configuration file you may be trying to override might be generated on container initiation via confd. If this is the 
+case, you'll need to override the template file from which the configuration file is created. If you find that your copy 
+of the configuration file on your host machine is updated when you start a container this is likely the cause. </p>
+<p>For exmaple, the xdebug configuration provided in our <strong>phase2/apache-php:php70</strong> container is proivided by confd, so this
+is how you would override that configuration</p>
+<pre><code class="yaml">www:
+  image: phase2/apache-php:php70
+  volumes:
+    # substitute a different confd template file into the image so confd will use the override on container boot
+    - ./env/www/etc/confd/templates/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl
 </code></pre>
               
             </div>
@@ -422,10 +423,10 @@ on <a href="../tbd">Container configuration</a> for more information.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ssh-keys-for-private-repos/" class="btn btn-neutral float-right" title="SSH Keys for private repos">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../using-watches/" class="btn btn-neutral float-right" title="Using watches">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tbd/" class="btn btn-neutral" title="Container configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ssh-into-a-container/" class="btn btn-neutral" title="SSH into a container"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -453,10 +454,10 @@ on <a href="../tbd">Container configuration</a> for more information.</p>
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
-        <span><a href="../tbd/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ssh-into-a-container/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../ssh-keys-for-private-repos/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../using-watches/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

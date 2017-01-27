@@ -187,28 +187,43 @@
         },
         {
             "location": "/project-setup/new-projects/",
-            "text": "New Projects\n\n\nSetting up a project\n\n\nTo set up a project rather than just work on one, you'll need to understand how to create a docker-compose file, how to \nconfigure DNS for your project's containers and how to configure persistent storage if your project needs it.\n\n\nManual Setup\n\n\nTBD\n\n\nUsing the Generators\n\n\nTBD",
+            "text": "New Projects\n\n\nTo set up a new project rather than just work on one, you'll need to understand how to create a \ndocker-compose file, how to configure DNS for your project's containers and how to configure \npersistent storage if your project needs it.\n\n\nManual Setup\n\n\nDevTools is intended to work with either raw Docker commands or Docker Compose files. Docker\nCompose is the preferred tool to use when setting up projects and in this section we will go\nover some basics to get a project setup.\n\n\nBe sure to read the \nDocker Compose compose file documentation\n\nso that you have a handle on how to setup the various configuration.\n\n\nPlease see the \nDevTools Examples Repository\n for \nhow to setup various technologies within DevTools.  Specifically, the \n\nDrupal 8 example\n covers all\nof the high points.\n\n\nChoosing Images\n\n\nAny valid Docker Image can work with DevTools. We also supply \na collection of crafted Docker\nimages\n that are easily configured and optimized. And example for\nan Apache / PHP image based on PHP7 is \nphase2/apache-php:php70\n or \nphp:7.1.1-apache\n  \n\n\n\n\nUse Image Tags\n\n\nWhen selecting and image to use, be sure to also specify a tag for that image. When you do not\nspecify a tag, the default tag of \nlatest\n is used and it is easy to get our of sync with other\nteam members or simply get unwanted changes if you do not explicitly specify an image tag.\n\n\n\n\nEnvironment Variables\n\n\nImages can take configuration through \nenvironment variables specified in the Docker Compose file\n. \nFor example, the \nphase2/apache-php\n image allows you to configure settings such as \nmax_execution_time\n with \nthe \nPHP_MAX_EXECUTION_TIME\n environment variable and \nmemory_limit\n with the \nPHP_MEMORY_LIMIT\n envirionment variables. \nYou can also turn on settings like Xdebug with the \nPHP_XDEBUG\n environment variable.\n\n\nDNS\n\n\nDNS Names for containers are managed with a service called dnsdock.  Dnsdock listens for containers started with certain label metadata\nspecified and creates DNS entries for those containers. Read the linked docs to learn about \nconfiguring label metadata in Compose\n\nand the key/values for \ndnsdock label configuration\n\n\nVolumes\n\n\nVolume mounting directories and files into containers are use for a variety of reasons.\n\n\n\n\nGetting your code base into a container\n\n\nSpecifying certain configuration files\n\n\nOverriding existing configuration files\n\n\nMaking SSH keys available within a container\n\n\nProviding directories that will hold data that lives longer than the container (e.g. database files, or website uploads)\n\n\n\n\nSee the \nCompose documentation for volumes\n to learn\nabout the various options. Also check out the DevTools examples linked above to see volume mounts in action.\n\n\nUsing Generators\n\n\nComing Soon with details on Yo P2 and Generator Gadget as tools that prompt for a few details and then generate the \nscaffolding of an entire project configuration.",
             "title": "New Projects"
         },
         {
             "location": "/project-setup/new-projects/#new-projects",
-            "text": "",
+            "text": "To set up a new project rather than just work on one, you'll need to understand how to create a \ndocker-compose file, how to configure DNS for your project's containers and how to configure \npersistent storage if your project needs it.",
             "title": "New Projects"
         },
         {
-            "location": "/project-setup/new-projects/#setting-up-a-project",
-            "text": "To set up a project rather than just work on one, you'll need to understand how to create a docker-compose file, how to \nconfigure DNS for your project's containers and how to configure persistent storage if your project needs it.",
-            "title": "Setting up a project"
-        },
-        {
             "location": "/project-setup/new-projects/#manual-setup",
-            "text": "TBD",
+            "text": "DevTools is intended to work with either raw Docker commands or Docker Compose files. Docker\nCompose is the preferred tool to use when setting up projects and in this section we will go\nover some basics to get a project setup.  Be sure to read the  Docker Compose compose file documentation \nso that you have a handle on how to setup the various configuration.  Please see the  DevTools Examples Repository  for \nhow to setup various technologies within DevTools.  Specifically, the  Drupal 8 example  covers all\nof the high points.",
             "title": "Manual Setup"
         },
         {
-            "location": "/project-setup/new-projects/#using-the-generators",
-            "text": "TBD",
-            "title": "Using the Generators"
+            "location": "/project-setup/new-projects/#choosing-images",
+            "text": "Any valid Docker Image can work with DevTools. We also supply  a collection of crafted Docker\nimages  that are easily configured and optimized. And example for\nan Apache / PHP image based on PHP7 is  phase2/apache-php:php70  or  php:7.1.1-apache      Use Image Tags  When selecting and image to use, be sure to also specify a tag for that image. When you do not\nspecify a tag, the default tag of  latest  is used and it is easy to get our of sync with other\nteam members or simply get unwanted changes if you do not explicitly specify an image tag.",
+            "title": "Choosing Images"
+        },
+        {
+            "location": "/project-setup/new-projects/#environment-variables",
+            "text": "Images can take configuration through  environment variables specified in the Docker Compose file . \nFor example, the  phase2/apache-php  image allows you to configure settings such as  max_execution_time  with \nthe  PHP_MAX_EXECUTION_TIME  environment variable and  memory_limit  with the  PHP_MEMORY_LIMIT  envirionment variables. \nYou can also turn on settings like Xdebug with the  PHP_XDEBUG  environment variable.",
+            "title": "Environment Variables"
+        },
+        {
+            "location": "/project-setup/new-projects/#dns",
+            "text": "DNS Names for containers are managed with a service called dnsdock.  Dnsdock listens for containers started with certain label metadata\nspecified and creates DNS entries for those containers. Read the linked docs to learn about  configuring label metadata in Compose \nand the key/values for  dnsdock label configuration",
+            "title": "DNS"
+        },
+        {
+            "location": "/project-setup/new-projects/#volumes",
+            "text": "Volume mounting directories and files into containers are use for a variety of reasons.   Getting your code base into a container  Specifying certain configuration files  Overriding existing configuration files  Making SSH keys available within a container  Providing directories that will hold data that lives longer than the container (e.g. database files, or website uploads)   See the  Compose documentation for volumes  to learn\nabout the various options. Also check out the DevTools examples linked above to see volume mounts in action.",
+            "title": "Volumes"
+        },
+        {
+            "location": "/project-setup/new-projects/#using-generators",
+            "text": "Coming Soon with details on Yo P2 and Generator Gadget as tools that prompt for a few details and then generate the \nscaffolding of an entire project configuration.",
+            "title": "Using Generators"
         },
         {
             "location": "/project-setup/existing-projects/",
@@ -337,28 +352,48 @@
         },
         {
             "location": "/common-tasks/using-the-build-container/",
-            "text": "Using the Build Container\n\n\nPart of DevTools is a \ndevtools-build\n image.  The idea of the build \ncontainer is that it will have installed nearly all of the tools you'd need to work on a project and the proper versions \nso that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. \nProviding these tools in a container means that you'll never have to worry about having the right tools installed on \nyour laptop or integration environment to get your job done.\n\n\nHow and why to use the build container\n\n\nThe example Drupal project contains a \nbuild.yml\n \nDocker Compose file that shows a variety of ways to use the container that we will highlight below.\n\n\nWhere do I run a build?\n\n\nYou should run a build from within the build container for your project.  Look at the example \n\ndrupal8/build.yml\n \nfile to see the various way you can configure build containers for your environment.  That docker-compose file contains \ninstructions on how you could use each of those containers for executing build commands on your codebase.\n\n\nHow do I share the output from my build container with my web container?\n\n\nFirst have your build container define a volume to mount your project code into the container, then when you perform a \nbuild it will write the output to you local project. Then if your web container defines a volume to mount the build output \ninto the docroot you will have seamless integration of build output to web container running the site.",
+            "text": "Using the Build Container\n\n\nPart of DevTools is a \ndevtools-build\n image.  The idea of the build \ncontainer is that it will have installed many of the tools you'd need to work on a project and the proper versions \nso that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. \nProviding these tools in a container means that you'll never have to worry about having the right tools installed on \nyour laptop or integration environment to get your job done.\n\n\nThe example Drupal project contains a \nbuild.yml\n \nDocker Compose file that shows a variety of ways to use the container.  \n\n\nGetting a build container command line.\n\n\nOne of the most common ways to use the build container is to launch a shell into the container and run commands from the \ncommand line interface (cli). The following command get you to the cli\n\n\ndocker-compose -f build.yml run cli\n\n\n\n\nMaking a command alias\n\n\nUsing a shell alias you can make a really quick CLI command that is reusable across projects if you name your build.yml\nfile the same everywhere. \nalias cli='docker-compose -f build.yml run cli\n then you only need to \ncli\n to get into\nyour build containers shell.  This \ntrick\n can be used with all of the command below as well.\n\n\n\n\nRunning a command container\n\n\nA \"command container\" is a term we have coined for a specific approach we use, where containers are spun up to run a single \ncommand in a consistent environment and then shut down.  Here are some example of command containers that we have configured \ninto the \nbuild.yml\n file from our example repository above.\n\n\nDrush Command Container\n\n\nThis is a general purpose Drush command container that allows you to run any drush command in a consistent environment\n\n\ndocker-compose -f build.yml run drush [command here]\n\n\nGrunt Command Container\n\n\nThis is a general purpose Grunt command container that allows you to run any grunt command in a consistent environment\n\n\ndocker-compose -f build.yml run grunt [command here]\n\n\nComposer Command Container\n\n\nThis is a general purpose Composer command container that allows you to run any composer command in a consistent environment\n\n\ndocker-compose -f build.yml run composer [command here]\n\n\nComposer Install Command Container\n\n\nThis one goes a step further when there is a specific command you want to run and control all the arguments used to run it.\n\n\ndocker-compose -f build.yml run composer-install\n\n\nShare output from the build container\n\n\nUsing the example project from above, we have a volume mount of your project code into the build container. Now, when you perform a \nbuild and it writes the output to the local project directory (e.g in ./build/html or something else in the working directory), \nthose changes to the filesystem are effectively outside of the container. The web container shoudl also define a volume mount \nfor the build output into the docroot, or mount your project directory in the container and configure the docroot to be the\n absolute path to your build output and you will have seamless integration of build output to a web container running your project.",
             "title": "Using the build container"
         },
         {
             "location": "/common-tasks/using-the-build-container/#using-the-build-container",
-            "text": "Part of DevTools is a  devtools-build  image.  The idea of the build \ncontainer is that it will have installed nearly all of the tools you'd need to work on a project and the proper versions \nso that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. \nProviding these tools in a container means that you'll never have to worry about having the right tools installed on \nyour laptop or integration environment to get your job done.",
+            "text": "Part of DevTools is a  devtools-build  image.  The idea of the build \ncontainer is that it will have installed many of the tools you'd need to work on a project and the proper versions \nso that they work well together.  Everything from drush to gem to npm to composer as well as grunt, bower, yeoman, etc. \nProviding these tools in a container means that you'll never have to worry about having the right tools installed on \nyour laptop or integration environment to get your job done.  The example Drupal project contains a  build.yml  \nDocker Compose file that shows a variety of ways to use the container.",
             "title": "Using the Build Container"
         },
         {
-            "location": "/common-tasks/using-the-build-container/#how-and-why-to-use-the-build-container",
-            "text": "The example Drupal project contains a  build.yml  \nDocker Compose file that shows a variety of ways to use the container that we will highlight below.",
-            "title": "How and why to use the build container"
+            "location": "/common-tasks/using-the-build-container/#getting-a-build-container-command-line",
+            "text": "One of the most common ways to use the build container is to launch a shell into the container and run commands from the \ncommand line interface (cli). The following command get you to the cli  docker-compose -f build.yml run cli   Making a command alias  Using a shell alias you can make a really quick CLI command that is reusable across projects if you name your build.yml\nfile the same everywhere.  alias cli='docker-compose -f build.yml run cli  then you only need to  cli  to get into\nyour build containers shell.  This  trick  can be used with all of the command below as well.",
+            "title": "Getting a build container command line."
         },
         {
-            "location": "/common-tasks/using-the-build-container/#where-do-i-run-a-build",
-            "text": "You should run a build from within the build container for your project.  Look at the example  drupal8/build.yml  \nfile to see the various way you can configure build containers for your environment.  That docker-compose file contains \ninstructions on how you could use each of those containers for executing build commands on your codebase.",
-            "title": "Where do I run a build?"
+            "location": "/common-tasks/using-the-build-container/#running-a-command-container",
+            "text": "A \"command container\" is a term we have coined for a specific approach we use, where containers are spun up to run a single \ncommand in a consistent environment and then shut down.  Here are some example of command containers that we have configured \ninto the  build.yml  file from our example repository above.",
+            "title": "Running a command container"
         },
         {
-            "location": "/common-tasks/using-the-build-container/#how-do-i-share-the-output-from-my-build-container-with-my-web-container",
-            "text": "First have your build container define a volume to mount your project code into the container, then when you perform a \nbuild it will write the output to you local project. Then if your web container defines a volume to mount the build output \ninto the docroot you will have seamless integration of build output to web container running the site.",
-            "title": "How do I share the output from my build container with my web container?"
+            "location": "/common-tasks/using-the-build-container/#drush-command-container",
+            "text": "This is a general purpose Drush command container that allows you to run any drush command in a consistent environment  docker-compose -f build.yml run drush [command here]",
+            "title": "Drush Command Container"
+        },
+        {
+            "location": "/common-tasks/using-the-build-container/#grunt-command-container",
+            "text": "This is a general purpose Grunt command container that allows you to run any grunt command in a consistent environment  docker-compose -f build.yml run grunt [command here]",
+            "title": "Grunt Command Container"
+        },
+        {
+            "location": "/common-tasks/using-the-build-container/#composer-command-container",
+            "text": "This is a general purpose Composer command container that allows you to run any composer command in a consistent environment  docker-compose -f build.yml run composer [command here]",
+            "title": "Composer Command Container"
+        },
+        {
+            "location": "/common-tasks/using-the-build-container/#composer-install-command-container",
+            "text": "This one goes a step further when there is a specific command you want to run and control all the arguments used to run it.  docker-compose -f build.yml run composer-install",
+            "title": "Composer Install Command Container"
+        },
+        {
+            "location": "/common-tasks/using-the-build-container/#share-output-from-the-build-container",
+            "text": "Using the example project from above, we have a volume mount of your project code into the build container. Now, when you perform a \nbuild and it writes the output to the local project directory (e.g in ./build/html or something else in the working directory), \nthose changes to the filesystem are effectively outside of the container. The web container shoudl also define a volume mount \nfor the build output into the docroot, or mount your project directory in the container and configure the docroot to be the\n absolute path to your build output and you will have seamless integration of build output to a web container running your project.",
+            "title": "Share output from the build container"
         },
         {
             "location": "/common-tasks/working-with-volumes/",
@@ -419,6 +454,31 @@
             "location": "/common-tasks/ssh-into-a-container/#running-commands-but-not-from-a-dedicated-shell",
             "text": "Another concept in the Docker world is starting a container to run a single command and allowing the container stop when \nthe command is completed.  This is great if you run commands infrequently, or don't want to have another container \nconstantly running.  Running your commands on containers in this fashion is also well suited for commands that don't \ngenerate any files on the filesystem or if they do, they write those files on to volumes mounted into the container.  The  drush  container defined in the example  build.yml  file is a container designed specifically to run drush in a \nsingle working directory taking only the commands as arguments.  This approach allows us to provide a quick and easy \nmechanism for running any drush command, such as  sqlc ,  cache-rebuild , and others, in your Drupal site quick and easily.  There are also other examples of a  grunt  command container similar to  drush  and an even more specific command \ncontainer around running a single command,  drush make  to build the site from a make/dependency file.",
             "title": "Running commands, but not from a dedicated shell"
+        },
+        {
+            "location": "/common-tasks/customizing-container-configuration/",
+            "text": "Customizing Configuration\n\n\nThere are a few primary mechanisms for customizing the configuration of a container.\n\n\nEnvironment Variables\n\n\nMany images will react to environmental variables to alter their behavior. Images which offer\nthis functionality should document it in the README for the image. For an example see the\n\nDevTools Build\n image. When environmental\nconfiguration is available it can be triggered by specifying the appropriate value in the\nenvironments section of your docker compose file.\n\n\nwww:\n  image: phase2/apache-php:php56\n  environment:\n    # Change some core container settings\n    PHP_MAX_EXECUTION_TIME: 45\n    # These enable debug/profiling support\n    PHP_XDEBUG: \ntrue\n\n    PHP_XHPROF: \nfalse\n\n\n\n\n\nVolume Mounts\n\n\nIf the container image you are using doesn't allow for change via environmental variables, your \nnext option is to override the configuration file using volume mounting. In this setup, you\nreplace the configuration file inside a container with a file from your host machine.\n\n\nwww:\n  image: phase2/apache-php:php56\n  volumes:\n    # substitute in a special mime magic file because our project handles files\n    # of special types\n    - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic\n\n\n\n\nVolume Mounts for confd\n\n\nPhase2 images often use \nconfd\n to template configuration from environment variable and other sources.\nThe configuration file you may be trying to override might be generated on container initiation via confd. If this is the \ncase, you'll need to override the template file from which the configuration file is created. If you find that your copy \nof the configuration file on your host machine is updated when you start a container this is likely the cause. \n\n\nFor exmaple, the xdebug configuration provided in our \nphase2/apache-php:php70\n container is proivided by confd, so this\nis how you would override that configuration\n\n\nwww:\n  image: phase2/apache-php:php70\n  volumes:\n    # substitute a different confd template file into the image so confd will use the override on container boot\n    - ./env/www/etc/confd/templates/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl",
+            "title": "Changing container configuration"
+        },
+        {
+            "location": "/common-tasks/customizing-container-configuration/#customizing-configuration",
+            "text": "There are a few primary mechanisms for customizing the configuration of a container.",
+            "title": "Customizing Configuration"
+        },
+        {
+            "location": "/common-tasks/customizing-container-configuration/#environment-variables",
+            "text": "Many images will react to environmental variables to alter their behavior. Images which offer\nthis functionality should document it in the README for the image. For an example see the DevTools Build  image. When environmental\nconfiguration is available it can be triggered by specifying the appropriate value in the\nenvironments section of your docker compose file.  www:\n  image: phase2/apache-php:php56\n  environment:\n    # Change some core container settings\n    PHP_MAX_EXECUTION_TIME: 45\n    # These enable debug/profiling support\n    PHP_XDEBUG:  true \n    PHP_XHPROF:  false",
+            "title": "Environment Variables"
+        },
+        {
+            "location": "/common-tasks/customizing-container-configuration/#volume-mounts",
+            "text": "If the container image you are using doesn't allow for change via environmental variables, your \nnext option is to override the configuration file using volume mounting. In this setup, you\nreplace the configuration file inside a container with a file from your host machine.  www:\n  image: phase2/apache-php:php56\n  volumes:\n    # substitute in a special mime magic file because our project handles files\n    # of special types\n    - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic",
+            "title": "Volume Mounts"
+        },
+        {
+            "location": "/common-tasks/customizing-container-configuration/#volume-mounts-for-confd",
+            "text": "Phase2 images often use  confd  to template configuration from environment variable and other sources.\nThe configuration file you may be trying to override might be generated on container initiation via confd. If this is the \ncase, you'll need to override the template file from which the configuration file is created. If you find that your copy \nof the configuration file on your host machine is updated when you start a container this is likely the cause.   For exmaple, the xdebug configuration provided in our  phase2/apache-php:php70  container is proivided by confd, so this\nis how you would override that configuration  www:\n  image: phase2/apache-php:php70\n  volumes:\n    # substitute a different confd template file into the image so confd will use the override on container boot\n    - ./env/www/etc/confd/templates/xdebug.ini.tmpl:/etc/confd/templates/xdebug.ini.tmpl",
+            "title": "Volume Mounts for confd"
         },
         {
             "location": "/common-tasks/using-watches/",
@@ -516,31 +576,6 @@
             "title": "Viewing logs from my container service(s)?"
         },
         {
-            "location": "/common-tasks/tbd/",
-            "text": "To Be Done",
-            "title": "Container configuration"
-        },
-        {
-            "location": "/common-tasks/customizing-container-configuration/",
-            "text": "Customizing Configuration\n\n\nThere are a few primary mechanisms for customizing the configuration of a container.\n\n\nUsing image provided environmental variables\n\n\nMany images will react to environmental variables to alter their behavior. Images which offer\nthis functionality should document it in the README for the image. For an example see the\n\nDevTools Build\n image. When environmental\nconfiguration is available it can be triggered by specifying the appropriate value in the\nenvironments section of your docker compose file.\n\n\nwww:\n  image: phase2/apache-php:php56\n  environment:\n    # Change some core container settings\n    PHP_MAX_EXECUTION_TIME: 45\n    # These enable debug/profiling support\n    PHP_XDEBUG: \ntrue\n\n    PHP_XHPROF: \nfalse\n\n\n\n\n\nUsing volume mounts to override configuration\n\n\nIf the container image you are using doesn't allow for change via environmental variables, your \nnext option is to override the configuration file using volume mounting. In this setup, you\nreplace the configuration file inside a container with a file from your host machine.\n\n\n\n\nPhase2 images often use \nconfd\n\n\nThe configuration file you may be trying to override might be generated on container\ninitiation. If this is the case, you'll need to override the template file from which the\nconfiguration file is created. If you find that your copy of the configuration file on your\nhost machine is updated when you start a container this is likely the cause. See the section\non \nContainer configuration\n for more information.\n\n\n\n\nwww:\n  image: phase2/apache-php:php56\n  volumes:\n    # substitute in a special mime magic file because our project handles files\n    # of special types\n    - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic",
-            "title": "Changing container configuration"
-        },
-        {
-            "location": "/common-tasks/customizing-container-configuration/#customizing-configuration",
-            "text": "There are a few primary mechanisms for customizing the configuration of a container.",
-            "title": "Customizing Configuration"
-        },
-        {
-            "location": "/common-tasks/customizing-container-configuration/#using-image-provided-environmental-variables",
-            "text": "Many images will react to environmental variables to alter their behavior. Images which offer\nthis functionality should document it in the README for the image. For an example see the DevTools Build  image. When environmental\nconfiguration is available it can be triggered by specifying the appropriate value in the\nenvironments section of your docker compose file.  www:\n  image: phase2/apache-php:php56\n  environment:\n    # Change some core container settings\n    PHP_MAX_EXECUTION_TIME: 45\n    # These enable debug/profiling support\n    PHP_XDEBUG:  true \n    PHP_XHPROF:  false",
-            "title": "Using image provided environmental variables"
-        },
-        {
-            "location": "/common-tasks/customizing-container-configuration/#using-volume-mounts-to-override-configuration",
-            "text": "If the container image you are using doesn't allow for change via environmental variables, your \nnext option is to override the configuration file using volume mounting. In this setup, you\nreplace the configuration file inside a container with a file from your host machine.   Phase2 images often use  confd  The configuration file you may be trying to override might be generated on container\ninitiation. If this is the case, you'll need to override the template file from which the\nconfiguration file is created. If you find that your copy of the configuration file on your\nhost machine is updated when you start a container this is likely the cause. See the section\non  Container configuration  for more information.   www:\n  image: phase2/apache-php:php56\n  volumes:\n    # substitute in a special mime magic file because our project handles files\n    # of special types\n    - ./env/www/etc/httpd/conf/magic:/etc/httpd/conf/magic",
-            "title": "Using volume mounts to override configuration"
-        },
-        {
             "location": "/common-tasks/ssh-keys-for-private-repos/",
             "text": "SSH Keys for Private Repos\n\n\nForward/Import your SSH Key into the build container to clone private repos\n\n\nCertain containers like jenkins and devtools-build may need your private key. This is supported by importing your \nprivate key into the container via a volume mount.  \n\n\nTo get your private key into the build container, volume mount your key into the container at \n/root/.ssh/devtools.key\n \nand it will be processed accordingly.\n\n\n~/.ssh/id_rsa:/root/.ssh/devtools.key",
             "title": "SSH Keys for private repos"
@@ -556,9 +591,19 @@
             "title": "Forward/Import your SSH Key into the build container to clone private repos"
         },
         {
-            "location": "/common-tasks/tbd/",
-            "text": "To Be Done",
+            "location": "/common-tasks/setting-up-mail/",
+            "text": "Setting Up Mail\n\n\nEmail is something that many projects need, but during development you likely do \nnot want to actually send email, but you'd rather have sent mail captured for examination\nand released to a real mail server only in certain situations.\n\n\nTo handle these and other situations we recommend \nMailhog\n\n\nUsing Mailhog\n\n\nMailhog can be added as another service with your projects Docker Compose file.\n\n\nSee the mail service defined in the \nDevTools Example Mail Project\n\nthat service can be copied into your projects \ndocker-compose.yml\n file, or kept \nseparate and started as needed.\n\n\nUsing the configuration from the example you would configure your application \nto use \nmail.devtools.vm:1025\n as your SMTP server and you could view captured \nmail (and choose to release it) via the web interface accessible at http://mail.devtools.vm:8025",
             "title": "Seting up mail"
+        },
+        {
+            "location": "/common-tasks/setting-up-mail/#setting-up-mail",
+            "text": "Email is something that many projects need, but during development you likely do \nnot want to actually send email, but you'd rather have sent mail captured for examination\nand released to a real mail server only in certain situations.  To handle these and other situations we recommend  Mailhog",
+            "title": "Setting Up Mail"
+        },
+        {
+            "location": "/common-tasks/setting-up-mail/#using-mailhog",
+            "text": "Mailhog can be added as another service with your projects Docker Compose file.  See the mail service defined in the  DevTools Example Mail Project \nthat service can be copied into your projects  docker-compose.yml  file, or kept \nseparate and started as needed.  Using the configuration from the example you would configure your application \nto use  mail.devtools.vm:1025  as your SMTP server and you could view captured \nmail (and choose to release it) via the web interface accessible at http://mail.devtools.vm:8025",
+            "title": "Using Mailhog"
         },
         {
             "location": "/common-tasks/dns-resolution/",

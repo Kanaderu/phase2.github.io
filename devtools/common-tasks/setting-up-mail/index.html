@@ -18,8 +18,8 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Seting up mail";
-    var mkdocs_page_input_path = "common-tasks/tbd.md";
-    var mkdocs_page_url = "/common-tasks/tbd/";
+    var mkdocs_page_input_path = "common-tasks/setting-up-mail.md";
+    var mkdocs_page_url = "/common-tasks/setting-up-mail/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -184,6 +184,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../using-watches/">Using watches</a>
         
     </li>
@@ -205,20 +212,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="./">Container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../customizing-container-configuration/">Changing container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../ssh-keys-for-private-repos/">SSH Keys for private repos</a>
         
     </li>
@@ -229,6 +222,11 @@
         <a class="current" href="./">Seting up mail</a>
         
             <ul>
+            
+                <li class="toctree-l3"><a href="#setting-up-mail">Setting Up Mail</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-mailhog">Using Mailhog</a></li>
+                
             
             </ul>
         
@@ -360,7 +358,7 @@
     <li>Seting up mail</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/tbd.md"
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/setting-up-mail.md"
           class="icon icon-bitbucket"
         > Edit on Bitbucket</a>
       
@@ -371,7 +369,19 @@
           <div role="main">
             <div class="section">
               
-                <p>To Be Done</p>
+                <h1 id="setting-up-mail">Setting Up Mail</h1>
+<p>Email is something that many projects need, but during development you likely do 
+not want to actually send email, but you'd rather have sent mail captured for examination
+and released to a real mail server only in certain situations.</p>
+<p>To handle these and other situations we recommend <a href="https://github.com/mailhog/MailHog">Mailhog</a></p>
+<h2 id="using-mailhog">Using Mailhog</h2>
+<p>Mailhog can be added as another service with your projects Docker Compose file.</p>
+<p>See the mail service defined in the <a href="https://github.com/phase2/devtools-examples/tree/master/mail/docker-compose.yml">DevTools Example Mail Project</a>
+that service can be copied into your projects <code>docker-compose.yml</code> file, or kept 
+separate and started as needed.</p>
+<p>Using the configuration from the example you would configure your application 
+to use <code>mail.devtools.vm:1025</code> as your SMTP server and you could view captured 
+mail (and choose to release it) via the web interface accessible at http://mail.devtools.vm:8025</p>
               
             </div>
           </div>

@@ -126,11 +126,9 @@
             
                 <li class="toctree-l3"><a href="#new-projects">New Projects</a></li>
                 
-                    <li><a class="toctree-l4" href="#setting-up-a-project">Setting up a project</a></li>
-                
                     <li><a class="toctree-l4" href="#manual-setup">Manual Setup</a></li>
                 
-                    <li><a class="toctree-l4" href="#using-the-generators">Using the Generators</a></li>
+                    <li><a class="toctree-l4" href="#using-generators">Using Generators</a></li>
                 
             
             </ul>
@@ -197,6 +195,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../common-tasks/using-watches/">Using watches</a>
         
     </li>
@@ -218,20 +223,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/tbd/">Container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/customizing-container-configuration/">Changing container configuration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../../common-tasks/ssh-keys-for-private-repos/">SSH Keys for private repos</a>
         
     </li>
@@ -239,7 +230,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../common-tasks/tbd/">Seting up mail</a>
+        <a class="" href="../../common-tasks/setting-up-mail/">Seting up mail</a>
         
     </li>
 
@@ -381,13 +372,52 @@
             <div class="section">
               
                 <h1 id="new-projects">New Projects</h1>
-<h2 id="setting-up-a-project">Setting up a project</h2>
-<p>To set up a project rather than just work on one, you'll need to understand how to create a docker-compose file, how to 
-configure DNS for your project's containers and how to configure persistent storage if your project needs it.</p>
+<p>To set up a new project rather than just work on one, you'll need to understand how to create a 
+docker-compose file, how to configure DNS for your project's containers and how to configure 
+persistent storage if your project needs it.</p>
 <h2 id="manual-setup">Manual Setup</h2>
-<p>TBD</p>
-<h2 id="using-the-generators">Using the Generators</h2>
-<p>TBD</p>
+<p>DevTools is intended to work with either raw Docker commands or Docker Compose files. Docker
+Compose is the preferred tool to use when setting up projects and in this section we will go
+over some basics to get a project setup.</p>
+<p>Be sure to read the <a href="https://docs.docker.com/compose/compose-file/">Docker Compose compose file documentation</a>
+so that you have a handle on how to setup the various configuration.</p>
+<p>Please see the <a href="https://github.com/phase2/devtools-examples">DevTools Examples Repository</a> for 
+how to setup various technologies within DevTools.  Specifically, the 
+<a href="https://github.com/phase2/devtools-examples/tree/master/drupal8">Drupal 8 example</a> covers all
+of the high points.</p>
+<h3 id="choosing-images">Choosing Images</h3>
+<p>Any valid Docker Image can work with DevTools. We also supply <a href="../docker-images/">a collection of crafted Docker
+images</a> that are easily configured and optimized. And example for
+an Apache / PHP image based on PHP7 is <strong>phase2/apache-php:php70</strong> or <strong>php:7.1.1-apache</strong>  </p>
+<div class="admonition important">
+<p class="admonition-title">Use Image Tags</p>
+<p>When selecting and image to use, be sure to also specify a tag for that image. When you do not
+specify a tag, the default tag of <em>latest</em> is used and it is easy to get our of sync with other
+team members or simply get unwanted changes if you do not explicitly specify an image tag.</p>
+</div>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>Images can take configuration through <a href="https://docs.docker.com/compose/compose-file/#/environment">environment variables specified in the Docker Compose file</a>. 
+For example, the <strong>phase2/apache-php</strong> image allows you to configure settings such as <code>max_execution_time</code> with 
+the <code>PHP_MAX_EXECUTION_TIME</code> environment variable and <code>memory_limit</code> with the <code>PHP_MEMORY_LIMIT</code> envirionment variables. 
+You can also turn on settings like Xdebug with the <code>PHP_XDEBUG</code> environment variable.</p>
+<h3 id="dns">DNS</h3>
+<p>DNS Names for containers are managed with a service called dnsdock.  Dnsdock listens for containers started with certain label metadata
+specified and creates DNS entries for those containers. Read the linked docs to learn about <a href="https://docs.docker.com/compose/compose-file/#/labels-1">configuring label metadata in Compose</a>
+and the key/values for <a href="https://github.com/aacebedo/dnsdock#overrides-with-docker-labels">dnsdock label configuration</a></p>
+<h3 id="volumes">Volumes</h3>
+<p>Volume mounting directories and files into containers are use for a variety of reasons.</p>
+<ul>
+<li>Getting your code base into a container</li>
+<li>Specifying certain configuration files</li>
+<li>Overriding existing configuration files</li>
+<li>Making SSH keys available within a container</li>
+<li>Providing directories that will hold data that lives longer than the container (e.g. database files, or website uploads)</li>
+</ul>
+<p>See the <a href="https://docs.docker.com/compose/compose-file/#/volumes-volumedriver">Compose documentation for volumes</a> to learn
+about the various options. Also check out the DevTools examples linked above to see volume mounts in action.</p>
+<h2 id="using-generators">Using Generators</h2>
+<p>Coming Soon with details on Yo P2 and Generator Gadget as tools that prompt for a few details and then generate the 
+scaffolding of an entire project configuration.</p>
               
             </div>
           </div>
