@@ -8,7 +8,7 @@
   
   <meta name="author" content="Phase2">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>DNS Resolution - DevTools CLI Documentation</title>
+  <title>Working Offline - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "DNS Resolution";
-    var mkdocs_page_input_path = "common-tasks/dns-resolution.md";
-    var mkdocs_page_url = "/common-tasks/dns-resolution/";
+    var mkdocs_page_name = "Working Offline";
+    var mkdocs_page_input_path = "common-tasks/working-offline.md";
+    var mkdocs_page_url = "/common-tasks/working-offline/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -176,8 +176,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../working-offline/">Working Offline</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Working Offline</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#working-offline">Working Offline</a></li>
+                
+                    <li><a class="toctree-l4" href="#offline-dns-workaround">Offline DNS Workaround</a></li>
+                
+                    <li><a class="toctree-l4" href="#additional-information">Additional Information</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -232,17 +243,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">DNS Resolution</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#dns-resolution">DNS Resolution</a></li>
-                
-                    <li><a class="toctree-l4" href="#dns-names-for-your-containers">DNS Names for your containers</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../dns-resolution/">DNS Resolution</a>
         
     </li>
 
@@ -369,10 +371,10 @@
         
       
     
-    <li>DNS Resolution</li>
+    <li>Working Offline</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/dns-resolution.md"
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/common-tasks/working-offline.md"
           class="icon icon-bitbucket"
         > Edit on Bitbucket</a>
       
@@ -383,42 +385,61 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="dns-resolution">DNS Resolution</h1>
-<h2 id="dns-names-for-your-containers">DNS Names for your containers</h2>
-<p>Within the <code>labels</code> section of the docker-compose file you can specify labels that will control the DNS name of your 
-containers.  DNS names are in the format of <code>[name].[image].vm</code> (e.g web.devtools.vm)  </p>
-<ul>
-<li>
-<p><code>com.dnsdock.name</code> - This is the type of container. Usually something like web, db, cache, etc.</p>
-</li>
-<li>
-<p><code>com.dnsdock.image</code> - This is generally your project name (e.g devtools, drupal, etc.)</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All DNS names of devtools containers will end in <em>.vm</em></p>
+                <h1 id="working-offline">Working Offline</h1>
+<p>A common desire is the ability to leverage the full development environment provided to work
+offline. When attempting this users are often thwarted trying to access containers which
+appear to be successfully running.</p>
+<p>This issue is due to a failure to resolve domain names to the appropriate IP address for the
+container. This affects those using OS X and appears to be the result of a failure of the name
+resolution system to operate when no network interface appears connected. Typical error messages
+in browsers warn of being disconnected from the internet. Specifically, Chrome will include the 
+error code ERR_INTERNET_DISCONNECTED. In these instances, a test command like 
+<code>curl -v http://www.project.vm/</code> succeeds as does attempting to use the IP address of a container
+within a browser. The command <code>devtools dns-records</code> will display a mapping between all known
+containers and IP addresses. The <code>docker inspect CONTAINER_NAME</code> command can be used to view more
+detailed information about a specific container including its IP address and should be used on
+systems not supporting the <code>devtools</code> application.</p>
+<h2 id="offline-dns-workaround">Offline DNS Workaround</h2>
+<p>The work around for this issue is to use the <code>devtools dns-records</code> command and copy the output
+to your <code>/etc/hosts</code> file. You'll need to update this file any time you start or stop project
+containers and you should clean entries from it when you reconnect to a network. On systems
+which do not support the <code>devtools</code> application the <code>docker inspect</code> command can be used to
+build a mapping of IP addresses to domain names.</p>
+<div class="admonition warning">
+<p class="admonition-title">Network Changes Can Require Restart</p>
+<p>Network changes such as connecting or disconnecting an interface or VPN can require a restart
+of your devtools environment via <code>devtools restart</code> or a re-execution of the <code>devtools dns</code>
+command to ensure routing of traffic to containers and DNS resolution is properly configured.</p>
 </div>
-<p>If you need multiple domains mapped to a container you can use the <code>com.dnsdock.alias</code> setting. It takes a full domain 
-name and can take a comma separated list (e.g. otherhost.devtools.vm or alexandria.phase2.vm). Additionally, dnsdock 
-supports longer domain queries meaning if you have a service named web.devtools.vm, you can also use 
-something.web.devtools.vm and it will resolve to the same IP address.</p>
-<p>For all other DNS configuration options, please see the <a href="https://github.com/aacebedo/dnsdock#overrides-with-docker-labels">dnsdock label documentation</a></p>
-<h3 id="dns-forwarders">DNS Forwarders</h3>
-<p>DevTools can be configured to use additional name servers to forward DNS requests if the record cannot be resolved by dnsdock.</p>
-<p>An example is if you connect to a VPN and need to resolve addresses to private servers within a VPN.  To enable this you 
-need to configure the <code>DEVTOOLS_NAMESERVERS</code> environment variable to a comma separated list of <em>ip:port</em> 
-(example: <code>10.10.7.2:53,8.8.8.8:53</code>) before running either <code>devtools start</code> or <code>devtools dns</code>. We suggest putting this 
-env var configuration in your <code>~/.bashrc</code> or <code>~/.zshrc</code> so that it is always present when needed.  If you just need this 
-temporarily, you can pass the configuration in with the <code>--nameservers</code> command line option to <code>devtools start</code> or <code>devtools dns</code>. </p>
-<p>This configuration will try each forwarder name server, in order, to resolve names until success or all name servers 
-have been exhausted.</p>
-<h3 id="dns-command">DNS Command</h3>
-<p>There is also a <code>devtools dns</code> command that will launch and configure our DNS services on any Docker Host. If you want to 
-configure DNS on a Docker Host other than <em>dev</em> be sure to specify the <code>--name</code> parameter.</p>
-<h3 id="dns-debugging">DNS Debugging</h3>
-<p>If you want to see what containers have registered names, use the <code>devtools dns-records</code> command. This command will list 
-all registered container names and aliases along with the container's IP address.</p>
+<h2 id="additional-information">Additional Information</h2>
+<p>Those seeking additional information about the root cause of this issue and wishing to explore
+potential solutions can read further information at the following URLs. Note that none of the
+purported solutions other than that described above has proven successful in testing. Note that
+some of these links refer to DNS utilities used in older OS X versions.</p>
+<ul>
+<li><a href="http://serverfault.com/questions/22419/set-dns-server-on-os-x-even-when-without-internet-connection">http://serverfault.com/questions/22419/set-dns-server-on-os-x-even-when-without-internet-connection</a></li>
+<li><a href="http://apple.stackexchange.com/questions/202887/mac-doesnt-use-local-dns-for-local">http://apple.stackexchange.com/questions/202887/mac-doesnt-use-local-dns-for-local</a></li>
+<li><a href="http://superuser.com/questions/418833/using-dnsmasq-on-os-x-when-not-connected-to-the-internet">http://superuser.com/questions/418833/using-dnsmasq-on-os-x-when-not-connected-to-the-internet</a></li>
+<li><a href="http://apple.stackexchange.com/questions/26616/dns-not-resolving-on-mac-os-x">http://apple.stackexchange.com/questions/26616/dns-not-resolving-on-mac-os-x</a></li>
+</ul>
+<p>This same issue affects other projects as well.</p>
+<ul>
+<li><a href="https://github.com/basecamp/pow/issues/471">https://github.com/basecamp/pow/issues/471</a></li>
+<li><a href="https://github.com/basecamp/pow/issues/104">https://github.com/basecamp/pow/issues/104</a></li>
+</ul>
+<p>A theoretical solution to this issue would be to have a network interface that always appeared
+active triggering the attempt to resolve the domain name. The following post discusses creation
+of a virtual interface to satisfy this requirement. The mechanism mentioned by bmasterswizzle and
+Alex Gray did not prove effective in testing. The interface could be created successfully but
+never brought up to a state where OS X considered it active.</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/87442/virtual-network-interface-in-mac-os-x">http://stackoverflow.com/questions/87442/virtual-network-interface-in-mac-os-x</a></li>
+</ul>
+<p>Some additional information and demonstrations of utilities for diagnostics can be found at</p>
+<ul>
+<li><a href="http://apple.stackexchange.com/questions/26616/dns-not-resolving-on-mac-os-x">http://apple.stackexchange.com/questions/26616/dns-not-resolving-on-mac-os-x</a></li>
+<li><a href="http://serverfault.com/questions/478534/how-is-dns-lookup-configured-for-osx-mountain-lion">http://serverfault.com/questions/478534/how-is-dns-lookup-configured-for-osx-mountain-lion</a></li>
+</ul>
               
             </div>
           </div>
@@ -426,10 +447,10 @@ all registered container names and aliases along with the container's IP address
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../upgrading-devtools/" class="btn btn-neutral float-right" title="Upgrading DevTools">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ssh-into-a-container/" class="btn btn-neutral float-right" title="SSH into a container">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../setting-up-mail/" class="btn btn-neutral" title="Seting up mail"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../working-with-volumes/" class="btn btn-neutral" title="Working with Volumes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -457,10 +478,10 @@ all registered container names and aliases along with the container's IP address
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
-        <span><a href="../setting-up-mail/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../working-with-volumes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../upgrading-devtools/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ssh-into-a-container/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

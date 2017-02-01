@@ -8,7 +8,7 @@
   
   <meta name="author" content="Phase2">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>New Projects - DevTools CLI Documentation</title>
+  <title>Docker for Mac - DevTools CLI Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "New Projects";
-    var mkdocs_page_input_path = "project-setup/new-projects.md";
-    var mkdocs_page_url = "/project-setup/new-projects/";
+    var mkdocs_page_name = "Docker for Mac";
+    var mkdocs_page_input_path = "faq/docker-for-mac.md";
+    var mkdocs_page_url = "/faq/docker-for-mac/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -113,39 +113,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../common-setup/">Common Setup</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">New Projects</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#new-projects">New Projects</a></li>
-                
-                    <li><a class="toctree-l4" href="#manual-setup">Manual Setup</a></li>
-                
-                    <li><a class="toctree-l4" href="#using-generators">Using Generators</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../project-setup/common-setup/">Common Setup</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../existing-projects/">Existing Projects</a>
+        <a class="" href="../../project-setup/new-projects/">New Projects</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../docker-images/">Docker Images</a>
+        <a class="" href="../../project-setup/existing-projects/">Existing Projects</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../project-setup/docker-images/">Docker Images</a>
         
     </li>
 
@@ -287,21 +276,34 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../faq/general/">General</a>
+        <a class="" href="../general/">General</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../faq/troubleshooting/">Troubleshooting</a>
+        <a class="" href="../troubleshooting/">Troubleshooting</a>
         
     </li>
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../../faq/docker-for-mac/">Docker for Mac</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Docker for Mac</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#docker-for-mac-support">Docker for Mac Support</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-executables">Using executables</a></li>
+                
+                    <li><a class="toctree-l4" href="#using-the-hypervisor">Using the Hypervisor</a></li>
+                
+                    <li><a class="toctree-l4" href="#uninstalling-docker-for-mac">Uninstalling Docker for Mac</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -367,14 +369,14 @@
     
       
         
-          <li>Project Setup &raquo;</li>
+          <li>FAQ &raquo;</li>
         
       
     
-    <li>New Projects</li>
+    <li>Docker for Mac</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/project-setup/new-projects.md"
+        <a href="https://bitbucket.org/phase2tech/devtools-cli/src/default/docs/faq/docker-for-mac.md"
           class="icon icon-bitbucket"
         > Edit on Bitbucket</a>
       
@@ -385,53 +387,77 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="new-projects">New Projects</h1>
-<p>To set up a new project rather than just work on one, you'll need to understand how to create a 
-docker-compose file, how to configure DNS for your project's containers and how to configure 
-persistent storage if your project needs it.</p>
-<h2 id="manual-setup">Manual Setup</h2>
-<p>DevTools is intended to work with either raw Docker commands or Docker Compose files. Docker
-Compose is the preferred tool to use when setting up projects and in this section we will go
-over some basics to get a project setup.</p>
-<p>Be sure to read the <a href="https://docs.docker.com/compose/compose-file/">Docker Compose compose file documentation</a>
-so that you have a handle on how to setup the various configuration.</p>
-<p>Please see the <a href="https://github.com/phase2/devtools-examples">DevTools Examples Repository</a> for 
-how to setup various technologies within DevTools.  Specifically, the 
-<a href="https://github.com/phase2/devtools-examples/tree/master/drupal8">Drupal 8 example</a> covers all
-of the high points.</p>
-<h3 id="choosing-images">Choosing Images</h3>
-<p>Any valid Docker Image can work with DevTools. We also supply <a href="../docker-images/">a collection of crafted Docker
-images</a> that are easily configured and optimized. And example for
-an Apache / PHP image based on PHP7 is <strong>phase2/apache-php:php70</strong> or <strong>php:7.1.1-apache</strong>  </p>
+                <h1 id="docker-for-mac-support">Docker for Mac Support</h1>
+<p>Docker for Mac is a native hypervisor implementation of docker that does not rely on a virtual machine provided by Docker 
+Machine.  It is new with some limitations and potential conflicts with DevTools. We will highlight the path to a peaceful 
+coexistence. </p>
+<h2 id="using-executables">Using executables</h2>
+<p>Docker for Mac provides <code>docker</code> and <code>docker-compose</code> binaries in <code>/usr/local/bin</code>.  This install location conflicts with
+the binaries provided by Homebrew, but DevTools can use these binaries too.  If you have installed Docker for Mac first, you 
+will get errors when trying to install the <code>docker</code> and <code>docker-compose</code> binaries via Homebrew. Those errors are fine, as long
+as when all is said and done <code>docker</code>, <code>docker-compose</code>, and <code>docker-machine</code> are all available on your <code>$PATH</code>.</p>
+<p>To use the binaries with your DevTools VM you simply need to run the <code>eval "$(devtools config)"</code> command to setup your
+Docker environment.  This will point the <code>docker</code> to your VM.  You will need to do this in every shell that you want to 
+use the DevTools VM.  If you then need to transition back to using the Docker for Mac hypervisor, you will need to unset 
+the DevTools <code>docker</code> configuration. Use <code>eval "$(docker-machine env -u)"</code> to unset all <code>DOCKER_*</code> environment variables. </p>
+<p>If you need to do this often, we recommend setting up aliases to set/unset the env vars.</p>
+<pre><code class="bash">alias dte='eval &quot;$(devtools config)&quot;'
+alias dtu='eval &quot;$(dcoker-machine env -u)&quot;'
+</code></pre>
+
+<h2 id="using-the-hypervisor">Using the Hypervisor</h2>
+<p>To use the Docker for Mac Hypervisor follow the basic instructions below.</p>
 <div class="admonition important">
-<p class="admonition-title">Use Image Tags</p>
-<p>When selecting and image to use, be sure to also specify a tag for that image. When you do not
-specify a tag, the default tag of <em>latest</em> is used and it is easy to get our of sync with other
-team members or simply get unwanted changes if you do not explicitly specify an image tag.</p>
+<p class="admonition-title">Docker for Mac is less performant (early 2017)</p>
+<p>The FUSE driver they use to share your host filesystem into the hypervisor/contaienrs is not nearly as performant as
+the NFS mount we use with the DevTools VM.  Therefore, operations that do either a lot of filesystem reading (like 
+directory scan) or writing (like restoring DB dumps) will take much longer to perform.  It is advisable to use the
+DevTools VM / Virtualbox for the time being simply for performance reasons.</p>
 </div>
-<h3 id="environment-variables">Environment Variables</h3>
-<p>Images can take configuration through <a href="https://docs.docker.com/compose/compose-file/#/environment">environment variables specified in the Docker Compose file</a>. 
-For example, the <strong>phase2/apache-php</strong> image allows you to configure settings such as <code>max_execution_time</code> with 
-the <code>PHP_MAX_EXECUTION_TIME</code> environment variable and <code>memory_limit</code> with the <code>PHP_MEMORY_LIMIT</code> envirionment variables. 
-You can also turn on settings like Xdebug with the <code>PHP_XDEBUG</code> environment variable.</p>
-<h3 id="dns">DNS</h3>
-<p>DNS Names for containers are managed with a service called dnsdock.  Dnsdock listens for containers started with certain label metadata
-specified and creates DNS entries for those containers. Read the linked docs to learn about <a href="https://docs.docker.com/compose/compose-file/#/labels-1">configuring label metadata in Compose</a>
-and the key/values for <a href="https://github.com/aacebedo/dnsdock#overrides-with-docker-labels">dnsdock label configuration</a></p>
-<h3 id="volumes">Volumes</h3>
-<p>Volume mounting directories and files into containers are use for a variety of reasons.</p>
+<div class="admonition note">
+<p class="admonition-title">Networking limitation when using the Docker for Mac Hypervisor</p>
+<p>There are some <a href="https://docs.docker.com/docker-for-mac/networking/#/known-limitations-use-cases-and-workarounds">known limitations</a>
+with the way networking is implemented with Docker for Mac.  Most notable we can not directly access containers on 
+their native IP address due to the lack of the docker0 bridge network that exists in the Docker Machine VM implementation.
+These limitations inhibit the fluid environment that DevTools enables and as such is not natively supported (yet). We
+have done our best to highlight the issues and some of our ideas for workarounds below. Let us know how it goes if you
+venture down this path.</p>
+</div>
+<h3 id="setup-data">Setup /data</h3>
+<p>DevTools makes a convention out of a <code>/data</code> directory within the VM.  To provide the same directory to Docker for Mac, 
+create a <code>/data</code> directory in the root of your Mac filesystem.  You may need to open up the permissions so the container(s)
+can write to it.</p>
+<pre><code class="bash">sudo mkdir /data &amp;&amp; sudo chmod 777 /data
+</code></pre>
+
+<p>Once you have created that directory, go into Docker for Mac Preferences &gt; File Sharing and add <code>/data</code> to the list of 
+shares and <em>Apply &amp; Restart</em> Docker for Mac.  With this <code>/data</code> directoy setup your Compose files should work on either 
+the Docker for Mac Hypervisor or the DevTools VM.</p>
+<h3 id="accessing-your-container-services">Accessing your Container Services</h3>
+<p>Docker for Mac does not provide a mechanism to route network traffic directly to your containers, they only support 
+publishing (binding) ports from your running containers to your host.  This means that all services are accessed on 
+localhost (127.0.0.1) and share the same port space. (Two web server can't both publish to port 80). The approach we think 
+makes sense (but don't actively support) is:</p>
 <ul>
-<li>Getting your code base into a container</li>
-<li>Specifying certain configuration files</li>
-<li>Overriding existing configuration files</li>
-<li>Making SSH keys available within a container</li>
-<li>Providing directories that will hold data that lives longer than the container (e.g. database files, or website uploads)</li>
+<li>Run <strong>jwilder/nginx-proxy</strong> as your only service that binds to port 80</li>
+<li>Start all of your web containers with the <code>VIRTUAL_HOST</code> environment variable used by nginx-proxy to specify it's domain name</li>
+<li>Resolve the domain name from the above <code>VIRTUAL_HOST</code> variable in one of two ways</li>
+<li>Edit your <code>/etc/hosts</code> file and point the domain name at <code>127.0.0.1</code></li>
+<li>Use dnsmasq<ul>
+<li>Make sure dnsdock is not running</li>
+<li>In <code>/etc/resolver/vm</code> have <code>nameserver 127.0.0.1</code></li>
+<li>Run a dnsmasq container, bind it to port 53, configured to resolve all <strong>.vm</strong> addresses to <code>127.0.0.1</code></li>
 </ul>
-<p>See the <a href="https://docs.docker.com/compose/compose-file/#/volumes-volumedriver">Compose documentation for volumes</a> to learn
-about the various options. Also check out the DevTools examples linked above to see volume mounts in action.</p>
-<h2 id="using-generators">Using Generators</h2>
-<p>Coming Soon with details on Yo P2 and Generator Gadget as tools that prompt for a few details and then generate the 
-scaffolding of an entire project configuration.</p>
+</li>
+</ul>
+<h2 id="uninstalling-docker-for-mac">Uninstalling Docker for Mac</h2>
+<p>Since Docker for Mac and Homebrew both install the Docker binaries in to <code>/usr/local/bin</code> after you uninstall Docker for Mac 
+your DevTools environment wont work.  You may see an error like <code>command not found: docker</code>. The Docker for Mac installation 
+overwrote the Homebrew based Docker installation, but brew still believes they are installed, so you'll need to unlink and re-link.</p>
+<pre><code class="bash">brew unlink docker &amp;&amp; brew link docker
+brew unlink docker-compose &amp;&amp; brew link docker-compose
+brew unlink docker-machine &amp;&amp; brew link docker-machine
+</code></pre>
               
             </div>
           </div>
@@ -439,10 +465,10 @@ scaffolding of an entire project configuration.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../existing-projects/" class="btn btn-neutral float-right" title="Existing Projects">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../appendix/glossary/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../common-setup/" class="btn btn-neutral" title="Common Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -470,10 +496,10 @@ scaffolding of an entire project configuration.</p>
           <a href="https://bitbucket.org/phase2tech/devtools-cli" class="icon icon-bitbucket" style="float: left; color: #fcfcfc"> BitBucket</a>
       
       
-        <span><a href="../common-setup/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../troubleshooting/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../existing-projects/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../appendix/glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
