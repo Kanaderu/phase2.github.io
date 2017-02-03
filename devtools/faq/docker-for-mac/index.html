@@ -296,9 +296,9 @@
             
                 <li class="toctree-l3"><a href="#docker-for-mac-support">Docker for Mac Support</a></li>
                 
-                    <li><a class="toctree-l4" href="#using-executables">Using executables</a></li>
+                    <li><a class="toctree-l4" href="#using-only-the-docker-for-mac-binaries">Using only the Docker for Mac Binaries</a></li>
                 
-                    <li><a class="toctree-l4" href="#using-the-hypervisor">Using the Hypervisor</a></li>
+                    <li><a class="toctree-l4" href="#using-the-docker-for-mac-binaries-and-hypervisor">Using the Docker for Mac Binaries and Hypervisor</a></li>
                 
                     <li><a class="toctree-l4" href="#uninstalling-docker-for-mac">Uninstalling Docker for Mac</a></li>
                 
@@ -388,10 +388,10 @@
             <div class="section">
               
                 <h1 id="docker-for-mac-support">Docker for Mac Support</h1>
-<p>Docker for Mac is a native hypervisor implementation of docker that does not rely on a virtual machine provided by Docker 
+<p>Docker for Mac is a native hypervisor implementation of Docker that does not rely on a virtual machine provided by Docker 
 Machine.  It is new with some limitations and potential conflicts with DevTools. We will highlight the path to a peaceful 
 coexistence. </p>
-<h2 id="using-executables">Using executables</h2>
+<h2 id="using-only-the-docker-for-mac-binaries">Using only the Docker for Mac Binaries</h2>
 <p>Docker for Mac provides <code>docker</code> and <code>docker-compose</code> binaries in <code>/usr/local/bin</code>.  This install location conflicts with
 the binaries provided by Homebrew, but DevTools can use these binaries too.  If you have installed Docker for Mac first, you 
 will get errors when trying to install the <code>docker</code> and <code>docker-compose</code> binaries via Homebrew. Those errors are fine, as long
@@ -405,7 +405,7 @@ the DevTools <code>docker</code> configuration. Use <code>eval "$(docker-machine
 alias dtu='eval &quot;$(dcoker-machine env -u)&quot;'
 </code></pre>
 
-<h2 id="using-the-hypervisor">Using the Hypervisor</h2>
+<h2 id="using-the-docker-for-mac-binaries-and-hypervisor">Using the Docker for Mac Binaries and Hypervisor</h2>
 <p>To use the Docker for Mac Hypervisor follow the basic instructions below.</p>
 <div class="admonition important">
 <p class="admonition-title">Docker for Mac is less performant (early 2017)</p>
@@ -430,7 +430,7 @@ can write to it.</p>
 <pre><code class="bash">sudo mkdir /data &amp;&amp; sudo chmod 777 /data
 </code></pre>
 
-<p>Once you have created that directory, go into Docker for Mac Preferences &gt; File Sharing and add <code>/data</code> to the list of 
+<p>Once you have created that directory, go into Docker for Mac &gt; Preferences &gt; File Sharing and add <code>/data</code> to the list of 
 shares and <em>Apply &amp; Restart</em> Docker for Mac.  With this <code>/data</code> directoy setup your Compose files should work on either 
 the Docker for Mac Hypervisor or the DevTools VM.</p>
 <h3 id="accessing-your-container-services">Accessing your Container Services</h3>
