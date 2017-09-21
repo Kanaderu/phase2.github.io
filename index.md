@@ -2,10 +2,12 @@
 title: Home
 ---
 
-# Phase2 DevTools
+# Outrigger
 
-- [DevTools Documentation](/devtools)
-- Dev Tools high level planning happens on [this Trello board](o.com/b/1GWdvIYb/devtools)
+* **Homepage:** [outrigger.sh](http://outrigger.sh)
+* **Documentation:** [docs.outrigger.sh](http://docs.outrigger.sh)
+* **Issue Tracker:** Issues aggregated in [waffle.io/phase2/rig](https://waffle.io/phase2/rig)
+* **Code Repositories:** [Phase2 Repos in Outrigger Topic](https://github.com/search?q=topic%3Aoutrigger+org%3Aphase2+fork%3Atrue)
 
 # Front End and Theme Tools
 
@@ -26,15 +28,7 @@ title: Home
   - [repo](http://github.com/phase2/generator-gadget) 
   - [issues](http://github.com/phase2/generator-gadget/issues) 
 
-# Environment tools
+# Project Generator
 
-- `generator-p2-env` 
-  - [repo](http://bitbucket.org/phase2tech/generator-p2-env)
-  - [issues](http://bitbucket.org/phase2tech/generator-p2-env/issues)
-
-# High level tools
-
-- `generator-p2` - The `yo p2` Yeoman generator that is the umbrella generator that scaffolds out a whole site using all of these tools
-  - [repo](http://bitbucket.org/phase2tech/generator-p2)
-  - [issues](http://bitbucket.org/phase2tech/generator-p2/issues)
+* [Outrigger Drupal](https://github.com/phase2/generator-outrigger-drupal)
   
